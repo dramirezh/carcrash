@@ -48,9 +48,13 @@ div[data-role='panel']{
 */
 .ui-content
 {
-   	margin-right : -12px !important; 
-   	margin-left : -12px !important;
+   	margin-right : -28px !important; 
+   	margin-left : -28px !important;
 }
 .ui-body-a {
   border-style: none !important;
+}
+.ui-page-header-fullscreen>.ui-content, .ui-page-footer-fullscreen>.ui-content {
+  margin-right : -12px !important; 
+   	margin-left : -12px !important;
 }
