@@ -71,8 +71,8 @@ function initializeData()
 {
 	//$('a').attr('data-transition','slide');	//general app transition
 	
-	//initLanguage();
-	location.href="#initial";
+	initLanguage();
+	location.href="#profile";
 }
 
 //Pages array to load on index
@@ -112,13 +112,89 @@ function getPages()
 			    	"center":"<h2>Multipage Template</h2>",
 			    	"right":"<a href='#'></a>"
 			    }
+			},
+			{"id":"profile", "url":"pages/profile/profile.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Perfil</h2>",
+			    	"right":"<a  tag='a' id='save' onclick='validateProfile();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    },			    
+	        	"leftPanel":{
+	        		"id":"profileNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
+			},
+			{"id":"mechanic", "url":"pages/profile/mechanic.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Mecanico</h2>",
+			    	"right":"<a tag='a' id='save' onclick='saveMechanicData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    },			    
+	        	"leftPanel":{
+	        		"id":"mechanicNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
+			},
+			{"id":"medical", "url":"pages/profile/medical.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Medicos</h2>",
+			    	"right":"<a  tag='a' id='save' onclick='saveUserMedicalData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    },			    
+	        	"leftPanel":{
+	        		"id":"medicalNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
+			},
+			{"id":"policiesContent", "url":"pages/policy/policiesContent.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a  tag='a' id='aBackPolicy' onClick='backPolicy();'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Polizas</a>",
+			    	"center":"<h2 id='h2PolicyTitle'>Poliza</h2>",
+			    	"right":"<a  tag='a' id='save' onClick='savePolicy();'  class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>" 
+			    }
+			},
+			{"id":"showPolicies", "url":"pages/policy/showPolicies.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Pólizas</h2>",
+			    	"right":"<a onClick='validNewPolicy();' tag='a' id='save' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    },			    
+	        	"leftPanel":{
+	        		"id":"policiesNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
+			},
+			{"id":"contactsContent", "url":"pages/contacts/contactsContent.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#showContacts' tag='a'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Contactos</a>",
+			    	"center":"<h2>Contacto</h2>",
+			    	"right":"<a tag='a' id='save' onclick='saveContact();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    }
+			}, 
+			{"id":"showContacts", "url":"pages/contacts/showContacts.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Contactos</h2>",
+			    	"right":"<a  tag='a' id='save' onClick='validNewContact();'  class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    },			    
+	        	"leftPanel":{
+	        		"id":"sContactsNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
 			}
 	        ];
 	
 }
 
 
-/*function initLanguage(){
+function initLanguage(){
 	 var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
 	    WL.Logger.debug(">> Detected locale: " + locale);
@@ -126,4 +202,20 @@ function getPages()
 
 	    if (locale.indexOf("en")!=-1) languageChanged("english");
 	    if (locale.indexOf("es")!=-1) languageChanged("spanish");
-}*/
+}
+
+function languageChanged(lang) {		
+    switch (lang){
+    	case "english":
+    		setEnglish();
+    		break;
+    	case "spanish":
+    		setSpanish();
+    		break;
+    }
+    
+}
+
+
+
+

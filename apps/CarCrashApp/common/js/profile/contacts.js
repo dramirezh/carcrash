@@ -231,7 +231,10 @@ function initSuccess(result){
 			
 			initContactToList(result[index].json.UserContactFirstName,result[index].json.UserContactCellPhone
 					, result[index]._id);
-		}														
+		}
+		$('a[id="acontactsList"]').on("taphold",function(){				
+			initSelectedContact(this);	 popUpListPolicy(); initDelete();
+			});
 } 
 }
 
@@ -272,14 +275,12 @@ $(document).on('pagebeforeshow','#showContacts',function(e,data){
 
 function initContactToList(name,cellphone, id){
 	
-	$('#listContact').append('<li style="margin-bottom:2px;" ><a id="acontactsList" data-rel="popup" data-position-to="window" data-transition="pop" href="tel:'+cellphone+'" onclick="initSelectedContact(this); initContactDetails();" class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
+	$('#listContact').append('<li style="margin-bottom:2px;" ><a id="acontactsList"  href="tel:'+cellphone+'" onclick="initSelectedContact(this); initContactDetails();" class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
 		    '<h2>'+name.trim()+'</h2>'+		    
 		    ' <input type="hidden" value="'+id+'" />'+
 		   ' </a>'+
 		   ' </li>');	
-	$('a[id="acontactsList"]').on("taphold",function(){				
-		initSelectedContact(this);	 popUpListPolicy(); initDelete();
-		});
+	
 }
 var listitem;
 function initSelectedContact(v){
@@ -332,16 +333,21 @@ function initDelete(){
 			{
 			};
 	jsonStore.id=parseInt(contactId);
-	jsonStore.fnSuccess=function(succes){ dataToConDelete=succes;
-	
-	$( "#popupDialogDelContact" ).popup( "open" );
+	jsonStore.fnSuccess=function(succes){ dataToConDelete=succes;		
+	navigator.notification.confirm(
+			"Desea eliminar el registro seleccionado?",
+			function onConfirm(result) {
+				
+				if(result == 1){		
+					contactDeleted();
+				}
+			},
+			"Eliminar");
 	
 	};
 	jsonStore.fnFail=detailsFail;							
 	jsonStore.get();
-	//$( "#popupMenuContact" ).popup( "close" );
 	
-	//setTimeout(function(){ $( "#popupDialogDelContact" ).popup( "open" ); },300);
 }
 
 function contactDeleted(){
