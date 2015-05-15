@@ -1,0 +1,38 @@
+<!-- --------------------------- Poliza ------------------------- -->
+    		
+    		<div data-role="page" id="{id}"  class="ui-page-header-fixed ui-page-footer-fixed">    		    			    		    			
+    			
+    			<div role="main" class="ui-content">   			
+    				    		<div  class="ui-body ui-body-a"> 		    			    				    			  				   			    				    				    			   			
+    			<ul id="listPolicy" data-role="listview" data-inset="true">
+    
+</ul> </div>	
+ 			    							
+				</div>				
+<div data-role="popup" id="popupDialogEliminar"  data-dismissible="false" style="max-width:400px; margin-top: 0;">
+					<div data-role="header" data-theme="a">
+						<h1 id="h1ConfirmPolicy">Eliminar?</h1>
+					</div>
+					<div role="main" class="ui-content">
+						<h3 id="h3DeletePolicy" class="ui-title">Desea eliminar el registro seleccionado?</h3>
+						<p></p>
+						<p><label id="lblPolicySelected" ></label> </p>
+						<a href="#" id="cancelPolicy" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+						<a href=""  id="yesPolicy" onclick="policyDeleted();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >OK</a>
+						</div>
+				</div> 
+				<div data-role="popup" id="popupShosPolicyDetails" data-dismissible="false" style="max-width:400px; margin-top: 0;">
+					<div data-role="header" data-theme="a">
+						<h1 id="h1PolicyDetail">Policy</h1>
+					</div>
+					<div role="main" class="ui-content">
+						<h3 id="h3SelectPolicyOp" class="ui-title">Select an option:</h3>
+						
+						<p><label id="lblPolicyDetalis" ></label> </p>
+						
+						<a href="#" id="aPolicyDetails" data-rel="back" onclick="initPolicyDetails();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" >Details</a>
+						<a href="#" id="aDeletePolicy"   onclick=" popUpListPolicy(); initDeletePolicy();"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">Delete</a>
+						</div>
+				</div>     				
+			 	
+    		</div><!-- pagePoliza -->

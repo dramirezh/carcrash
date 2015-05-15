@@ -46,5 +46,11 @@ div[data-role='panel']{
 	margin-top:19px;
 }
 */
-
-
+.ui-content
+{
+   	margin-right : -12px !important; 
+   	margin-left : -12px !important;
+}
+.ui-body-a {
+  border-style: none !important;
+}

@@ -1,0 +1,58 @@
+<div data-role="page" id="{id}"  class="ui-page-header-fixed ui-page-footer-fixed">    		    			    		
+    			   	
+    			<div role="main" class="ui-content">    				
+    				
+    				<div id="perfilCont" style=" margin-bottom: 0;" class="ui-body ui-body-a">    				
+    				
+    			 <form id="profileForm">  
+    				 			      				    				  
+    				<input placeholder="Nombre" id="txtProfileName" name="txtProfileName" maxlength="40" type="text" />     				    				 
+    				<input placeholder="Apellidos" id="txtFirstName" name="txtFirstName" type="text" maxlength="30" />    				    			    				 
+    				<input placeholder="Celular"  id="txtCellPhone" name="txtCellPhone" type="text" maxlength="12"/>    				
+    				     				 
+    				<hr></hr>  
+    			   				
+    				<div id="locationField">
+      <input id="autocomplete" name="autocomplete" placeholder="Direccion completa"
+             onFocus="geolocate()" type="text" maxlength="190"></input>
+    </div>
+
+<input placeholder="Calle" sel="pStreet" style="font-weight: bold;" id="route" maxlength="255" name="route"></input>
+<input sel="pStreetNumber" placeholder="Numero" style="font-weight: bold;"  id="street_number" maxlength="20"  name="street_number" ></input>
+<input placeholder="Ciudad"  sel="pCity" style="font-weight: bold;" id="locality" maxlength="50" name="locality" ></input>
+<input placeholder="Estado"  sel="pState" style="font-weight: bold;" id="administrative_area_level_1" maxlength="50" name="administrative_area_level_1" ></input>
+<input placeholder="CP" sel="pPostalCode" style="font-weight: bold;" id="postal_code" maxlength="20" name="postal_code"  ></input>
+<input placeholder="Pais"  sel="pCountry" style="font-weight: bold;" id="country" maxlength="50" name="country" ></input>   
+</form>                   
+    				<br>     				    				  				     				    				     				     				    				
+    				</div>   				    				    				  				  
+    				    				<ul>
+				<li>
+				<a id='lnkDialog' href="#popupDialogPolicy"  data-rel="popup" data-position-to="window"
+				 data-transition="pop" ></a>
+				 </li>
+				</ul>  				
+    			</div>    			    			    			    			
+    			<div data-role="popup" id="popupDialogCity" data-dismissible="false" style="max-width:400px; margin-top: 0;">
+					<div data-role="header" data-theme="a">
+						<h1 id="h1ConfirmCity">Confirm?</h1>
+					</div>
+					<div role="main" class="ui-content">
+						<h3 id="h3SelectedCity"  class="ui-title">Selected city:</h3>
+						<p><label id="lblCitySelected" ></label> </p>
+						
+						<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+						<a href=""  onclick="citySelected();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">OK</a>
+						</div>
+				</div>												
+				
+				<div id="posFooter" data-tap-toggle="false" data-hide-during-focus="false" data-role="footer" data-position="fixed" data-fullscreen="true" class="bottomFooter">
+	   				<div data-role="navbar" data-iconpos="center">
+	   					<ul>	   					
+							<li ><a id="aProfile" href="#profile"   >Perfil</a></li>
+							<li ><a id="aMedical" href="#medical"  >Medicos</a></li>
+							<li ><a id="aMechanic" href="#mechanic"  >Mecanico</a></li>
+						</ul>
+					</div><!-- /navbar -->
+	   			</div>	
+    		</div><!-- pagePerfil -->

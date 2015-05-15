@@ -1,0 +1,36 @@
+<!-- --------------------------- pageAddcontact ------------------------- -->
+    		
+    		<div data-role="page" id="{id}"  class="ui-page-header-fixed ui-page-footer-fixed">
+    		   			    		
+    			<div role="main" class="ui-content">
+    		
+    			<div id="contactCont"  >  
+    			
+    				    				<div style=" margin-bottom: 0;" class="ui-body ui-body-a">    				    				
+					     				 			      				    				  
+    				<input placeholder="Nombre completo" id="txtUserContactName" name="txtUserContactName" maxlength="110" type="text" />     				   				    				
+    			     				 
+    				<input placeholder="Celular"  id="txtUserContactCellPhone" type="text" maxlength="12"/>
+    				<br>			    				
+    				    				</div><br>      				    				
+    				    				</div>    		    				    				    				     				    				 				
+    			</div>    			    			
+    			   		<div data-role="popup" id="popupMenuContactCont" data-theme="b">
+<ul data-role="listview" data-inset="true" style="min-width:210px;">
+<li id="liSelectPolicyOp" data-role="list-divider">Select an action</li>
+<li id="liSUdataC"><a id="aSUdata"  href="#" class="ui-btn" onclick=" $('#popupMenuContactCont' ).popup( 'close' ); saveContact();">Save/Update</a></li>
+<li id="liKeepEdC"><a id="aKeepEd" class="ui-btn" href=""  onclick="$('#popupMenuContactCont' ).popup( 'close' );">Continue editing</a></li>
+<li id="liUserContact"><a id="aRPoliza" class="ui-btn" href="#showContacts" onclick="cleanContactInputs();">Go to records</a></li>
+</ul>
+</div>		    			
+							    															
+    			<div data-tap-toggle="false" data-hide-during-focus="false" data-role="footer" data-position="fixed" data-fullscreen="true" class="bottomFooter">
+	   				<div data-role="navbar" data-iconpos="top">
+	   					<ul>
+	   					<li><a id="aContacts" href="#showContacts"  >Contactos</a></li>
+							<li><a id="aContactsList"   >Aseguradoras</a></li>
+						</ul>
+					</div><!-- /navbar -->
+	   			</div>	
+				
+    		</div><!-- pageAddcontact -->

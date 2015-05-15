@@ -1,0 +1,42 @@
+<!-- ------------------------pageDatosMedicos------------------------ -->
+    		<div data-role="page" id="{id}" class="ui-page-header-fixed ui-page-footer-fixed">
+    		      			   			
+    			<div role="main" class="ui-content">
+    				
+    				<div style="margin-top:0 margin-bottom: 0;" class="ui-body ui-body-a">
+    				   					    				    				    				     				
+    				<input placeholder="Numero IMSS"  id="txtNoIMSS" maxlength="15"  type="text"/>  
+    				   			    				
+    				 <form id="medicalForm"> 
+    				<div>		<select name="selectBloodType" id="selectBloodType">
+								<option id="opNoneBType" value="" selected="selected">Tipo de sangre</option>
+								<option  value="AB+" >AB+</option>
+								<option  value="AB-" >AB-</option>
+								<option  value="A+" >A+</option>
+								<option  value="A-" >A-</option>
+								<option  value="B+" >B+</option>
+								<option  value="B-" >B-</option>
+								<option  value="O+" >O+</option>
+								<option  value="O-" >O-</option>
+								
+							</select></div>
+    				 </form>
+    				   				 
+    				<input placeholder="Alergias"  id="txtAlergics" maxlength="100" type="text" /> 
+    				 				 
+    				<input placeholder="Padecimientos"  id="txtClinicalConditions" maxlength="100"  type="text" />    				    				
+    				</div>
+    				
+    			</div>
+				 
+				 <div id="posFooter" data-tap-toggle="false" data-hide-during-focus="false" data-role="footer" data-position="fixed" data-fullscreen="true" class="bottomFooter">
+	   				<div data-role="navbar" data-iconpos="center">
+	   					<ul>	   					
+							<li ><a id="aProfile" href="#profile"   >Perfil</a></li>
+							<li ><a id="aMedical" href="#medical"  >Medicos</a></li>
+							<li ><a id="aMechanic" href="#mechanic"  >Mecanico</a></li>
+						</ul>
+					</div><!-- /navbar -->
+	   			</div>
+				
+    		</div><!-- pageDatosMedicos -->
