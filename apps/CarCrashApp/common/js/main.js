@@ -188,6 +188,18 @@ function getPages()
 	        		"id":"sContactsNav",
 	        		"url":"pages/general/left_panel.html"
 	        	}
+			}, 
+			{"id":"showInsurance", "url":"pages/contacts/insurance.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Aseguradoras</h2>",
+			    	"right":""
+			    },			    
+	        	"leftPanel":{
+	        		"id":"sInsuranceNav",
+	        		"url":"pages/general/left_panel.html"
+	        	}
 			}
 	        ];
 	

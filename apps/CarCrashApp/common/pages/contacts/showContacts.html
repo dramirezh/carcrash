@@ -8,7 +8,15 @@
     
 </ul> 
  			    </div>							
-				</div>				
+				</div>		
+				<div data-tap-toggle="false" data-hide-during-focus="false" data-role="footer" data-position="fixed" data-fullscreen="true" class="bottomFooter">
+	   				<div data-role="navbar" data-iconpos="top">
+	   					<ul>
+	   					<li><a id="aContacts" href="#showContacts"  >Contactos</a></li>
+							<li><a id="aInsurance" href="#showInsurance"  >Aseguradoras</a></li>
+						</ul>
+					</div><!-- /navbar -->
+	   			</div>			
 <div data-role="popup" id="popupDialogDelContact"  data-dismissible="false" style="max-width:400px; margin-top: 0;">
 					<div data-role="header" data-theme="a">
 						<h1 id="h1ConfirmContact">Eliminar?</h1>
@@ -24,9 +32,8 @@
 				
 				<div data-role="popup" id="popupMenuContact" data-theme="b">
 <ul data-role="listview" data-inset="true" style="min-width:210px;">
-<li id="liSelectPolicyOp" data-role="list-divider">Select an action</li>
-<li id="liConDetails"><a id="Details"  href="#" class="ui-btn" onclick=" $('#popupMenuContact' ).popup( 'close' ); initContactDetails();">Details</a></li>
-<li id="liConDelete"><a id="Delete" data-rel="popup"  data-position-to="window" data-transition="pop"  class="ui-btn"  onclick="initDelete();">Delete</a></li>
+<li id="liSelectPolicyOp" data-role="list-divider">Opcion</li>
+<li id="liConDelete"><a id="Delete" data-rel="popup"  data-position-to="window" data-transition="pop"  class="ui-btn"  onclick="initDelete();">Eliminar</a></li>
 </ul>
 </div>
 				

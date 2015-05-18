@@ -171,7 +171,7 @@
 		}		
 				
 		function policyDeleted(){				
-			$( "#popupDialogEliminar" ).popup( "close" );	
+				
 			var jsonStore = new clsJsonStoreHelper();
 			
 			jsonStore.collectionName=policyCollectionName;
@@ -545,15 +545,33 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 		}					
 		
 		function initDeletePolicy(){
-			initPolicyVehicleToDelete();			
-			navigator.notification.confirm(
+			$( "#popupShosPolicyDetails" ).popup( "close" );
+			var jsonStore = new clsJsonStoreHelper();
+			jsonStore.collectionName="PolicyVehicle";
+			jsonStore.document=
+					{
+					};
+			jsonStore.id=policyId;
+			jsonStore.fnSuccess=function initSuccess(arrayResults){				
+				if(arrayResults.length>0){
+					dataToDelete = arrayResults;																					
+				}
+				policyDeleted();
+			};
+			jsonStore.fnFail=function initFail(result){
+				
+			};
+			jsonStore.get();
+			
+			//initPolicyVehicleToDelete();			
+			/*navigator.notification.confirm(
 					"Desea eliminar el registro seleccionado?",
 					function onConfirm(result) {
 						if(result == 1){		
 							policyDeleted();
 						}
 					},
-					"Eliminar");
+					"Eliminar");*/
 		}
 		
 		var updatedPolicy=false;
@@ -777,7 +795,9 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 								arrayResults[index].json.PolicyDate, arrayResults[index]._id, arrayResults[index].json.carPicture);
 					}
 					$('a[id="aPoliciesList"]').on("taphold",function(){				
-						initSelectedPolicy(this);	 popUpListPolicy(); initDeletePolicy();
+						initSelectedPolicy(this);	 popUpListPolicy();
+						$( "#popupShosPolicyDetails" ).popup( "open" );
+						//initDeletePolicy();
 						});			
 				} 
 			};
@@ -840,21 +860,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 		function initPolicyVehicleToDelete(){  
 			 
 						
-			var jsonStore = new clsJsonStoreHelper();
-			jsonStore.collectionName="PolicyVehicle";
-			jsonStore.document=
-					{
-					};
-			jsonStore.id=policyId;
-			jsonStore.fnSuccess=function initSuccess(arrayResults){				
-				if(arrayResults.length>0){
-					dataToDelete = arrayResults;																					
-				} 
-			};
-			jsonStore.fnFail=function initFail(result){
-				
-			};
-			jsonStore.get();
+			
 		}
 		function getPolicyVehicleToDelete(){  			 
 			

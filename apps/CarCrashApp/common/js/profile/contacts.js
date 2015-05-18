@@ -233,7 +233,9 @@ function initSuccess(result){
 					, result[index]._id);
 		}
 		$('a[id="acontactsList"]').on("taphold",function(){				
-			initSelectedContact(this);	 popUpListPolicy(); initDelete();
+			initSelectedContact(this);	 popUpListPolicy(); 
+			$( "#popupMenuContact" ).popup( "open" );
+			
 			});
 } 
 }
@@ -327,6 +329,7 @@ function detailsFail(errorObject){
 }
 
 function initDelete(){
+	$( "#popupMenuContact" ).popup( "close" );
 	var jsonStore = new clsJsonStoreHelper();
 	jsonStore.collectionName="Contacts";
 	jsonStore.document=
@@ -334,18 +337,25 @@ function initDelete(){
 			};
 	jsonStore.id=parseInt(contactId);
 	jsonStore.fnSuccess=function(succes){ dataToConDelete=succes;		
-	navigator.notification.confirm(
+	contactDeleted();
+	/*navigator.notification.confirm(
 			"Desea eliminar el registro seleccionado?",
 			function onConfirm(result) {
 				
 				if(result == 1){		
-					contactDeleted();
+					
 				}
 			},
 			"Eliminar");
-	
+	*/
 	};
-	jsonStore.fnFail=detailsFail;							
+	jsonStore.fnFail=function(){ 	
+		navigator.notification.alert(
+				"No se ha podido eliminar",
+				function onSuccess() {
+				}, "Error");
+
+	};							
 	jsonStore.get();
 	
 }
