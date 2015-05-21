@@ -72,7 +72,9 @@ function initializeData()
 	//$('a').attr('data-transition','slide');	//general app transition
 	
 	initLanguage();
-	location.href="#profile";
+	setTimeout('getLocation();',500);
+	
+	location.href="#initial";
 }
 
 //Pages array to load on index
@@ -105,14 +107,6 @@ function getPages()
 	////         }
 	////         ]
 	return [
-			{"id":"initial", "url":"pages/initial.html", 
-				"header":{
-			    	"url":"pages/general/header.html",
-			    	"left":"<a></a>",
-			    	"center":"<h2>Multipage Template</h2>",
-			    	"right":"<a href='#'></a>"
-			    }
-			},
 			{"id":"profile", "url":"pages/profile/profile.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
@@ -200,6 +194,58 @@ function getPages()
 	        		"id":"sInsuranceNav",
 	        		"url":"pages/general/left_panel.html"
 	        	}
+			},
+			{"id":"initial", "url":"pages/initial.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Reportar</h2>",
+			    	"right":"<a href='#' onclick='getLocation();' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    },
+			    "leftPanel":{
+			    	"id":"panelInitial",
+			    	"url":"pages/general/left_panel.html"
+			    }
+			},
+			{"id":"sinDetails", "url":"pages/sinisters/details.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Reportar</a>",
+			    	"center":"<h2>Fotos</h2>",
+			    	"right":"<a href='#' onclick='enviarExtras();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    }
+			},
+			{"id":"sinisterList", "url":"pages/sinisters/sinisterList.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Siniestros</h2>",
+			    	"right":"<a href='#' onclick='' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    },
+			    "leftPanel":{
+			    	"id":"panelInitial",
+			    	"url":"pages/general/left_panel.html"
+			    }
+			},
+			{"id":"theftsList", "url":"pages/sinisters/theftsList.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2>Robos</h2>",
+			    	"right":"<a href='#' onclick='' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    },
+			    "leftPanel":{
+			    	"id":"panelInitial",
+			    	"url":"pages/general/left_panel.html"
+			    }
+			},
+			{"id":"consultSinister", "url":"pages/sinisters/consultSinister.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Listado</a>",
+			    	"center":"<h2>Detalles</h2>",
+			    	"right":""
+			    }
 			}
 	        ];
 	

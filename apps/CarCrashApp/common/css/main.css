@@ -32,6 +32,67 @@ div.error{
 input:required:invalid, input:focus:invalid{
 	box-shadow: rgba(24,189,230,.20) 3px 3px 10px 5px inset !important;
 }
+
+.circle{
+	background: transparent;
+	border: 2px solid #A11400;
+    border-radius: 50%;
+    padding-bottom: 40%;
+    width:40%;
+    height:50%;
+    margin: 0 auto;
+}
+.circle-content{
+	color: #A11400;
+	float: left;
+	line-height: 1;
+	margin-top: -0.5em;
+	padding-top: 50%;
+	text-align: center;
+	width: 100%;
+	font-size: 12em;
+}
+.photoContainer{
+	width:100%;
+	text-align: center;
+	margin-top: 15px;
+	/*border: 1px solid black;*/
+}
+.imgPic{
+	display:inline-block;
+	position:relative;
+	width: 24%;
+	/*border: 1px solid red;
+	height: 30px;*/
+}
+.imgPic img{
+	width: 95%;
+}
+@media screen and (max-width: 700px) {
+   .circle-content { 
+    font-size:8em;
+   }
+   .imgPic{
+	width: 32%;
+}
+@media screen and (max-width: 500px) {
+   .circle-content { 
+    font-size:6em;
+   }
+   .circle{
+		width:50%;
+		padding-bottom:50%;
+	}
+	.imgPic{
+	width: 49%;
+}
+}
+@media screen and (min-width: 900px){
+	.circle{
+		width:20%;
+		padding-bottom:20%;
+	}
+}
 /*
 For iOS place:
 
@@ -46,15 +107,3 @@ div[data-role='panel']{
 	margin-top:19px;
 }
 */
-.ui-content
-{
-   	margin-right : -28px !important; 
-   	margin-left : -28px !important;
-}
-.ui-body-a {
-  border-style: none !important;
-}
-.ui-page-header-fullscreen>.ui-content, .ui-page-footer-fullscreen>.ui-content {
-  margin-right : -12px !important; 
-   	margin-left : -12px !important;
-}
