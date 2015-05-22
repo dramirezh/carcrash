@@ -16,7 +16,7 @@ function loadVehiclesList(){
 			$('#sliderInit').slick('slickRemove',0);
 		}
 		$(result).each(function(idx, item){
-			$(".slider-init").slick('slickAdd','<div a="si" style="margin-left:25px;text-align:center; width:100%;"><img src="' + item.json.carPicture + '" width="90%;" height="auto"/><label style="margin-right:20px;" number="' + item._id + '">' + item.json.Serie + '</label></div>');
+			$(".slider-init").slick('slickAdd','<div a="si" style="margin-left:25px;text-align:center;"><img src="' + item.json.carPicture + '" width="50%;" height="auto"/><label style="margin-right:20px;" number="' + item._id + '">' + item.json.Serie + '</label></div>');
 		});
 		
 	};

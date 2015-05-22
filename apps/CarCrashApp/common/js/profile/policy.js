@@ -523,7 +523,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			        function(e) {
 			            console.log("Error getting picture: " + e);
 			        },
-			        { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType : navigator.camera.PictureSourceType.CAMERA});
+			        { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType : navigator.camera.PictureSourceType.CAMERA, saveToPhotoAlbum: true});
 		}
 		var showDate=0;		
 		
