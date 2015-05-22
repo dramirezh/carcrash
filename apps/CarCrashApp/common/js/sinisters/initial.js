@@ -4,12 +4,21 @@ function loadVehiclesList(){
 	oJStore.options = {};
 	oJStore.document = {};
 	oJStore.fnSuccess = function(result){
-		$("#selectAuto option[value!=0]").remove();
+		/*$("#selectAuto option[value!=0]").remove();
 		$(result).each(function(idx, item){
 			$("#selectAuto").append('<option value="' + item._id + '">' + item.json.Serie  + '</option>');
 		});
 		$('#selectAuto').value = "0";
-		$( "#selectAuto" ).selectmenu( "refresh", true );
+		$( "#selectAuto" ).selectmenu( "refresh", true );*/
+		
+		var count = $("#sliderInit div div > div[a='si']").length;
+		for(var i = 0; count > i; i++){
+			$('#sliderInit').slick('slickRemove',0);
+		}
+		$(result).each(function(idx, item){
+			$(".slider-init").slick('slickAdd','<div a="si" style="margin-left:25px;text-align:center; width:100%;"><img src="' + item.json.carPicture + '" width="90%;" height="auto"/><label style="margin-right:20px;" number="' + item._id + '">' + item.json.Serie + '</label></div>');
+		});
+		
 	};
 	oJStore.fnFail = function(error){
 		navigator.notification.alert(
@@ -43,9 +52,11 @@ function sendIncidenteInfo()
 {	
 	if(currentLat != 0 && currentLng != 0)
 	{
-		if($('#selectAuto').val() != 0)
+		if($('#sliderInit > div').length > 0)
 		{
-			oCurrentSinister.data.idPolicy = parseInt($('#selectAuto').val());
+			var auto = $('#sliderInit > div').length == 1? $('#sliderInit div') : $('.slick-active');
+			
+			oCurrentSinister.data.idPolicy = parseInt($(auto).children('label').attr("number"));
 			oCurrentSinister.data.status = 0;
 			oCurrentSinister.data.extras.severity = parseInt($('#sldGravedad').val());
 			oCurrentSinister.data.location.lat = currentLat;

@@ -1,4 +1,4 @@
-var globalMail = "";
+var globalMail = "hola2@hola.com";
 function clsJsonStoreHelper(){
 	this.collectionName = "";
 	this.options = {};

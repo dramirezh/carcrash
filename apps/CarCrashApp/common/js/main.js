@@ -70,13 +70,52 @@ function wlCommonInit(){
 function initializeData()
 {
 	//$('a').attr('data-transition','slide');	//general app transition
+	$('#map-canvas').css('height', ($(document).height() / 3) + 'px');
+	$('#mapConsultSinister').css('height', ($(document).height() / 3) + 'px');
 	
 	initLanguage();
 	setTimeout('getLocation();',500);
 	
+	setSlider();
+	
+	$("#ulThefts").on("taphold",function(event){
+		var item = $(event.target).closest("li").attr("item");
+		var auto = $(event.target).closest("li").attr("auto");
+		$("#aTheftDetails").attr("onclick","showDetails('theft', " + item + ", " + auto + ")");
+		$("#aTheftSendReport").attr("onclick","reSendReport(" + item + ")");
+		
+		if(item == 0){
+			$("#aTheftSendReport").css("display","none");
+		}else{
+			$("#aTheftSendReport").css("display","inline");
+		}
+		$("#popTheftMenu").popup("open");
+	});
+	$("#ulSinisters").on("taphold",function(event){
+		var item = $(event.target).closest("li").attr("item");
+		var auto = $(event.target).closest("li").attr("auto");
+		$("#aSinisterDetails").attr("onclick","showDetails('sinister', " + item + ", " + auto + ")");
+		$("#aSinisterSendReport").attr("onclick","reSendReport(" + item + ")");
+				
+		if(item == 0){
+			$("#aSinisterSendReport").css("display","none");
+		}else{
+			$("#aSinisterSendReport").css("display","inline");
+		}
+		$("#popSinisterMenu").popup("open");
+	});
+	
 	location.href="#initial";
 }
-
+function setSlider(){
+	$('.slider-init').slick({
+		dots: true,
+		  infinite: true,
+		  speed: 300,
+		  slidesToShow: 1,
+		  adaptiveHeight: true
+	});
+}
 //Pages array to load on index
 function getPages()
 {
@@ -220,10 +259,10 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2>Siniestros</h2>",
-			    	"right":"<a href='#' onclick='' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    },
 			    "leftPanel":{
-			    	"id":"panelInitial",
+			    	"id":"panelSinList",
 			    	"url":"pages/general/left_panel.html"
 			    }
 			},
@@ -232,10 +271,10 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2>Robos</h2>",
-			    	"right":"<a href='#' onclick='' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    },
 			    "leftPanel":{
-			    	"id":"panelInitial",
+			    	"id":"panelTheftList",
 			    	"url":"pages/general/left_panel.html"
 			    }
 			},
