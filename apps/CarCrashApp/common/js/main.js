@@ -107,8 +107,6 @@ function initializeData()
 	
 	$('.slider-init').slick('slickNext');
 	
-	setTimeout();
-	
 	location.href="#initial";
 }
 function setSlider(){
