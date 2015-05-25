@@ -200,11 +200,12 @@
     color: black;
 }
 .slider-init{
-	width: 70%;
+	width: 35%;
 	display: block; 
 	margin-left: auto;
 	margin-right: auto; 
 	margin-bottom: -1px;
+	max-height: 20%;
 }
 slider-init img{
 	border: 1px solid red;

@@ -16,7 +16,7 @@ function loadVehiclesList(){
 			$('#sliderInit').slick('slickRemove',0);
 		}
 		$(result).each(function(idx, item){
-			$(".slider-init").slick('slickAdd','<div a="si" style="margin-left:25px;text-align:center;"><img src="' + item.json.carPicture + '" width="50%;" height="auto"/><label style="margin-right:20px;" number="' + item._id + '">' + item.json.Serie + '</label></div>');
+			$(".slider-init").slick('slickAdd','<div a="si" style="text-align:center; padding:0 1% 0 1%; max-height:33%;"><img src="' + item.json.carPicture + '" width="100%;" height="auto" /><label style="" number="' + item._id + '">' + item.json.Serie + '</label></div>');
 		});
 		
 	};
@@ -35,18 +35,18 @@ function reportar()
 	}else{
 		sPageNav = "#theftsList";
 	}
-	navigator.notification.confirm(
+	/*navigator.notification.confirm(
 	// Shows a customizable confirmation dialog box.
 
 	// Confirm dialog message (String)
 	"Esta seguro que desea levantar un reporte? Esta accion enviara su ubicacion y datos a su aseguradora.",
 	// Callback to invoke with index of button pressed (1, 2 or 3)
 	function onConfirm(result) {
-		if(result == 1){
+		if(result == 1){*/
 			sendIncidenteInfo();
-		}
+		/*}
 	},
-	"Reportar?");
+	"Reportar?");*/
 }
 function sendIncidenteInfo()
 {	
@@ -54,7 +54,7 @@ function sendIncidenteInfo()
 	{
 		if($('#sliderInit > div').length > 0)
 		{
-			var auto = $('#sliderInit > div').length == 1? $('#sliderInit div') : $('.slick-active');
+			var auto = $('.slider-init').slick('getSlick').$slides[$('.slider-init').slick('slickCurrentSlide')];
 			
 			oCurrentSinister.data.idPolicy = parseInt($(auto).children('label').attr("number"));
 			oCurrentSinister.data.status = 0;
