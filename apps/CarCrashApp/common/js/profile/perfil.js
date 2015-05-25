@@ -175,11 +175,13 @@ $(
 		        	streetNumber:$('input[sel="pStreetNumber"]').val().trim(),street:$('input[sel="pStreet"]').val().trim(),State:$('input[sel="pState"]').val().trim(),
 		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim()
 				 };
-			jsonStore.id=getProfileId();
+			//jsonStore.id=getProfileId();
+			jsonStore.id=0;
 			jsonStore.fnSuccess=function (succes) {
-				jsonStore.document["email"]=updateProfile[0].json.email;
-				
-				updateAccount(jsonStore.document);
+				//jsonStore.document["email"]=updateProfile[0].json.email;
+			
+				//updateAccount(jsonStore.document);
+				updateAccount(succes);
 				navigator.notification.alert(
 						''+Messages.msgDataSaved,
 						function onSuccess() {
@@ -189,7 +191,7 @@ $(
 			jsonStore.fnFail=function (errorObject) {			
 				alert("Error: "+errorObject.msg);
 			};
-			jsonStore.save();			
+			jsonStore.save(false,false);			
 			
 }
         var profileId;
