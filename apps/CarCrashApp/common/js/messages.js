@@ -144,6 +144,7 @@ Messages = {
 		postalCode:"Código postal",
 		country:"País",
 		placeAddress:"Introduzca su dirección completa",
+		year:"Año",
 };
 
 function setSpanish(){
@@ -163,6 +164,7 @@ function setSpanish(){
 	Messages.postalCode="Código postal";
 	Messages.country="País";
 	Messages.placeAddress="Introduzca su dirección completa";
+	Messages.year="Año";
 	
 	setSpanishProfile();
 	setSpanishShowPolicies();
@@ -197,6 +199,7 @@ function setEnglish(){
 	Messages.postalCode="Zip code";
 	Messages.country="Country";
 	Messages.placeAddress="Enter your full address";
+	Messages.year="Year";
 	
 	setEnglishProfile();
 	setEnglishShowPolicies();

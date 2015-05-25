@@ -310,7 +310,11 @@ function languageChanged(lang) {
     		setSpanish();
     		break;
     }
-    
+    setPolicyLang();
+}
+
+function setPolicyLang(){	
+	 $('#txtModel').attr("placeholder", Messages.year); 
 }
 
 
