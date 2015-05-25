@@ -69,3 +69,6 @@ function enviarExtras()
 	};
 	oCurrentSinister.save();
 }
+function clearSinDetailsScreen(){
+	$('.photoContainer').html("");
+}

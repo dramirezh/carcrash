@@ -50,6 +50,7 @@ $(document).on("pageshow", "#sinisterList", function(event){loadSinisterList();}
 $(document).on("pageshow", "#theftsList", function(event){loadTheftList();});
 $(document).on("pageshow", "#initial", function(event){oCurrentSinister = new clsSinister();loadVehiclesList();});
 $(document).on("pageshow", "#consultSinister", function(event){loadSinisterData();});
+$(document).on("pageshow", "#sinDetails", function(event){clearSinDetailsScreen();});
 
 
 $(document).on('pagebeforeshow','#sinisterReport',function(e,data){    
