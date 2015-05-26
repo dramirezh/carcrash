@@ -90,10 +90,7 @@
         		}
         	};
         	jsonStore.fnFail=function (fail) {			        		
-        		navigator.notification.alert(
-        				'Error al obtener datos de la cuenta',
-	        			function onSuccess() {
-	        			}, "Info");
+        		
         	};
         	jsonStore.get();
 			}
@@ -449,7 +446,7 @@
 			}
 		}
 		function saveVehicleFailure(error){
-			alert('Error al registrar, asegurese de contar con conexion a internet.');
+			
 		}
 		
 		function addPolicyToList(name,insurance,policyDate,id,pic){			
@@ -851,10 +848,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			}
 		}
 		function deleteVehiclePolicyFailure(error){			
-			navigator.notification.alert(
-					'Error al eliminar, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}
 		
 		function initPolicyVehicleToDelete(){  
@@ -892,10 +886,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			}
 		}
 		function updateVehiclePolicyFailure(error){
-			navigator.notification.alert(
-					'Error al actualizar, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}		
 		
 		function getInsurancesFromServer()
@@ -912,26 +903,19 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				$('#selectInsurance').append('<option id="opNoneInsurance" value="0" selected="selected">'+Messages.opNoneInsurance+'</option>');
 				for(var c=0;c<oResult.resultSet.length;c++){
 				$('#selectInsurance').append('<option value="'+oResult.resultSet[c].IDInsuranceCompanies+'">'+oResult.resultSet[c].Name+'</option>');
+				$( "select" ).selectmenu( "refresh", true );
 				}
-				 $( "select" ).selectmenu( "refresh", true );
+				 
 				 if(policyupdate){
 					 $( "select" ).selectmenu();
 					  $('#selectInsurance').prop('selectedIndex', parseInt(dataToUpdate[0].json.Insurance));	
 					  $( "select" ).selectmenu( "refresh", true );
 				 }
 			}
-			else{				
-				navigator.notification.alert(
-						'Error al obtener Aseguradoras, asegurese de contar con conexion a internet.',
-	        			function onSuccess() {
-	        			}, "Error");
-			}
+			
 		}
 		function InsurancesFailure(error){						
-			navigator.notification.alert(
-					'Error al obtener Aseguradoras, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}
 		function InsurancesFailureDefault(){
 			$( "select" ).selectmenu();					
@@ -953,8 +937,9 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				$('#selectMark').append('<option  id="opNoneMark" value="0" selected="selected">'+Messages.opNoneMark+'</option>');
 				for(var c=0;c<oResult.resultSet.length;c++){
 				$('#selectMark').append('<option value="'+oResult.resultSet[c].IDVehicleBrands+'">'+oResult.resultSet[c].Name+'</option>');
-				}
 				$( "select" ).selectmenu( "refresh", true );
+				}
+				
 				
 				if(policyupdate){
 				 $( "select" ).selectmenu();							
@@ -962,18 +947,10 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				  $( "select" ).selectmenu( "refresh", true );
 				}
 			}
-			else{				
-				navigator.notification.alert(
-						'Error al obtener marcas de Autos, asegurese de contar con conexion a internet.',
-	        			function onSuccess() {
-	        			}, "Error");
-			}
+			
 		}
 		function brandsFailure(error){					
-			navigator.notification.alert(
-					'Error al obtener marcas de Autos, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}
 		
 		function brandsFailureDefault(){
@@ -993,21 +970,12 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			jsonStore.fnSuccess=function initSuccess(arrayResults){	
 				if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
 					//alert("enviado al servidor");
-				}else{					
-					navigator.notification.alert(
-		        			'Error al actualizar en el servidor, asegurese de contar con conexion a internet.',
-		        			function onSuccess() {
-		        			}, "Error");
 				}
 				
 				 return true;
 			};
 			jsonStore.fnFail=function initFail(result){
 				
-				navigator.notification.alert(
-	        			'Error al actualizar en el servidor, asegurese de contar con conexion a internet.',
-	        			function onSuccess() {
-	        			}, "Error");
 			};
 			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
 		}

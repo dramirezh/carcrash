@@ -116,10 +116,7 @@ $(document).on('pagebeforeshow','#medical',function(e,data){
 		}
 		function saveMedicalDataFailure(error){
 			 WL.Logger.debug(">> medical data fail: " + error);			
-			navigator.notification.alert(
-					'Error al enviar al servidor, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}
 		
 		

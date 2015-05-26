@@ -132,9 +132,6 @@ var vMechanicName;
 			}
 		}
 		function saveMechanicFailure(error){			
-			navigator.notification.alert(
-					'Error al enviar al servidor, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+			
 		}
 		

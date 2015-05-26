@@ -37,7 +37,7 @@ function validNewContact(){
 		}
 		
 	} ;
-	jsonStore.fnFail=function(result){ alert("Error al contar contactos");}; ;
+	jsonStore.fnFail=function(result){  }; ;
 	jsonStore.count() ;			
 
 		}
@@ -148,7 +148,7 @@ function saveContact(){
 				}, "Info");	
 	}
 }; ;
-	jsonStore.fnFail=function(result){ alert("Error al contar contactos");};
+	jsonStore.fnFail=function(result){ };
 	jsonStore.count() ;		
 
 	}
@@ -203,10 +203,7 @@ function success(result){
 }
 
 function fail(errorObject){
-	navigator.notification.alert(
-			"Error: "+errorObject.msg,
-			function onSuccess() {
-			}, "Error");
+	
 }
 
 function initContacts(){
@@ -338,16 +335,7 @@ function initDelete(){
 	jsonStore.id=parseInt(contactId);
 	jsonStore.fnSuccess=function(succes){ dataToConDelete=succes;		
 	contactDeleted();
-	/*navigator.notification.confirm(
-			"Desea eliminar el registro seleccionado?",
-			function onConfirm(result) {
-				
-				if(result == 1){		
-					
-				}
-			},
-			"Eliminar");
-	*/
+	
 	};
 	jsonStore.fnFail=function(){ 	
 		navigator.notification.alert(
@@ -424,10 +412,7 @@ function saveEmergencyContactsSuccess(result){
 	}
 }
 function saveEmergencyContactsFailure(error){
-	navigator.notification.alert(
-			'Error al actualizar, asegurese de contar con conexion a internet.',
-			function onSuccess() {
-			}, "Error");
+	
 }
 
 function deleteEmergencyContacts(pContact)
@@ -453,10 +438,7 @@ function deleteEmergencyContactsSuccess(result){
 	}
 }
 function deleteEmergencyContactsFailure(error){	
-	navigator.notification.alert(
-			'Error al actualizar, asegurese de contar con conexion a internet.',
-			function onSuccess() {
-			}, "Error");
+	
 }
 
 function updateEmergencyContacts(pContact)
@@ -479,7 +461,7 @@ function updateEmergencyContactsSuccess(result){
 	}
 }
 function updateEmergencyContactsFailure(error){
-	alert('Error al actualizar, asegurese de contar con conexion a internet.');
+	
 }
 
 
@@ -504,10 +486,7 @@ function saveAllContacts()
 	};
 	jsonStore.fnFail=function initFail(result){
 		
-		navigator.notification.alert(
-				'Error, intente mas tarde.',
-				function onSuccess() {
-				}, "Error");
+		
 	};
 	jsonStore.saveToServer("EmergencyContacts", "saveEmergencyContacts");
 }

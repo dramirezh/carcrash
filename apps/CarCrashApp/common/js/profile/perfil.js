@@ -166,7 +166,9 @@ $(
         }
         
         function setDataToTransaction(){				 
-			
+        	WL.JSONStore.get("perfil").clear().then(function (errorObject) {	
+        	
+        	
 			var jsonStore = new clsJsonStoreHelper();
 			jsonStore.collectionName="perfil";
 			jsonStore.document=
@@ -175,24 +177,49 @@ $(
 		        	streetNumber:$('input[sel="pStreetNumber"]').val().trim(),street:$('input[sel="pStreet"]').val().trim(),State:$('input[sel="pState"]').val().trim(),
 		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim()
 				 };
+			jsonStore.document["email"]=globalMail;
+			jsonStore.document["identifier"]=1;
 			//jsonStore.id=getProfileId();
 			jsonStore.id=0;
 			jsonStore.fnSuccess=function (succes) {
-				//jsonStore.document["email"]=updateProfile[0].json.email;
-			
+				
+				
+				//jsonStore.document["email"]=globalMail;
+				//succes[0].json.email=globalMail;
 				//updateAccount(jsonStore.document);
-				updateAccount(succes);
-				navigator.notification.alert(
-						''+Messages.msgDataSaved,
-						function onSuccess() {
-						}, "Info");
+				var jsonStore = new clsJsonStoreHelper();
+				jsonStore.collectionName="perfil";
+				jsonStore.document=
+						{
+						};
+				jsonStore.id=succes;
+				jsonStore.fnSuccess=function (arrayResults) {
+					 WL.Logger.debug(">>  data local: " + JSON.stringify(arrayResults));
+					if(arrayResults.length>0){	
+						
+						
+						updateAccount(arrayResults);
+						navigator.notification.alert(
+								''+Messages.msgDataSaved,
+								function onSuccess() {
+								}, "Info");
+					}
+				};
+				jsonStore.fnFail=function (fail) {			
+					
+				};
+				jsonStore.get();
+				
+				
 				
 			};
 			jsonStore.fnFail=function (errorObject) {			
 				alert("Error: "+errorObject.msg);
 			};
-			jsonStore.save(false,false);			
-			
+			jsonStore.save(true,true);			
+        	}).fail(function (errorObject) {		   			   					
+				
+			});	
 }
         var profileId;
         function initPerfilDataInfo(){	
@@ -252,10 +279,7 @@ $(
         	}
         }
         function updateperfilFailure(error){
-        	navigator.notification.alert(
-        			'Error al actualizar en el servidor, asegurese de contar con conexion a internet.',
-        			function onSuccess() {
-        			}, "Error");
+        	
         }
         
  function validateProfile(){
