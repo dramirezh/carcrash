@@ -199,7 +199,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 					// Callback to invoke with index of button pressed (1, 2 or 3)
 					function onConfirm(result) {
 						// Confirm dialog dismissed
-						if(result){
+						if(result == 2 || result === true){
 							location.href="#signup";
 						}
 					},
@@ -208,7 +208,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 					// (Optional) Array of strings for the button labels
 					['Cancelar','Suscribirse']);
 				//};
-				throw {name:"Unsuscribed", message:"Please suscribe"};
+				//throw {name:"Unsuscribed", message:"Please suscribe"};
 			}
 		})
 
