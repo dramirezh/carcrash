@@ -104,6 +104,13 @@ function initializeData()
 		}
 		$("#popSinisterMenu").popup("open");
 	});
+	$(window).on("orientationchange",function(event){
+		  if(event.orientation == "portrait"){ //portrait
+			  $('#divSignUp').css('height','100%');
+		  }else{ //landscape
+			  $('#divSignUp').css('height','170%');
+		  }
+		});
 	
 	$('.slider-init').slick('slickNext');
 	
@@ -287,6 +294,8 @@ function getPages()
 			    	"center":"<h2>Detalles</h2>",
 			    	"right":""
 			    }
+			},
+			{"id":"signup", "url":"pages/account/signup.html"
 			}
 	        ];
 	

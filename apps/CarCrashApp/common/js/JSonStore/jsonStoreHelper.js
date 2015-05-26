@@ -1,4 +1,4 @@
-var globalMail = "hola2@hola.com";
+var globalMail = "";
 function clsJsonStoreHelper(){
 	this.collectionName = "";
 	this.options = {};
@@ -165,28 +165,51 @@ function _saveToServer(pAdapter, pProcedure, id){
 	var fnSuccess = this.fnSuccess;
 	var fnFail = this.fnFail;
 	var dirtyDocs = [];
+	
 	WL.JSONStore.init(getCollections())
 	.then(function(){
 		WL.JSONStore.get(collectionName).getAllDirty()
 		.then(function (arrayOfDirtyDocuments) {
-		  dirtyDocs = arrayOfDirtyDocuments;
-		  
-		  if(id){
-			  dirtyDocs = dirtyDocs.filter(function(x){return x._id == id;});
-		  }
-		  
-		  $(dirtyDocs).each(function(idx, item){
-			  item["email"] = globalMail;
-		  });
+			if(globalMail != ""){
+				  dirtyDocs = arrayOfDirtyDocuments;
+				  
+				  if(id){
+					  dirtyDocs = dirtyDocs.filter(function(x){return x._id == id;});
+				  }
+				  
+				  $(dirtyDocs).each(function(idx, item){
+					  item["email"] = globalMail;
+				  });
+		
+				  var invocationData = {
+				    adapter : pAdapter, 
+				    procedure : pProcedure, 
+				    parameters : [dirtyDocs],
+				    compressResponse: true
+				  };
+				  
+				  return WL.Client.invokeProcedure(invocationData);
+			}else{
+				//fnFail = function(){
+					navigator.notification.confirm(
+					// Shows a customizable confirmation dialog box.
 
-		  var invocationData = {
-		    adapter : pAdapter, 
-		    procedure : pProcedure, 
-		    parameters : [dirtyDocs],
-		    compressResponse: true
-		  };
-
-		  return WL.Client.invokeProcedure(invocationData);
+					// Confirm dialog message (String)
+					'Para disfrutar de los maravillosos servicios de CarCrash por favor suscribete, ¡Es gratis!',
+					// Callback to invoke with index of button pressed (1, 2 or 3)
+					function onConfirm(result) {
+						// Confirm dialog dismissed
+						if(result){
+							location.href="#signup";
+						}
+					},
+					// Optional argument
+					'Suscribete!',
+					// (Optional) Array of strings for the button labels
+					['Cancelar','Suscribirse']);
+				//};
+				throw {name:"Unsuscribed", message:"Please suscribe"};
+			}
 		})
 
 		.then(function (responseFromAdapter) {

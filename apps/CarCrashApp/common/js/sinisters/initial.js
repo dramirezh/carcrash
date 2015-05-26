@@ -10,15 +10,22 @@ function loadVehiclesList(){
 		});
 		$('#selectAuto').value = "0";
 		$( "#selectAuto" ).selectmenu( "refresh", true );*/
-		
-		var count = $("#sliderInit div div > div[a='si']").length;
-		for(var i = 0; count > i; i++){
-			$('#sliderInit').slick('slickRemove',0);
+		if(result.length > 0){
+			$('#noPol').css('display','none');
+			$('#sliderInit').css('display','block');
+			
+			var count = $("#sliderInit div div > div[a='si']").length;
+			
+			for(var i = 0; count > i; i++){
+				$('#sliderInit').slick('slickRemove',0);
+			}
+			$(result).each(function(idx, item){
+				$(".slider-init").slick('slickAdd','<div a="si" style="text-align:center; padding:0 1% 0 1%; max-height:33%;"><img src="' + item.json.carPicture + '" width="100%;" height="auto" /><label style="" number="' + item._id + '">' + item.json.Serie + '</label></div>');
+			});
+		}else{
+			$('#noPol').css('display','block');
+			$('#sliderInit').css('display','none');
 		}
-		$(result).each(function(idx, item){
-			$(".slider-init").slick('slickAdd','<div a="si" style="text-align:center; padding:0 1% 0 1%; max-height:33%;"><img src="' + item.json.carPicture + '" width="100%;" height="auto" /><label style="" number="' + item._id + '">' + item.json.Serie + '</label></div>');
-		});
-		
 	};
 	oJStore.fnFail = function(error){
 		navigator.notification.alert(
@@ -83,7 +90,7 @@ function sendIncidenteInfo()
 						};
 						oJS.getFromServer("sinisters", "getSinisters");
 						navigator.notification.alert(
-						'Reportado exitosamente',
+						'Reportado',
 						function onSuccess() {
 						});
 						return true;
@@ -111,7 +118,7 @@ function sendIncidenteInfo()
 			navigator.notification.alert(
 			Messages.selectAuto,
 			function onSuccess() {
-				parent.history.back();
+				//parent.history.back();
 			});
 		}
 	}
@@ -120,7 +127,7 @@ function sendIncidenteInfo()
 		navigator.notification.alert(
 		Messages.alertLocation,
 		function onSuccess() {
-			parent.history.back();
+			//parent.history.back();
 		});
 	}
 }
