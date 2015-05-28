@@ -214,8 +214,8 @@ function getPages()
 			{"id":"contactsContent", "url":"pages/contacts/contactsContent.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#showContacts' tag='a'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Contactos</a>",
-			    	"center":"<h2>Contacto</h2>",
+			    	"left":"<a href='#showContacts' tag='a' id='aContacts'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Contactos</a>",
+			    	"center":"<h2 id='aContact'>Contacto</h2>",
 			    	"right":"<a tag='a' id='save' onclick='saveContact();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    }
 			}, 
@@ -223,7 +223,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Contactos</h2>",
+			    	"center":"<h2 id='aContacts'>Contactos</h2>",
 			    	"right":"<a  tag='a' id='save' onClick='validNewContact();'  class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
@@ -235,7 +235,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Aseguradoras</h2>",
+			    	"center":"<h2 id='aInsurances'>Aseguradoras</h2>",
 			    	"right":""
 			    },			    
 	        	"leftPanel":{
@@ -326,6 +326,7 @@ function languageChanged(lang) {
     setMedicalTranslations ();
     setMechanicalTranslations();
     setPoliciesTranslations();
+    setContactsTranslations();
 }
 
 function setProfileTranslations(){
@@ -374,6 +375,17 @@ function setPoliciesTranslations(){
 	 $('#txtPlates').attr("placeholder", Messages.plates); 
 	 $('#txtOwnerCellPhone').attr("placeholder", Messages.lblCellPhone); 
 	 $('#txtHolder').attr("placeholder", Messages.usualDriver); 
+}
+function setContactsTranslations(){
+	//show contacts content	
+	 $('[id="aContacts"]').text(Messages.contacts);
+	 $('[id="aInsurances"]').text(Messages.insurances);
+	 $('#search').attr("data-filter-placeholder", Messages.search); 
+	 $('#listContact').attr("data-filter-placeholder", Messages.search); 
+     //contacts
+	 $('#txtUserContactName').attr("placeholder", Messages.fullname); 
+	 $('#txtUserContactCellPhone').attr("placeholder", Messages.lblCellPhone); 
+	 $('[id="aContact"]').text(Messages.contact);
 }
 
 

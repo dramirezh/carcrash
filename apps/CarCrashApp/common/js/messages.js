@@ -19,20 +19,12 @@ Messages = {
 		//Show policies translations
 		h1ConfirmPolicy:"Eliminar?",
 		h3DeletePolicy:"Desea eliminar el registro seleccionado?",
-		aAddPolicy:"Nuevo",
-		aDeletePolicy:"Eliminar",
 		spnExpiration:"Expiración: ",
 		h3SelectPolicyOp:"Seleccione una opción ",
 		aPolicyDetails:"Detalles",
 		PoliciesLimitNo:"Solo se permite guardar un máximo de 10 registros.",
-		h1PolicyDetail:"Registros",
-		aSUdata:"Guardar/Actualizar",
-		aKeepEd:"Continuar editando",
-		aRPoliza:"Ir a registros",	
-		aEmergencies:"Emergencias",
-		aInsurances:"Aseguradoras",
-		aContactsList:"Lista de contactos",
-		h3AddContacts:"Contacto",
+			
+		insurances:"Aseguradoras",
 		opNoneMark:"Marca",
 		//Medical data translations
 		IMSSNum:"Numero IMSS",	
@@ -133,6 +125,10 @@ Messages = {
 		enter:"Ingrese",
 		minimun:"Mínimo",
 		characters:"caracteres",
+		search:"Buscar",
+		//contacts
+		contact:"Contacto",
+		contacts:"Contactos",		
 };
 
 function setSpanish(){
@@ -151,6 +147,7 @@ function setSpanish(){
 	 setSpanishSingUp();
 	 setSpanishLogIn();
 	 setSpanishSinisterPopUp();
+	 setSpanishContacts();
 } 
 
 function setEnglish(){		
@@ -169,6 +166,7 @@ function setEnglish(){
 	 setEnglishSingUp();
 	 setEnglishLogIn();
 	 setEnglishSinisterPopUp();
+	 setEnglishContacts();		
 }
 
 //Spanish Section
@@ -183,22 +181,13 @@ function setSpanishProfile(){
 }
 function setSpanishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Eliminar?";
-	Messages.h3DeletePolicy = "Desea eliminar el registro seleccionado?";
-	Messages.aAddPolicy = "Nuevo";
-	Messages.aDeletePolicy = "Eliminar"; 
+	Messages.h3DeletePolicy = "Desea eliminar el registro seleccionado?"; 
 	Messages.spnExpiration = "Expiración: ";
 	Messages.h3SelectPolicyOp = "Seleccione una opción "; 
 	Messages.aPolicyDetails = "Detalles";
-	Messages.PoliciesLimitNo = "Solo se permite guardar un máximo de 10 registros.";
-	Messages.h1PolicyDetail="Registros";
-	Messages.aSUdata="Guardar/Actualizar";
-	Messages.aKeepEd="Continuar editando";
-	Messages.aRPoliza="Ir a registros";		
+	Messages.PoliciesLimitNo = "Solo se permite guardar un máximo de 10 registros.";	
 	Messages.insuranceAgent="Agente de Seguro";
-	Messages.aEmergencies="Emergencias";
-	Messages.aInsurances="Aseguradoras";
-	Messages.aContactsList="Lista de contactos";
-	Messages.h3AddContacts="Contacto"; 
+	Messages.insurances="Aseguradoras";	
 	Messages.opNoneMark="Marca"; 		
 }
 
@@ -328,6 +317,12 @@ function setDefaultSpanish(){
 	Messages.enter="Ingrese";
 	Messages.minimun="Mínimo";
 	Messages.characters="Caracteres";
+	Messages.search="Buscar";	
+}
+
+function setSpanishContacts(){
+	Messages.contact = "Contact";
+	Messages.contacts = "Contacts";
 }
 
 //English Section
@@ -344,21 +339,12 @@ function setEnglishProfile(){
 function setEnglishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Delete?";
 	Messages.h3DeletePolicy = "Delete selected record?";
-	Messages.aAddPolicy = "New";
-	Messages.aDeletePolicy = "Delete";
 	Messages.spnExpiration = "Expiration: ";
 	Messages.h3SelectPolicyOp = "Select an option: "; 
 	Messages.aPolicyDetails = "Details";
-	Messages.PoliciesLimitNo = "You only can save up to 10 records";
-	Messages.h1PolicyDetail="Records";
-	Messages.aSUdata="Save/Update";
-	Messages.aKeepEd="Continue editing";
-	Messages.aRPoliza="Go to records";	
+	Messages.PoliciesLimitNo = "You only can save up to 10 records";	
 	Messages.insuranceAgent="Insurance agent";
-	Messages.aEmergencies="Emergencies";
-	Messages.aInsurances="Insurances";
-	Messages.aContactsList="Contact list";
-	Messages.h3AddContacts="Contact"; 
+	Messages.insurances="Insurances";
 	Messages.opNoneMark="Brand";
 }
 
@@ -486,4 +472,10 @@ function setDefaultEnglish(){
 	Messages.enter="Enter";
 	Messages.minimun="Minimun";
 	Messages.characters="characters";
+	Messages.search="Search";	
+}
+
+function setEnglishContacts(){
+	Messages.contact = "Contact";
+	Messages.contacts = "Contacts";
 }
