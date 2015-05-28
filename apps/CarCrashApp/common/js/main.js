@@ -106,15 +106,15 @@ function initializeData()
 	});
 	$(window).on("orientationchange",function(event){
 		  if(event.orientation == "portrait"){ //portrait
-			  $('#divSignUp').css('height','100%');
+			  $('#divSignUp').css('height','110%');
 		  }else{ //landscape
-			  $('#divSignUp').css('height','170%');
+			  $('#divSignUp').css('height','200%');
 		  }
 		});
 	
 	$('.slider-init').slick('slickNext');
 	
-	location.href="#initial";
+	location.href="#signup";
 }
 function setSlider(){
 	$('.slider-init').slick({

@@ -1,5 +1,5 @@
 <div data-role="page" id="{id}" style="text-shadow: none; color: white;">
-	<div id="divSignUp" class="background-content" style="position: absolute; width: 100%; height: 100%;">
+	<div id="divSignUp" class="background-content" style="position: absolute; width: 100%; height: 110%;">
 		<div class="ui-grid-a" style="text-align: center; margin: 10% 10% 10% 10%;">
 			<div class="ui-block-a" style="display: inline-block; vertical-align: middle;">
 				<img src="images/general/ccimg.png" width="70%" style="max-width: 150px;"/>
@@ -9,9 +9,17 @@
 			</div>
 		</div>
 		
-		<div style="margin: 0 20% 0 20%; text-align: center;">
+		<div style="margin: 0 15% 0 15%; text-align: center;">
 			<input id="txtEmailSign" type="text" placeholder="Email" />
 			<input id="pwdPassSign" type="password" placeholder="Password" />
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<input type="button" value="Entrar" onclick="btnClickEnter();" />
+				</div>
+				<div class="ui-block-b">
+					<input type="button" value="Suscribirse" onclick="btnClickSuscribe();" />
+				</div>
+			</div>
 			<p>-or-</p>
 		</div>
 		
@@ -24,10 +32,13 @@
 			</div>
 			<div class="ui-block-c" style="display: inline-block;">
 				<img src="images/general/social/twitter.png" width="100%" style="max-width: 100px;"/>
-			</div>	
-		</div>
-		<div style="position: absolute; top: 90%; left: 10%;">
-			<a href="#initial" style="color: white !important;">Volver</a>
+			</div>
+			<div class="ui-block-a" style="display: inline-block;">
+				<br/>
+			</div>
+			<div class="ui-block-a" style="display: inline-block;">
+				<a href="#initial" style="color: white !important;">Volver</a>
+			</div>
 		</div>
 	</div>
 </div>
