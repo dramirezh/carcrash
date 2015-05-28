@@ -326,16 +326,16 @@ $(
     				},
     			},
     			 messages: {    				 
-    				 txtProfileName:{ required: 'Ingrese un nombre',minlength:'Mínimo  2 caracteres'},
-    				 txtFirstName: { required: 'Ingrese apellidos',minlength:'Mínimo  2 caracteres'},
+    				 txtProfileName: { required: Messages.enter+' '+Messages.lblProfileName, minlength:Messages.minimun+' 2 '+Messages.characters},
+    				 txtFirstName: { required: Messages.enter+' '+Messages.surnames,minlength:Messages.minimun+' 2 '+Messages.characters},
      				
-     				txtCellPhone:{required: 'Ingrese numero de celular',minlength:'Mínimo 10 caracteres'},
-     				street_number:{ required: 'Ingrese no. calle',minlength:'Mínimo  2 caracteres'},
-     				route: { required: 'Ingrese nombre calle',minlength:'Mínimo  2 caracteres'},
-     				locality:{ required: 'Ingrese ciudad',minlength:'Mínimo  2 caracteres'},
-     				administrative_area_level_1:{required: 'Ingrese estado',minlength:'Mínimo 2 caracteres'},
-     				postal_code:{ required: 'Ingrese código postal',minlength:'Mínimo  2 caracteres'},
-     				country: { required: 'Ingrese país',minlength:'Mínimo  2 caracteres'}
+     				txtCellPhone: { required: Messages.enter+' '+Messages.lblCellPhone,minlength:Messages.minimun+' 10 '+Messages.characters},
+     				street_number: { required: Messages.enter+' '+Messages.streetNumber,minlength:Messages.minimun+' 1 '+Messages.characters},
+     				route: { required: Messages.enter+' '+Messages.street,minlength:Messages.minimun+' 2 '+Messages.characters},
+     				locality: { required: Messages.enter+' '+Messages.city,minlength:Messages.minimun+' 2 '+Messages.characters},
+     				administrative_area_level_1: { required:  Messages.enter+' '+Messages.state,minlength:Messages.minimun+' 2 '+Messages.characters},
+     				postal_code: { required: Messages.enter+' '+Messages.postalCode,minlength:Messages.minimun+' 2 '+Messages.characters},
+     				country: { required:Messages.enter+' '+Messages.country,minlength:Messages.minimun+' 2 '+Messages.characters}
                  },
                  errorPlacement: function (error, element) {
                      error.insertAfter(element);

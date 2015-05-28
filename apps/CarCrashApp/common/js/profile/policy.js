@@ -68,8 +68,8 @@
 		if(policyDate.val().trim().length>0&&policy.val().trim().length>0&&parseInt(aseg.val())>0
 				&&polContactNameGrl.val().trim().length>0&&polContactFirstNameGrl.val().trim().length>0
 				&&polContactCellPhoneGrl.val().trim().length>0){
-			$("#aBackPolicy").text("Póliza");
-			$("#h2PolicyTitle").text("Vehículo"); 
+			$("#aBackPolicy").text(Messages.policy);
+			$("#h2PolicyTitle").text(Messages.vehicle); 
 			$("#listMarks").hide();
 			$("#listSubMarks").hide();
 			$("#policyCont").hide();
@@ -202,8 +202,8 @@
 			
 			getBrandsFromServer();
 			getInsurancesFromServer();
-			$("#aBackPolicy").text("Pólizas");
-			$("#h2PolicyTitle").text("Póliza"); 
+			$("#aBackPolicy").text(Messages.policies);
+			$("#h2PolicyTitle").text(Messages.policy); 
 		initPolicyPage();		
 		next=false;		
 		basicPersonFiltersNumber("txtOwnerCellPhone");	
@@ -488,13 +488,13 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			switch(policyNavigation){
 			case 0:
 				
-				$("#aBackPolicy").text("Pólizas");
-				$("#h2PolicyTitle").text("Póliza"); 
+				$("#aBackPolicy").text(Messages.policies);
+				$("#h2PolicyTitle").text(Messages.policy); 
 				location.href="#showPolicies";
 			break;
 			case 1:
-				$("#aBackPolicy").text("Pólizas");
-				$("#h2PolicyTitle").text("Póliza"); 
+				$("#aBackPolicy").text(Messages.policies);
+				$("#h2PolicyTitle").text(Messages.policy); 
 				backPolicyCont();									
 				policyNavigation=0;
 			break;
@@ -900,7 +900,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			{	
 				$('#selectInsurance option').remove();	
 				$( "select" ).selectmenu();			
-				$('#selectInsurance').append('<option id="opNoneInsurance" value="0" selected="selected">'+Messages.opNoneInsurance+'</option>');
+				$('#selectInsurance').append('<option id="opNoneInsurance" value="0" selected="selected">'+Messages.insurance+'</option>');
 				for(var c=0;c<oResult.resultSet.length;c++){
 				$('#selectInsurance').append('<option value="'+oResult.resultSet[c].IDInsuranceCompanies+'">'+oResult.resultSet[c].Name+'</option>');
 				$( "select" ).selectmenu( "refresh", true );

@@ -5,9 +5,7 @@
     		
     			<div role="main" class="ui-content" style="margin-right: 15px;margin-left: 15px;">
     		
-    			<div id="policyCont"  >  
-    			  				   			    				    				
-<!-- <div style="margin-bottom: 0;" > -->
+    			<div id="policyCont"  >     			  				   			    				    				
 						    				    				    				     				
     				<input placeholder="Numero de poliza"  id="txtPolicyNo" maxlength="30" type="text"/>  
     				   				    							
@@ -19,7 +17,7 @@
 								
 							</select></div>
 						</div>   				
-    				    				<!-- </div> -->
+    				    			
     				    				
     				    				<hr></hr>
     				    				<p align="center" id="pContact3">Agente de seguro </p> 
@@ -34,7 +32,7 @@
     				    			
     				    				<hr></hr> 
     				    								    				    				
-    				    <input onclick="initVehicle();"  id="txtVeh" type="button" value="Vehiculo"/>
+    				    <input onclick="initVehicle();"  id="iVehiculo" type="button" value="Vehiculo"/>
     				    				
     				    				 </div>
     				<div id="vehicleCont" >    				   			    				    					    					    					   					
@@ -51,7 +49,7 @@
 							</select></div>    			         				
     				
     			     
-    				<input placeholder="SubMarca" type="text"  name="search" maxlength="50" id="searchSubMark">    				
+    				<input placeholder="SubMarca"  type="text"  name="search" maxlength="50" id="searchSubMark">    				
     				<input placeholder="Color" id="txtColor" maxlength="25" type="text" />    			     
     				<input placeholder="Año" id="txtModel" maxlength="4" type="text" />   				    				    				   				    				
     				<input placeholder="Placas"  id="txtPlates" maxlength="30" type="text" />
@@ -71,30 +69,6 @@
 				 data-transition="pop" ></a>
 				 </li>
 				</ul>  				
-    			</div>    			
-    			
-    			<div data-role="popup" id="popupDialogMark" data-dismissible="false" style="max-width:400px; margin-top: 0;">
-					<div data-role="header" data-theme="a">
-						<h1 id="h1ConfirmMark">Confirm?</h1>
-					</div>
-					<div role="main" class="ui-content">
-						<h3 id="h3SelectedMark" class="ui-title">Selection Details:</h3>
-						<p id="pMark">Mark: </p>
-						<p><label id="lblMarkSelected" ></label> </p>
-						<p id="pSubMark">SubMark: </p>
-						<p><label id="lblSubMarkSelected" ></label> </p>
-						<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
-						<a href=""  onclick="markSelected();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">OK</a>
-						</div>
-				</div>    			    			
-						<div data-role="popup" id="popupMenu" data-theme="b">
-<ul data-role="listview" data-inset="true" style="min-width:210px;">
-<li id="liSelectPolicyOp" data-role="list-divider">Select an action</li>
-<li id="liSUdata"><a id="aSUdata"  href="#" class="ui-btn" onclick=" $('#popupMenu' ).popup( 'close' ); savePolicy();">Save/Update</a></li>
-<li id="liKeepEd"><a id="aKeepEd" class="ui-btn" href=""  onclick="$('#popupMenu' ).popup( 'close' );">Continue editing</a></li>
-<li id="liPoliza"><a id="aRPoliza" class="ui-btn" href="#poliza" onclick="cleanPolicyInputs();">Go to records</a></li>
-</ul>
-</div>	    															
-    		
+    			</div>    			   			   				    															    		
 				
     		</div><!-- pageAgregarPoliza -->

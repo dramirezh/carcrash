@@ -10,17 +10,12 @@ Messages = {
 	// invalidUsernamePassword : 'Invalid username or password.' 
 		
 		//Profile Translations
-		myAccName: "Mi cuenta", 
-		enterDetails:"Introduzca sus datos.",
 		lblProfileName:"Nombre",
-		lblFirstName:"Ap. Paterno",
-		lblLastName:"Ap. Materno",
+		fullname:"Nombre completo",
+		surnames:"Apellidos",
 		lblCellPhone:"Celular",
-		lblCityRes:"Ciudad de Residencia",
-		lblCompany:"Observaciones",
-		h1ConfirmCity:"Confirmar?",
-		h3SelectedCity:"Ciudad seleccionada:",
-		h3RecordsList:"Registros.", 
+		profile:"Perfil",
+		h1ConfirmCity:"Confirmar?",			
 		//Show policies translations
 		h1ConfirmPolicy:"Eliminar?",
 		h3DeletePolicy:"Desea eliminar el registro seleccionado?",
@@ -40,44 +35,33 @@ Messages = {
 		h3AddContacts:"Contacto",
 		opNoneMark:"Marca",
 		//Medical data translations
-		lblIMSSNum:"No. IMSS",	
-		lblBloodType:"Tipo de sangre",	
-		lblAllergies:"Alergias",	
-		lblConditions:"Padecimientos",
-		h3MedicalData:"Datos Medicos",
+		IMSSNum:"Numero IMSS",	
+		bloodType:"Tipo de sangre",	
+		allergies:"Alergias",	
+		conditions:"Padecimientos",
+		medical:"Medicos",
 		opNoneBType:"Seleccione tipo de sangre",
 		//Mechanic data translations
-		h3MechanicDetails:"Introduzca los datos de un mecánico automotriz.",
-		lblMechanicName:"Nombre",
-		lblMechanicFirstName:"Ap. Paterno",
-		lblMechanicLastName:"Ap. Materno",
-		lblMechanicCellPhone:"Celular",
-		lblMechanicAddress:"Domicilio",
+		mechanical:"Mecánico",
 		//Add policy translations
-		h3AddPolicies:"Póliza.",
-		lblPolicyNum:"No. Póliza",
+		policy:"Póliza.",
+		policyNum:"Numero de Póliza",
 		lblPolicyExpiration:"Expiración de la Póliza",
-		opNoneInsurance:"Aseguradora",
-		lblInsurance:"Aseguradora",
+		opNoneInsurance:"Seleccione Aseguradora",
+		insurance:"Aseguradora",
 		placeholderDateFormat:"dd/mm/aaaa",
-		txtAseg:"Siguiente",
-		aRecordsList:"Listado de Registros",
-		pContact3:"Agente de Seguros",
+		vehicle:"Vehicle",
+		policies:"Pólizas",
+		insuranceAgent:"Agente de Seguro",
 		//Add Vehicle translations
-		h3Vehicle: "Vehículo",
-		lblPlates:"Placa",
-		lblSeries:"Serie",
+		plates:"Placa",
+		series:"Serie",
 		lblVehicleType:"Tipo de Vehículo",
-		lblMark:"Marca",
-		lblSubMark:"SubMarca",
-		lblModel:"Año",
-		lblColor:"Color",
-		aTakeCarPict:"Tomar Foto",
-		lblOwnerName:"Nombre del Titular",
+		subbrand:"SubMarca",
+		color:"Color",
+		picture:"Fotografía",
+		usualDriver:"Conductor habitual",
 		h1ConfirmMark:"Confirmar?",
-		pMark:"Marca:",
-		pSubMark:"SubMarca:",
-		h3SelectedMark:"Detalles de selección:",
 		msgDataSaved:"Datos guardados con éxito.",
 		// Report Sinister Translations
 		h3ReportIncident:"Reportar incidente",
@@ -138,34 +122,21 @@ Messages = {
 		dataUpdate:"Datos actualizados con éxito",
 		pictureMsg: "Capture una foto",
 		address:"Domicilio",
-		streetNumber:"No. Calle",
+		streetNumber:"Numero",
 		street:"Calle",
 		state:"Estado",
 		postalCode:"Código postal",
 		country:"País",
-		placeAddress:"Introduzca su dirección completa",
+		placeAddress:"Dirección completa",
 		year:"Año",
+		city:"Ciudad",
+		enter:"Ingrese",
+		minimun:"Mínimo",
+		characters:"caracteres",
 };
 
 function setSpanish(){
-	Messages.placeholderDateFormat = "dd/mm/aaaa";
-	Messages.msgDataSaved = "Datos guardados con éxito";
-	Messages.opOff = "No";
-	Messages.opOn = "Si";
-	Messages.aHelp = "Ayuda";
-	Messages.dataExist = "El registro ya existe";
-	Messages.requiredData = "Ingrese los datos solicitados";	
-	Messages.dataUpdate = "Datos actualizados con éxito";
-	Messages.pictureMsg= "Capture una foto";
-	Messages.address="Domicilio";
-	Messages.streetNumber="No. Calle";
-	Messages.street="Calle";
-	Messages.state="Estado";
-	Messages.postalCode="Código postal";
-	Messages.country="País";
-	Messages.placeAddress="Introduzca su dirección completa";
-	Messages.year="Año";
-	
+	setDefaultSpanish();
 	setSpanishProfile();
 	setSpanishShowPolicies();
 	 setSpanishMedicalData();		
@@ -182,25 +153,8 @@ function setSpanish(){
 	 setSpanishSinisterPopUp();
 } 
 
-function setEnglish(){	
-	Messages.placeholderDateFormat = "dd/mm/yyyy";
-	Messages.msgDataSaved = "Data saved successfully";
-	Messages.opOff = "No";
-	Messages.opOn = "Yes";
-	Messages.aHelp = "Help";
-	Messages.dataExist = "Data already exist";
-	Messages.requiredData = "Enter all required data";
-	Messages.dataUpdate = "Data updated successfully";
-	Messages.pictureMsg= "Take a picture";
-	Messages.address="Address";
-	Messages.streetNumber="Street number";
-	Messages.street="Street name";
-	Messages.state="State";
-	Messages.postalCode="Zip code";
-	Messages.country="Country";
-	Messages.placeAddress="Enter your full address";
-	Messages.year="Year";
-	
+function setEnglish(){		
+	setDefaultEnglish();
 	setEnglishProfile();
 	setEnglishShowPolicies();
 	 setEnglishMedicalData();
@@ -219,20 +173,15 @@ function setEnglish(){
 
 //Spanish Section
 
-function setSpanishProfile(){
-	Messages.myAccName = "Mi cuenta";
-	Messages.enterDetails = "Introduzca sus datos.";
+function setSpanishProfile(){		
 	Messages.lblProfileName = "Nombre";
-	Messages.lblFirstName = "Ap. Paterno";
-	Messages.lblLastName = "Ap. Materno";
+	Messages.fullname = "Nombre completo";
+	Messages.surnames = "Apellidos";
 	Messages.lblCellPhone = "Celular";
-	Messages.lblCityRes = "Ciudad de Residencia";
-	Messages.lblCompany = "Observaciones";
-	Messages.h1ConfirmCity = "Confirmar?";
-	Messages.h3SelectedCity = "Ciudad seleccionada:";
+	Messages.profile = "Perfil";	
+	Messages.h1ConfirmCity = "Confirmar?";	
 }
-function setSpanishShowPolicies(){
-	Messages.h3RecordsList = "Registros.";
+function setSpanishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Eliminar?";
 	Messages.h3DeletePolicy = "Desea eliminar el registro seleccionado?";
 	Messages.aAddPolicy = "Nuevo";
@@ -245,7 +194,7 @@ function setSpanishShowPolicies(){
 	Messages.aSUdata="Guardar/Actualizar";
 	Messages.aKeepEd="Continuar editando";
 	Messages.aRPoliza="Ir a registros";		
-	Messages.pContact3="Agente de Seguros";
+	Messages.insuranceAgent="Agente de Seguro";
 	Messages.aEmergencies="Emergencias";
 	Messages.aInsurances="Aseguradoras";
 	Messages.aContactsList="Lista de contactos";
@@ -254,46 +203,35 @@ function setSpanishShowPolicies(){
 }
 
 function setSpanishMedicalData(){
-	Messages.lblIMSSNum = "No. IMSS";
-	Messages.lblBloodType = "Tipo de sangre";
-	Messages.lblAllergies = "Alergias";
-	Messages.lblConditions = "Padecimientos";
-	Messages.h3MedicalData="Datos Medicos";
+	Messages.IMSSNum = "No. IMSS";
+	Messages.bloodType = "Tipo de sangre";
+	Messages.allergies = "Alergias";
+	Messages.conditions = "Padecimientos";
+	Messages.medical="Medicos";
 	Messages.opNoneBType="Seleccione tipo de sangre";
 }
 
 function setSpanishMechanicData(){
-	Messages.h3MechanicDetails = "Introduzca los datos de un mecánico automotriz.";
-	Messages.lblMechanicName = "Nombre";
-	Messages.lblMechanicFirstName = "Ap. Paterno";
-	Messages.lblMechanicLastName = "Ap. Materno";
-	Messages.lblMechanicCellPhone="Celular";
-	Messages.lblMechanicAddress="Domicilio";
+	Messages.mechanical = "Mecánico";
 }
 
 function setSpanishAddPolicy(){
-	Messages.h3AddPolicies = "Póliza";
-	Messages.lblPolicyNum = "No. Póliza";
+	Messages.policy = "Póliza";
+	Messages.policyNum = "No. Póliza";
 	Messages.lblPolicyExpiration = "Expiración de la Póliza";
 	Messages.opNoneInsurance = "Aseguradora";
 	Messages.lblInsurance = "Aseguradora";	
-	Messages.txtAseg = "Siguiente";
-	Messages.aRecordsList = "Listado de registros";
+	Messages.vehicle = "Vehículo";
+	Messages.policies = "Pólizas";
 	// Vehicle Seccion
-	Messages.h3Vehicle = "Vehículo";
-	Messages.lblPlates = "Placas";
-	Messages.lblSeries = "Serie";
+	Messages.plates = "Placas";
+	Messages.series = "Serie";
 	Messages.lblVehicleType = "Tipo de Vehículo";
-	Messages.lblMark = "Marca";
-	Messages.lblSubMark = "SubMarca";
-	Messages.lblModel = "Año";
-	Messages.lblColor = "Color";
-	Messages.aTakeCarPict = "Tomar Foto";
-	Messages.lblOwnerName = "Nombre del Titular"; 
-	Messages.h1ConfirmMark = "Confirmar?";
-	Messages.pMark = "Marca:";
-	Messages.pSubMark = "SubMarca:";
-	Messages.h3SelectedMark = "Detalles de selección:";		
+	Messages.subbrand = "SubMarca";
+	Messages.color = "Color";
+	Messages.picture = "Fotografía";
+	Messages.usualDriver = "Conductor habitual"; 
+	Messages.h1ConfirmMark = "Confirmar?";		
 }
 
 function setSpanishReportSinister(){
@@ -368,23 +306,42 @@ function setSpanishSinisterPopUp(){
 	Messages.popContent = "Esta acción enviara su ubicación y datos a su aseguradora.";
 }
 
-//English Section
-
-function setEnglishProfile(){
-	Messages.myAccName = "My Account";
-	Messages.enterDetails = "Enter your details.";
-	Messages.lblProfileName = "First Name";
-	Messages.lblFirstName = "Last Name";
-	Messages.lblLastName = "Second Last Name";
-	Messages.lblCellPhone = "Cell Phone";
-	Messages.lblCityRes = "City of residence";
-	Messages.lblCompany = "Observations";
-	Messages.h1ConfirmCity = "Confirm?";
-	Messages.h3SelectedCity = "Selected city:";
+function setDefaultSpanish(){
+	Messages.placeholderDateFormat = "dd/mm/aaaa";
+	Messages.msgDataSaved = "Datos guardados con éxito";
+	Messages.opOff = "No";
+	Messages.opOn = "Si";
+	Messages.aHelp = "Ayuda";
+	Messages.dataExist = "El registro ya existe";
+	Messages.requiredData = "Ingrese los datos solicitados";	
+	Messages.dataUpdate = "Datos actualizados con éxito";
+	Messages.pictureMsg= "Capture una foto";
+	Messages.address="Domicilio";
+	Messages.streetNumber="Numero";
+	Messages.street="Calle";
+	Messages.state="Estado";
+	Messages.postalCode="Código postal";
+	Messages.country="País";
+	Messages.placeAddress="Introduzca su dirección completa";
+	Messages.year="Año";
+	Messages.city="Ciudad";
+	Messages.enter="Ingrese";
+	Messages.minimun="Mínimo";
+	Messages.characters="Caracteres";
 }
 
-function setEnglishShowPolicies(){
-	Messages.h3RecordsList = "List of records.";
+//English Section
+
+function setEnglishProfile(){		
+	Messages.lblProfileName = "First Name";
+	Messages.fullname = "Full Name";
+	Messages.surnames = "Surnames";
+	Messages.lblCellPhone = "Cell Phone";
+	Messages.profile = "Profile";	
+	Messages.h1ConfirmCity = "Confirm?";	
+}
+
+function setEnglishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Delete?";
 	Messages.h3DeletePolicy = "Delete selected record?";
 	Messages.aAddPolicy = "New";
@@ -397,7 +354,7 @@ function setEnglishShowPolicies(){
 	Messages.aSUdata="Save/Update";
 	Messages.aKeepEd="Continue editing";
 	Messages.aRPoliza="Go to records";	
-	Messages.pContact3="Insurance agent";
+	Messages.insuranceAgent="Insurance agent";
 	Messages.aEmergencies="Emergencies";
 	Messages.aInsurances="Insurances";
 	Messages.aContactsList="Contact list";
@@ -406,46 +363,35 @@ function setEnglishShowPolicies(){
 }
 
 function setEnglishMedicalData(){
-	Messages.lblIMSSNum = "IMSS Number";
-	Messages.lblBloodType = "Blood type";
-	Messages.lblAllergies = "Allergies";
-	Messages.lblConditions = "Conditions";
-	Messages.h3MedicalData="Medical Data";
+	Messages.IMSSNum = "IMSS Number";
+	Messages.bloodType = "Blood type";
+	Messages.allergies = "Allergies";
+	Messages.conditions = "Medical conditions";
+	Messages.medical="Medical";
 	Messages.opNoneBType="Select blood type";
 }
 
 function setEnglishMechanicData(){
-	Messages.h3MechanicDetails = "Enter the details of an auto mechanic.";
-	Messages.lblMechanicName = "Name";
-	Messages.lblMechanicFirstName = "First Name";
-	Messages.lblMechanicLastName = "Last Name";
-	Messages.lblMechanicCellPhone="Cell Phone";
-	Messages.lblMechanicAddress="Address";
+	Messages.mechanical = "Mechanical";
 }
 
 function setEnglishAddPolicy(){
-	Messages.h3AddPolicies = "Policy";
-	Messages.lblPolicyNum = "Policy Number";
+	Messages.policy = "Policy";
+	Messages.policyNum = "Policy Number";
 	Messages.lblPolicyExpiration = "Policy Expiration";
-	Messages.opNoneInsurance = "Insurance";
-	Messages.lblInsurance = "Insurance";	
-	Messages.txtAseg = "Next"; 
-	Messages.aRecordsList = "List of records";
+	Messages.opNoneInsurance = "Select Insurance";
+	Messages.insurance = "Insurance";	
+	Messages.vehicle = "Vehicle"; 
+	Messages.policies = "Policies";
 	// Vehicle Seccion
-	Messages.h3Vehicle = "Vehicle";
-	Messages.lblPlates = "Plates";
-	Messages.lblSeries = "Series";
+	Messages.plates = "Plates";
+	Messages.series = "Series";
 	Messages.lblVehicleType = "Vehicle Type";
-	Messages.lblMark = "Mark";
-	Messages.lblSubMark = "SubMark";
-	Messages.lblModel = "Year";
-	Messages.lblColor = "Color";
-	Messages.aTakeCarPict = "Take picture";
-	Messages.lblOwnerName = "Owner Name";
-	Messages.h1ConfirmMark = "Confirma?";
-	Messages.pMark = "Mark:";
-	Messages.pSubMark = "SubMark:";
-	Messages.h3SelectedMark = "Selection Details:";
+	Messages.subbrand = "Sub Brand";
+	Messages.color = "Color";
+	Messages.picture = "Picture";
+	Messages.usualDriver = "Usual driver";
+	Messages.h1ConfirmMark = "Confirm?";
 }	
 
 function setEnglishReportSinister(){
@@ -517,4 +463,27 @@ function setEnglishSinisterPopUp(){
 	Messages.popHeader = "Report?";
 	Messages.popTitle = "Are you sure you want to make a report?";
 	Messages.popContent = "This action will send your location and data to your insurance.";
+}
+function setDefaultEnglish(){
+	Messages.placeholderDateFormat = "dd/mm/yyyy";
+	Messages.msgDataSaved = "Data saved successfully";
+	Messages.opOff = "No";
+	Messages.opOn = "Yes";
+	Messages.aHelp = "Help";
+	Messages.dataExist = "Data already exist";
+	Messages.requiredData = "Enter all required data";
+	Messages.dataUpdate = "Data updated successfully";
+	Messages.pictureMsg= "Take a picture";
+	Messages.address="Address";
+	Messages.streetNumber="Street number";
+	Messages.street="Street name";
+	Messages.state="State";
+	Messages.postalCode="Zip code";
+	Messages.country="Country";
+	Messages.placeAddress="Full address";
+	Messages.year="Year";
+	Messages.city="City";
+	Messages.enter="Enter";
+	Messages.minimun="Minimun";
+	Messages.characters="characters";
 }
