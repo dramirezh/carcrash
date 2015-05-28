@@ -159,7 +159,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Perfil</h2>",
+			    	"center":"<h2 id='aProfile'>Perfil</h2>",
 			    	"right":"<a  tag='a' id='save' onclick='validateProfile();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
@@ -171,7 +171,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Mecanico</h2>",
+			    	"center":"<h2 id='aMechanical'>Mecanico</h2>",
 			    	"right":"<a tag='a' id='save' onclick='saveMechanicData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
@@ -183,7 +183,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Medicos</h2>",
+			    	"center":"<h2 id='aMedical'>Medicos</h2>",
 			    	"right":"<a  tag='a' id='save' onclick='saveUserMedicalData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
@@ -203,7 +203,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Pólizas</h2>",
+			    	"center":"<h2 id='policies'>Pólizas</h2>",
 			    	"right":"<a onClick='validNewPolicy();' tag='a' id='save' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
@@ -303,13 +303,14 @@ function getPages()
 
 
 function initLanguage(){
-	 var locale = WL.App.getDeviceLocale();
+	languageChanged("english");
+	/* var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
 	    WL.Logger.debug(">> Detected locale: " + locale);
 	    WL.Logger.debug(">> Detected language: " + lang);
 
 	    if (locale.indexOf("en")!=-1) languageChanged("english");
-	    if (locale.indexOf("es")!=-1) languageChanged("spanish");
+	    if (locale.indexOf("es")!=-1) languageChanged("spanish");*/
 }
 
 function languageChanged(lang) {		
@@ -321,11 +322,58 @@ function languageChanged(lang) {
     		setSpanish();
     		break;
     }
-    setPolicyLang();
+    setProfileTranslations();
+    setMedicalTranslations ();
+    setMechanicalTranslations();
+    setPoliciesTranslations();
 }
 
-function setPolicyLang(){	
+function setProfileTranslations(){
+	 $('[id="aProfile"]').text( Messages.profile);	 
+	    $('input[id="txtProfileName"]').attr("placeholder", Messages.lblProfileName);
+	    $('input[id="txtFirstName"]').attr("placeholder", Messages.surnames);
+	    $('input[id="txtCellPhone"]').attr("placeholder", Messages.lblCellPhone);
+	    $('input[id="street_number"]').attr("placeholder", Messages.streetNumber);
+		$('input[id="route"]').attr("placeholder", Messages.street);
+		$('input[id="administrative_area_level_1"]').attr("placeholder", Messages.state);
+		$('input[id="postal_code"]').attr("placeholder", Messages.postalCode);
+		$('input[id="country"]').attr("placeholder", Messages.country);	
+		$('input[id="locality"]').attr("placeholder", Messages.city);
+		$('input[id="autocomplete"]').attr("placeholder", Messages.placeAddress); 
+}
+function setMedicalTranslations(){
+	 $('[id="aMedical"]').text( Messages.medical);	 
+	 $('#txtNoIMSS').attr("placeholder", Messages.IMSSNum);
+	    $('#opNoneBType').text( Messages.bloodType);
+	    $('#txtAlergics').attr("placeholder", Messages.allergies);
+	    $('#txtClinicalConditions').attr("placeholder", Messages.conditions);		
+}
+function setMechanicalTranslations(){
+	 $('[id="aMechanical"]').text(Messages.mechanical);	 
+	 $('#txtMechanicName').attr("placeholder", Messages.fullname);
+	    $('#txtMechanicCellPhone').attr("placeholder", Messages.lblCellPhone);
+	    $('#txtMechanicAddress').attr("placeholder", Messages.address);		
+}
+function setPoliciesTranslations(){
+	//policy
+	 $('#txtPolicyNo').attr("placeholder", Messages.policyNum); 
+	 $('#txtPolContactName').attr("placeholder", Messages.fullname); 
+	 $('#txtPolContactFirstName').attr("placeholder", Messages.surnames); 
+	 $('#txtPolContactCellPhone').attr("placeholder", Messages.lblCellPhone); 
 	 $('#txtModel').attr("placeholder", Messages.year); 
+	 $('#opNoneInsurance').text( Messages.insurance); 
+	 $('#pContact3').text( Messages.insuranceAgent);
+	 $('#iVehiculo').val( Messages.vehicle);
+	 $('[id="policy"]').text(Messages.policy);
+	 $('[id="policies"]').text(Messages.policies);	 	 
+	//vehicle
+	 $('[id="aVehicle"]').text( Messages.policies);
+	 $('#aTakeCarPict').text( Messages.picture);
+	 $('#searchSubMark').attr("placeholder", Messages.subbrand); 
+	 $('#txtColor').attr("placeholder", Messages.color); 
+	 $('#txtPlates').attr("placeholder", Messages.plates); 
+	 $('#txtOwnerCellPhone').attr("placeholder", Messages.lblCellPhone); 
+	 $('#txtHolder').attr("placeholder", Messages.usualDriver); 
 }
 
 
