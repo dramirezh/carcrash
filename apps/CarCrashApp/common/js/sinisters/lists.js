@@ -28,7 +28,7 @@ function showLocalReports(){
 												"<a href=\"#\" onclick=\"showDetails('sinister', " + item._id + ", " + resultAuto[0]._id + ");\">" +
 													"<img src=\"" + resultAuto[0].json.carPicture + "\" height=\"100%\" width=\"100%\">" +
 													"<h2><span><img style=\"width:10px;height:10px;\" src=\"images/general/" + (item.json.status == 0 ? "red" : item.json.status == 1 ? "yellow" : item.json.status == 2 ? "green" : "gray") + "_dot.png\"/></span>  " + resultAuto[0].json.Serie + "</h2>" +
-													"<p><span dat=\"listDate\">Date: </span> " + item.json.date + " |<span rep=\"sinister\"> Report: </span> " + item._id + "</p>" +
+													"<p><span dat=\"listDate\">"+Messages.date+ ": </span> " + item.json.date + " |<span rep=\"sinister\"> "+Messages.reportName+ ": </span> " + item._id + "</p>" +
 												"</a>" + 
 											"</li>");
 				$('#ulSinisters').listview('refresh').trigger('create');
@@ -66,7 +66,7 @@ function loadTheftList(){
 											"<a href=\"#\" onclick=\"showDetails('theft', " + item._id + ", " + resultAuto[0]._id + ");\">" +
 												"<img src=\"" + resultAuto[0].json.carPicture + "\" height=\"100%\" width=\"100%\">" +
 												"<h2><span><img style=\"width:10px;height:10px;\" src=\"images/general/" + (item.json.status == 0 ? "red" : item.json.status == 1 ? "yellow" : item.json.status == 2 ? "green" : "gray") + "_dot.png\"/></span>  " + resultAuto[0].json.Serie + "</h2>" +
-												"<p><span dat=\"listDate\">Date: </span> " + item.json.date + " |<span rep=\"sinister\"> Report: </span> " + item._id + "</p>" +
+												"<p><span dat=\"listDate\">"+Messages.date+ ": </span> " + item.json.date + " |<span rep=\"sinister\"> "+Messages.reportName+ ": </span> " + item._id + "</p>" +
 											"</a>" + 
 										"</li>");
 				$('#ulThefts').listview('refresh').trigger('create');

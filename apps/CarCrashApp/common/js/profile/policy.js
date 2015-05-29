@@ -934,7 +934,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			{	
 				 $('#selectMark option').remove();
 				$( "select" ).selectmenu();			
-				$('#selectMark').append('<option  id="opNoneMark" value="0" selected="selected">'+Messages.opNoneMark+'</option>');
+				$('#selectMark').append('<option  id="opNoneMark" value="0" selected="selected">'+Messages.brand+'</option>');
 				for(var c=0;c<oResult.resultSet.length;c++){
 				$('#selectMark').append('<option value="'+oResult.resultSet[c].IDVehicleBrands+'">'+oResult.resultSet[c].Name+'</option>');
 				$( "select" ).selectmenu( "refresh", true );

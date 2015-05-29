@@ -291,7 +291,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Listado</a>",
-			    	"center":"<h2>Detalles</h2>",
+			    	"center":"<h2 lng='details'>Detalles</h2>",
 			    	"right":""
 			    }
 			},
@@ -405,6 +405,21 @@ function setSinistersTranslations(){
 	 $('[lng="noPolicies"]').append(Messages.noPolicies+ " : <a href='#policiesContent'>"+Messages.register+"</a>" );
 	 $('[lng="takePicture"]').text(Messages.takePicture); 
 	 $('[lng="pictures"]').text(Messages.pictures); 
+	 //pop ups
+	 $('[lng="chooseAction"]').text(Messages.chooseAction); 
+	 /*$('[lng="sDetails"]').empty();
+	 $('[lng="sReport"]').empty();
+	 $('[lng="sDetails"]').append("<a  href='#' id='aSinisterDetails'>"+Messages.details+"</a"); 
+	 $('[lng="sReport"]').append("<a  href='#' id='aSinisterSendReport'>"+Messages.sendReport+"</a> "); */
+	 //consult sinister
+	 $('[lng="vehicle"]').text(Messages.vehicle);
+	 $('[lng="brand"]').text(Messages.brand+":");
+	 $('[lng="subbrand"]').text(Messages.subbrand+":");
+	 $('[lng="model"]').text(Messages.model+":");
+	 $('[lng="plates"]').text(Messages.plates+":");
+	 $('[lng="policy"]').text(Messages.policy);
+	 $('[lng="dateExp"]').text(Messages.dateExp+":");
+	 $('[lng="insurance"]').text(Messages.insurance);
 }
 
 

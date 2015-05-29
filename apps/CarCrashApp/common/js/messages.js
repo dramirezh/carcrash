@@ -25,7 +25,6 @@ Messages = {
 		PoliciesLimitNo:"Solo se permite guardar un máximo de 10 registros.",
 			
 		insurances:"Aseguradoras",
-		opNoneMark:"Marca",
 		//Medical data translations
 		IMSSNum:"Numero IMSS",	
 		bloodType:"Tipo de sangre",	
@@ -46,6 +45,7 @@ Messages = {
 		policies:"Pólizas",
 		insuranceAgent:"Agente de Seguro",
 		//Add Vehicle translations
+		brand:"Marca",
 		plates:"Placa",
 		series:"Serie",
 		lblVehicleType:"Tipo de Vehículo",
@@ -63,7 +63,7 @@ Messages = {
 		aRepTheft:"Rep. Robo",
 		alertLocation:"Su ubicación no puede ser leída.",
 		selectAuto:"Debe seleccionar el automóvil siniestrado.",
-		
+		reportName:"Reporte",
 		//Report Sinister Det Translations		
 		lblflipAmbulancia:"Requiere asistencia medica?",
 		opOff:"No",
@@ -103,8 +103,7 @@ Messages = {
 		txtCelular:"Celular",
 		aSignIn:"Iniciar Sesión",
 		aHelp:"Ayuda",
-		logInHelpText:"Introduzca su E-mail y contraseña",
-		date:"Fecha",
+		logInHelpText:"Introduzca su E-mail y contraseña",		
 		report:"Reporte de",
 		//Sinister Pop Up Translations
 		popHeader:"Reportar?",
@@ -128,9 +127,13 @@ Messages = {
 		search:"Buscar",
 		deleteItem:"Eliminar",
 		option:"Opcíon",
+		date:"Fecha",
+		chooseAction:"Seleccione una acción",
+		sendReport:"Enviar reporte",
+		details:"Detalles",
 		//contacts
-		contact:"Contacto",
-		contacts:"Contactos",		
+		model:"Modelo",
+		dateExp:"Fecha Exp",		
 };
 
 function setSpanish(){
@@ -185,12 +188,11 @@ function setSpanishShowPolicies(){
 	Messages.aPolicyDetails = "Detalles";
 	Messages.PoliciesLimitNo = "Solo se permite guardar un máximo de 10 registros.";	
 	Messages.insuranceAgent="Agente de Seguro";
-	Messages.insurances="Aseguradoras";	
-	Messages.opNoneMark="Marca"; 		
+	Messages.insurances="Aseguradoras";			
 }
 
 function setSpanishMedicalData(){
-	Messages.IMSSNum = "No. IMSS";
+	Messages.IMSSNum = "Numero IMSS";
 	Messages.bloodType = "Tipo de sangre";
 	Messages.allergies = "Alergias";
 	Messages.conditions = "Padecimientos";
@@ -211,6 +213,7 @@ function setSpanishAddPolicy(){
 	Messages.vehicle = "Vehículo";
 	Messages.policies = "Pólizas";
 	// Vehicle Seccion
+	Messages.brand = "Marca";
 	Messages.plates = "Placas";
 	Messages.series = "Serie";
 	Messages.lblVehicleType = "Tipo de Vehículo";
@@ -230,8 +233,10 @@ function setSpanishSinisters(){
 	Messages.alertLocation="Su ubicación no puede ser leída.";
 	Messages.selectAuto="Debe seleccionar el automóvil siniestrado.";		
 	
+	Messages.reportName="Reporte";
+	
 	Messages.thefts = "Robos";
-	Messages.date = "Fecha: ";
+	Messages.date = "Fecha";
 	Messages.report = "Reporte de:";
 	//initial 
 	Messages.sinister = "Siniestro";
@@ -296,7 +301,7 @@ function setDefaultSpanish(){
 	Messages.state="Estado";
 	Messages.postalCode="Código postal";
 	Messages.country="País";
-	Messages.placeAddress="Introduzca su dirección completa";
+	Messages.placeAddress="Dirección completa";
 	Messages.year="Año";
 	Messages.city="Ciudad";
 	Messages.enter="Ingrese";
@@ -305,11 +310,17 @@ function setDefaultSpanish(){
 	Messages.search="Buscar";	
 	Messages.deleteItem="Eliminar";
 	Messages.option="Opción";
+	Messages.date="Fecha";
+	Messages.chooseAction="Seleccione una acción";
+	Messages.details="Detalles";
+	Messages.sendReport="Enviar reporte";
+	Messages.model="Modelo";
+	Messages.dateExp="Fecha Exp";
 }
 
 function setSpanishContacts(){
-	Messages.contact = "Contact";
-	Messages.contacts = "Contacts";
+	Messages.contact = "Contacto";
+	Messages.contacts = "Contactos";
 }
 
 //English Section
@@ -332,7 +343,7 @@ function setEnglishShowPolicies(){
 	Messages.PoliciesLimitNo = "You only can save up to 10 records";	
 	Messages.insuranceAgent="Insurance agent";
 	Messages.insurances="Insurances";
-	Messages.opNoneMark="Brand";
+	
 }
 
 function setEnglishMedicalData(){
@@ -357,10 +368,11 @@ function setEnglishAddPolicy(){
 	Messages.vehicle = "Vehicle"; 
 	Messages.policies = "Policies";
 	// Vehicle Seccion
+	Messages.brand = "Brand";
 	Messages.plates = "Plates";
 	Messages.series = "Series";
 	Messages.lblVehicleType = "Vehicle Type";
-	Messages.subbrand = "Sub Brand";
+	Messages.subbrand = "SubBrand";
 	Messages.color = "Color";
 	Messages.picture = "Picture";
 	Messages.usualDriver = "Usual driver";
@@ -374,10 +386,12 @@ function setEnglishSinisters(){
 	Messages.aRepSinister = "Rep. Sinister";
 	Messages.aRepTheft="Rep. Theft";
 	Messages.alertLocation="Your location can not be readed.";
-	Messages.selectAuto="You must select the wrecked car.";		
+	Messages.selectAuto="You must select the wrecked car.";	
+	
+	Messages.reportName="Report";
 		
 	Messages.thefts = "Thefts";
-	Messages.date = "Date: ";
+	Messages.date = "Date";
 	Messages.report = "Report: ";
 	//initial
 	Messages.sinister = "Sinister";
@@ -450,6 +464,12 @@ function setDefaultEnglish(){
 	Messages.search="Search";
 	Messages.deleteItem="Delete";
 	Messages.option="Option";
+	Messages.date="Date";
+	Messages.chooseAction="Select an action";
+	Messages.details="Details";
+	Messages.sendReport="Send report";
+	Messages.model="Model";
+	Messages.dateExp="Expiration";
 }
 
 function setEnglishContacts(){
