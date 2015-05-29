@@ -152,14 +152,14 @@ function showDetails(pType, pReportId, pAutoId){
 	oJS.id = pAutoId;
 	oJS.fnSuccess = function(vehicle){
 		$("#hidConsImgAuto").val(vehicle[0].json.carPicture);
-		$("#hidConsMarca").val(vehicle[0].json.Mark);
+		$("#hidConsMarca").val(vehicle[0].json.MarkName);
 		$("#hidConsSubmarca").val(vehicle[0].json.SubMark);
 		$("#hidConsModelo").val(vehicle[0].json.Model);
 		$("#hidConsPlacas").val(vehicle[0].json.Plates);
 		$("#hidConsColor").val(vehicle[0].json.Color);
 		$("#hidConsPoliza").val(vehicle[0].json.PolicyNo);
 		$("#hidConsExp").val(vehicle[0].json.PolicyDate);
-		$("#hidConsAseguradora").val(vehicle[0].json.insurance);
+		$("#hidConsAseguradora").val(vehicle[0].json.InsuranceName);
 		location.href = "#consultSinister";
 	};
 	oJS.fnFail = function(error){

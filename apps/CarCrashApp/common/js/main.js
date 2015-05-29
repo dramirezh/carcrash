@@ -247,7 +247,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Reportar</h2>",
+			    	"center":"<h2 lng='report'>Reportar</h2>",
 			    	"right":"<a href='#' onclick='getLocation();' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    },
 			    "leftPanel":{
@@ -258,8 +258,8 @@ function getPages()
 			{"id":"sinDetails", "url":"pages/sinisters/details.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Reportar</a>",
-			    	"center":"<h2>Fotos</h2>",
+			    	"left":"<a lng='report' href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Reportar</a>",
+			    	"center":"<h2 lng='pictures'>Fotos</h2>",
 			    	"right":"<a href='#' onclick='enviarExtras();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    }
 			},
@@ -267,7 +267,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Siniestros</h2>",
+			    	"center":"<h2 id='sinisters'>Siniestros</h2>",
 			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    },
 			    "leftPanel":{
@@ -279,7 +279,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2>Robos</h2>",
+			    	"center":"<h2 id='thefts'>Robos</h2>",
 			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
 			    },
 			    "leftPanel":{
@@ -303,6 +303,7 @@ function getPages()
 
 
 function initLanguage(){
+//	languageChanged("spanish");
 	languageChanged("english");
 	/* var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
@@ -327,6 +328,7 @@ function languageChanged(lang) {
     setMechanicalTranslations();
     setPoliciesTranslations();
     setContactsTranslations();
+    setSinistersTranslations();
 }
 
 function setProfileTranslations(){
@@ -374,7 +376,10 @@ function setPoliciesTranslations(){
 	 $('#txtColor').attr("placeholder", Messages.color); 
 	 $('#txtPlates').attr("placeholder", Messages.plates); 
 	 $('#txtOwnerCellPhone').attr("placeholder", Messages.lblCellPhone); 
-	 $('#txtHolder').attr("placeholder", Messages.usualDriver); 
+	 $('#txtHolder').attr("placeholder", Messages.usualDriver);
+	 //
+	 $('[id="delete"]').text( Messages.deleteItem);
+	 $('[id="option"]').text( Messages.option);
 }
 function setContactsTranslations(){
 	//show contacts content	
@@ -386,6 +391,20 @@ function setContactsTranslations(){
 	 $('#txtUserContactName').attr("placeholder", Messages.fullname); 
 	 $('#txtUserContactCellPhone').attr("placeholder", Messages.lblCellPhone); 
 	 $('[id="aContact"]').text(Messages.contact);
+}
+function setSinistersTranslations(){
+	 $('[id="sinisters"]').text(Messages.sinisters);
+	 $('[id="thefts"]').text(Messages.thefts);
+	 //initial translations
+	 $('[lng="report"]').text(Messages.reporting);
+	 $('[lng="sinister"]').text(Messages.sinister);
+	 $('[lng="theft"]').text(Messages.theft);
+	 $('[lng="reportof"]').text(Messages.report);
+	 $('[lng="register"]').text(Messages.register); 
+	 $('[lng="noPolicies"]').empty();
+	 $('[lng="noPolicies"]').append(Messages.noPolicies+ " : <a href='#policiesContent'>"+Messages.register+"</a>" );
+	 $('[lng="takePicture"]').text(Messages.takePicture); 
+	 $('[lng="pictures"]').text(Messages.pictures); 
 }
 
 

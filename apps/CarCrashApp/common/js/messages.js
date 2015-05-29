@@ -64,18 +64,25 @@ Messages = {
 		alertLocation:"Su ubicación no puede ser leída.",
 		selectAuto:"Debe seleccionar el automóvil siniestrado.",
 		
-		//Report Sinister Det Translations
-		aTakeSinisterPic:"Tomar Foto",
+		//Report Sinister Det Translations		
 		lblflipAmbulancia:"Requiere asistencia medica?",
 		opOff:"No",
 		opOn:"Si",
 		lblflipLegal:"Requiere asistencia legal?",
 		lblObservaciones:"Comentarios:",
 		aSendInfo:"Enviar información",
-		//Sinister List Translations
-		h3SinisterList:	"Listado de siniestros",
-		aSinisterList:"Siniestros",
-		aTheftList:"Robos",
+		//Initial Translations
+		reporting:"Reportar",
+		sinister:"Siniestro",
+		theft:"Robo",
+		register:"Registrar",
+		noPolicies:"No tienes pólizas registradas",
+		reportedSuccesfully:"Reportado exitosamente.",
+		//photos translations
+		pictures:"Fotos",
+		takePicture:"Tomar Foto",
+		//Sinister List Translations		
+		thefts:"Robos",
 		//Thefts List Translations
 		h3TheftsList:"Listado de robos",
 		//Policies Alerts Translations
@@ -83,14 +90,7 @@ Messages = {
 		pExpiredPolicy:"Pólizas por caducar o caducadas",
 		expiredPolicy:"Póliza caducada: ",
 		//left panel Translations
-		h2Profile:"Perfil",
-		aAccount:"Cuenta",
-		aPoliza:"Vehículos/Pólizas",
-		aMedicalData:"Datos Medicos",
-		aMechanicContact:"Contacto Mecánico",
-		aSinister:"Siniestro",
-		aLiAlerts:"Alertas",
-		aContacts:"Contactos",
+		sinisters:"Siniestros",
 		//Sign up Translations
 		h2SignUp:"Registrarse",
 		txtName:"Nombre",
@@ -105,7 +105,7 @@ Messages = {
 		aHelp:"Ayuda",
 		logInHelpText:"Introduzca su E-mail y contraseña",
 		date:"Fecha",
-		report:"Reporte",
+		report:"Reporte de",
 		//Sinister Pop Up Translations
 		popHeader:"Reportar?",
 		popTitle:"Esta seguro que desea levantar un reporte?",
@@ -126,6 +126,8 @@ Messages = {
 		minimun:"Mínimo",
 		characters:"caracteres",
 		search:"Buscar",
+		deleteItem:"Eliminar",
+		option:"Opcíon",
 		//contacts
 		contact:"Contacto",
 		contacts:"Contactos",		
@@ -138,11 +140,9 @@ function setSpanish(){
 	 setSpanishMedicalData();		
 	 setSpanishMechanicData();
 	 setSpanishAddPolicy();
-	 setSpanishReportSinister();
+	 setSpanishSinisters();
 	 setSpanishReportSinisterDet();
-	 setSpanishSinisterList();
-	 setSpanishTheftsList();
-	 setSpanishPoliciesAlerts();
+
 	 setSpanishLeftPanel();
 	 setSpanishSingUp();
 	 setSpanishLogIn();
@@ -157,11 +157,9 @@ function setEnglish(){
 	 setEnglishMedicalData();
 	 setEnglishMechanicData();
 	 setEnglishAddPolicy();
-	 setEnglishReportSinister();
+	 setEnglishSinisters();
 	 setEnglishReportSinisterDet();
-	 setEnglishSinisterList();
-	 setEnglishTheftsList();
-	 setEnglishPoliciesAlerts();
+	 
 	 setEnglishLeftPanel();
 	 setEnglishSingUp();
 	 setEnglishLogIn();
@@ -223,53 +221,40 @@ function setSpanishAddPolicy(){
 	Messages.h1ConfirmMark = "Confirmar?";		
 }
 
-function setSpanishReportSinister(){
+function setSpanishSinisters(){
 	Messages.h3ReportIncident = "Reportar incidente";
 	Messages.aActualizeLocation = "Actualizar ubicación";
 	Messages.opSelectCar = "Seleccione su auto";
 	Messages.aRepSinister = "Rep. Siniestro";
 	Messages.aRepTheft="Rep. Robo";
 	Messages.alertLocation="Su ubicación no puede ser leída.";
-	Messages.selectAuto="Debe seleccionar el automóvil siniestrado.";	
+	Messages.selectAuto="Debe seleccionar el automóvil siniestrado.";		
+	
+	Messages.thefts = "Robos";
+	Messages.date = "Fecha: ";
+	Messages.report = "Reporte de:";
+	//initial 
+	Messages.sinister = "Siniestro";
+	Messages.reporting = "Reportar";
+	Messages.theft = "Robo";
+	Messages.register = "Registrar";
+	Messages.noPolicies="No tienes pólizas registradas";
+	Messages.reportedSuccesfully="Reportado exitosamente.";	
+	//photos
+	Messages.takePicture = "Tomar foto";
+	Messages.pictures = "Fotos";
 }
 
 function setSpanishReportSinisterDet(){
-	Messages.aTakeSinisterPic = "Tomar foto";
+	
 	Messages.lblflipAmbulancia = "Requiere asistencia medica?";		
 	Messages.lblflipLegal="Requiere asistencia legal?";		
 	Messages.lblObservaciones="Comentarios:";		
 	Messages.aSendInfo="Enviar información";		
-}
-
-function setSpanishSinisterList(){
-	Messages.h3SinisterList = "Listado de siniestros";
-	Messages.aSinisterList = "Siniestros";
-	Messages.aTheftList = "Robos";
-	Messages.date = "Fecha: ";
-	Messages.report = "Reporte: ";
 }	
 
-
-function setSpanishTheftsList(){
-	Messages.h3TheftsList = "Listado de robos";
-}
-
-function setSpanishPoliciesAlerts(){
-	Messages.h3PoliciesAlerts = "Alertas de pólizas";
-	Messages.pExpiredPolicy = "Pólizas por caducar o caducadas";
-	Messages.expiredPolicy = "Póliza caducada: ";
-}
-
-
 function setSpanishLeftPanel(){
-	Messages.h2Profile = "Perfil";
-	Messages.aAccount = "Cuenta";
-	Messages.aMedicalData = "Datos Medicos"; 
-	Messages.aPoliza = "Vehículos/Pólizas";
-	Messages.aMechanicContact = "Contacto Mecánico";
-	Messages.aSinister = "Siniestro";
-	Messages.aLiAlerts = "Alertas";
-	Messages.aContacts = "Contactos";
+	Messages.sinisters = "Siniestros";
 }
 
 function setSpanishSingUp(){
@@ -318,6 +303,8 @@ function setDefaultSpanish(){
 	Messages.minimun="Mínimo";
 	Messages.characters="Caracteres";
 	Messages.search="Buscar";	
+	Messages.deleteItem="Eliminar";
+	Messages.option="Opción";
 }
 
 function setSpanishContacts(){
@@ -330,7 +317,7 @@ function setSpanishContacts(){
 function setEnglishProfile(){		
 	Messages.lblProfileName = "First Name";
 	Messages.fullname = "Full Name";
-	Messages.surnames = "Surnames";
+	Messages.surnames = "Last Name";
 	Messages.lblCellPhone = "Cell Phone";
 	Messages.profile = "Profile";	
 	Messages.h1ConfirmCity = "Confirm?";	
@@ -380,52 +367,40 @@ function setEnglishAddPolicy(){
 	Messages.h1ConfirmMark = "Confirm?";
 }	
 
-function setEnglishReportSinister(){
+function setEnglishSinisters(){
 	Messages.h3ReportIncident = "Report incident";
 	Messages.aActualizeLocation = "Actualize location";
 	Messages.opSelectCar = "Select your car";
 	Messages.aRepSinister = "Rep. Sinister";
 	Messages.aRepTheft="Rep. Theft";
 	Messages.alertLocation="Your location can not be readed.";
-	Messages.selectAuto="You must select the wrecked car.";				
+	Messages.selectAuto="You must select the wrecked car.";		
+		
+	Messages.thefts = "Thefts";
+	Messages.date = "Date: ";
+	Messages.report = "Report: ";
+	//initial
+	Messages.sinister = "Sinister";
+	Messages.reporting = "Report";
+	Messages.theft = "Theft";
+	Messages.register = "Register";
+	Messages.noPolicies = "You don't have registered policies";
+	Messages.reportedSuccesfully="Successfully reported";	
+	//photos
+	Messages.takePicture = "Take picture";
+	Messages.pictures = "Pictures";
 }
 
 function setEnglishReportSinisterDet(){
-
-	Messages.aTakeSinisterPic = "Take picture";
+	
 	Messages.lblflipAmbulancia = "Medical assistance is required?";		
 	Messages.lblflipLegal="Legal assistance is required?";		
 	Messages.lblObservaciones="Comments:";		
 	Messages.aSendInfo="Send Info";		
 }
 
-function setEnglishSinisterList(){
-	Messages.h3SinisterList = "Sinisters List";
-	Messages.aSinisterList = "Sinisters List";
-	Messages.aTheftList = "Thefts List";
-	Messages.date = "Date: ";
-	Messages.report = "Report: ";
-}
-
-function setEnglishTheftsList(){
-	Messages.h3TheftsList = "Thefts List";
-}
-
-function setEnglishPoliciesAlerts(){
-	Messages.h3PoliciesAlerts = "Policies alerts";
-	Messages.pExpiredPolicy = "Policies for outdated or expired";
-	Messages.expiredPolicy = "Expired policy: ";
-}
-
 function setEnglishLeftPanel(){
-	Messages.h2Profile = "Profile";
-	Messages.aAccount = "Account";
-	Messages.aMedicalData = "Medical Data"; 
-	Messages.aPoliza = "Vehicles/Policies";
-	Messages.aMechanicContact = "Mechanic Contact";
-	Messages.aSinister = "Sinister";
-	Messages.aLiAlerts = "Alerts";
-	Messages.aContacts = "Contacts";
+	Messages.sinisters = "Sinisters";
 }
 
 function setEnglishSingUp(){
@@ -472,7 +447,9 @@ function setDefaultEnglish(){
 	Messages.enter="Enter";
 	Messages.minimun="Minimun";
 	Messages.characters="characters";
-	Messages.search="Search";	
+	Messages.search="Search";
+	Messages.deleteItem="Delete";
+	Messages.option="Option";
 }
 
 function setEnglishContacts(){

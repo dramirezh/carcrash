@@ -46,7 +46,7 @@ function enviarExtras()
 			};
 			oJS.getFromServer("sinisters", "getSinisters");
 			navigator.notification.alert(
-			'Reportado exitosamente.',
+					Messages.reportedSuccesfully,
 			function onSuccess() {
 			});
 			return true;
