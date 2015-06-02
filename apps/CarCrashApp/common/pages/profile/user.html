@@ -1,0 +1,82 @@
+<div data-role="page" id="{id}"  class="ui-page-header-fixed ui-page-footer-fixed">    		    			    		
+    			   	
+    			<div role="main" class="ui-content">    				
+    				    					
+    				
+    			 <form id="profileForm">
+    				 			      				    				  
+    				<input placeholder="Nombre" id="txtProfileName" name="txtProfileName" maxlength="40" type="text" />     				    				 
+    				<input placeholder="Apellidos" id="txtFirstName" name="txtFirstName" type="text" maxlength="30" />    				    			    				 
+    				<input placeholder="Celular"  id="txtCellPhone" name="txtCellPhone" type="text" maxlength="12"/>    				
+    				     				 <input placeholder="Email"   type="email"  id="txtUserEmail" name="txtUserEmail" type="text" maxlength="250"/>
+    				     				 <input placeholder="Birth date" type="date"  id="txtBirthdate" name="txtBirthdate" type="text" maxlength="15"/>
+    				<hr></hr>  
+    			   				
+    				<div id="locationField">
+      <input id="autocomplete" name="autocomplete" placeholder="Direccion completa"
+             onFocus="geolocate()" type="text" maxlength="190"></input>
+    </div>
+
+<input placeholder="Calle" sel="pStreet" style="font-weight: bold;" id="route" maxlength="255" name="route"></input>
+<input sel="pStreetNumber" placeholder="Numero" style="font-weight: bold;"  id="street_number" maxlength="20"  name="street_number" ></input>
+<input placeholder="Ciudad"  sel="pCity" style="font-weight: bold;" id="locality" maxlength="50" name="locality" ></input>
+<input placeholder="Estado"  sel="pState" style="font-weight: bold;" id="administrative_area_level_1" maxlength="50" name="administrative_area_level_1" ></input>
+<input placeholder="CP" sel="pPostalCode" style="font-weight: bold;" id="postal_code" maxlength="20" name="postal_code"  ></input>
+<input placeholder="Pais"  sel="pCountry" style="font-weight: bold;" id="country" maxlength="50" name="country" ></input>  
+
+<input placeholder="License Number"  id="txtLicenseNo" name="txtLicenseNo" type="text" maxlength="60"/>  
+</form>                    
+    				<hr></hr>
+    				<div >
+				<div data-role="fieldcontain">
+    <label style="display:inline;" for="select-based-flipswitch">Medical Info</label>
+    <select onchange="flipShowDiv('flipMedical','divMedicalData');" id="flipMedical" name="flipMedical" data-role="flipswitch">
+      <option value="off">off</option>
+      <option  selected="selected" value="on">on</option>
+    </select>
+  </div>
+			</div>
+    				<div id="divMedicalData">   
+    				<input placeholder="Numero IMSS"  id="txtNoIMSS" maxlength="15"  type="text"/>      				   			    				    				 
+    				   				 
+    				<input placeholder="Alergias"  id="txtAlergics" maxlength="100" type="text" /> 
+    				 				 
+    				<input placeholder="Padecimientos"  id="txtClinicalConditions" maxlength="100"  type="text" />       				    				  				     				    				     				     				    				
+    				 				 
+    				 <form id="medicalForm"> 
+    				<div>		<select name="selectBloodType" id="selectBloodType">
+								<option id="opNoneBType" value="" selected="selected">Tipo de sangre</option>
+								<option  value="AB+" >AB+</option>
+								<option  value="AB-" >AB-</option>
+								<option  value="A+" >A+</option>
+								<option  value="A-" >A-</option>
+								<option  value="B+" >B+</option>
+								<option  value="B-" >B-</option>
+								<option  value="O+" >O+</option>
+								<option  value="O-" >O-</option>
+								
+							</select></div>
+    				 </form>
+    				 </div>	
+    				 <div data-role="fieldcontain">
+    <label style="display:inline;" for="select-based-flipswitch">SGMM</label>
+    <select onchange="flipShowDiv('flipSGMM','divSGMM');" id="flipSGMM" data-role="flipswitch">
+      <option value="off">off</option>
+      <option selected="selected" value="on">on</option>
+    </select>
+  </div>
+  <div id="divSGMM"> 
+  <input placeholder="Institution"  id="txtInstitution" maxlength="70" type="text" /> 
+  <input placeholder="Certificate"  id="txtCertificate" maxlength="80" type="text" /> 
+  <input placeholder="Full Name"  id="txtSGMMName" maxlength="40" type="text" /> 
+  			  </div>  				    				  				  
+    				    				<ul>
+				<li>
+				<a id='lnkDialog' href="#popupDialogPolicy"  data-rel="popup" data-position-to="window"
+				 data-transition="pop" ></a>
+				 </li>
+				</ul>  				
+    			</div>    			    			    			    			    														
+				
+					
+    		</div><!-- pagePerfil -->

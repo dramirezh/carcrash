@@ -5,36 +5,7 @@
     		
     			<div role="main" class="ui-content" style="margin-right: 15px;margin-left: 15px;">
     		
-    			<div id="policyCont"  >     			  				   			    				    				
-						    				    				    				     				
-    				<input placeholder="Numero de poliza"  id="txtPolicyNo" maxlength="30" type="text"/>  
-    				   				    							
-    				<input  id="txtPolicyDate"  placeholder="Fecha de expiracion" type="date"/>     				    				        								    				
-    				     				 <div class="ui-field-contain" style="margin-top:0 margin-bottom: 0;">
-    				
-					<div>		<select name="selectInsurance" id="selectInsurance">
-								<option id="opNoneInsurance" value="0" selected="selected">Aseguradora</option>
-								
-							</select></div>
-						</div>   				
-    				    			
-    				    				
-    				    				<hr></hr>
-    				    				<p align="center" id="pContact3">Agente de seguro </p> 
-					     				 			      				    				  
-    				<input placeholder="Nombre completo" id="txtPolContactName" name="txtPolContactName" maxlength="40" type="text" /> 
-    				    				 
-    				<input placeholder="Apellidos" id="txtPolContactFirstName" type="text" maxlength="30" />
-    				    				 
-    				<input placeholder="Telefono"  id="txtPolContactCellPhone" type="number" maxlength="10"/>
-    						
-    				
-    				    			
-    				    				<hr></hr> 
-    				    								    				    				
-    				    <input onclick="initVehicle();"  id="iVehiculo" type="button" value="Vehiculo"/>
-    				    				
-    				    				 </div>
+    			
     				<div id="vehicleCont" >    				   			    				    					    					    					   					
 
 	    				<div id="carPhotos" style="padding: 10px 10px 0px 10px;" align="center">
@@ -42,7 +13,14 @@
 	    				</div>
 	    				<a id="aTakeCarPict" href="#" onclick="takeCarPicture(); " class="ui-btn ui-corner-all">Fotografia</a>
 	    			
-	    			<input placeholder="Alias" id="txtSeries" maxlength="30" type="text" />  			
+	    			<input placeholder="Alias" id="txtSeries" maxlength="30" type="text" />
+	    			 <div>		<select name="selectVehicleCat" id="selectVehicleCat">
+								<option id="opNoneVCat" value="0" selected="selected">Category</option>
+								<option value="1" >Compacto</option>
+								<option value="2" >Sedan</option>
+								<option value="3" >SUV</option>
+								<option  value="4" >pickup</option>
+							</select></div>   			
     			    <div>		<select name="selectMark" id="selectMark">
 								<option id="opNoneMark" value="0" selected="selected">Marca</option>
 								
@@ -59,6 +37,30 @@
     				
     				<input placeholder="Conductor habitual"  id="txtHolder" maxlength="40" type="text" />     				    				
     				<input placeholder="Telefono"  id="txtOwnerCellPhone" maxlength="12" type="text" /> 
+    				
+    					<hr></hr>
+    				<p align="center" lng="insuranceData">Insurance Data</p> 	
+    					<input placeholder="Numero de poliza"  id="txtPolicyNo" maxlength="30" type="text"/>  
+    				   				    							
+    				<input  id="txtPolicyDate"  placeholder="Fecha de expiracion" type="date"/>     				    				        								    				
+    				     				 <div class="ui-field-contain" style="margin-top:0 margin-bottom: 0;">
+    				
+					<div>		<select name="selectInsurance" id="selectInsurance">
+								<option id="opNoneInsurance" value="0" selected="selected">Aseguradora</option>
+								
+							</select></div>
+						</div>   				
+    				    			
+    				    				
+    				    				<hr></hr>
+    				    				<p align="center" id="pContact3">Agente de seguro </p> 
+					     				 			      				    				  
+    				<input placeholder="Nombre completo" id="txtPolContactName" name="txtPolContactName" maxlength="40" type="text" />     				    				     			
+    				    				 
+    				<input placeholder="Telefono"  id="txtPolContactCellPhone" type="number" maxlength="10"/>
+    						
+    				<input placeholder="Email" id="txtPolContactEmail" type="text" maxlength="250" />
+    				
     				</div>    				
     				
     				

@@ -31,20 +31,15 @@
 	}
 	
 		function initPolicyPage(){
-			$('div[id="backPerfilNav"]').hide();
-			$("#listCountries").hide();
-			$("#listMarks").hide();
-			$("#listSubMarks").hide();
-			$("#listCities").hide();
-			$("#policyCont").show();
-			$("#vehicleCont").hide();
+			
+			$("#vehicleCont").show();
 			policyNavigation=0;			   
 			}
 		var policy;
 		var policyDate;
 		var aseg;
 		var polContactNameGrl="";
-		var polContactFirstNameGrl="";
+		var polContactEmail="";
 		var polContactLastNameGrl="";	 
 		var polContactCellPhoneGrl="";
 		
@@ -56,8 +51,8 @@
 			 policyDate=	 $("#txtPolicyDate");
 			 aseg=$('#selectInsurance option:selected');
 			  polContactNameGrl=$("#txtPolContactName");
-				 polContactFirstNameGrl=$("#txtPolContactFirstName");
-				 polContactLastNameGrl=$("#txtPolContactLastName");	 
+				 polContactEmail=$("#txtPolContactEmail");
+					 
 				polContactCellPhoneGrl=$("#txtPolContactCellPhone");
 		}
 		
@@ -66,13 +61,11 @@
 			getPolicyValues();
 		 
 		if(policyDate.val().trim().length>0&&policy.val().trim().length>0&&parseInt(aseg.val())>0
-				&&polContactNameGrl.val().trim().length>0&&polContactFirstNameGrl.val().trim().length>0
+				&&polContactNameGrl.val().trim().length>0
 				&&polContactCellPhoneGrl.val().trim().length>0){
 			$("#aBackPolicy").text(Messages.policy);
-			$("#h2PolicyTitle").text(Messages.vehicle); 
-			$("#listMarks").hide();
-			$("#listSubMarks").hide();
-			$("#policyCont").hide();
+			//$("#h2PolicyTitle").text(Messages.vehicle); 			
+			
 			$("#vehicleCont").show();
 			policyNavigation=1;
 			if(!policyupdate){ 
@@ -272,9 +265,8 @@
 				if(succes<10||policyupdate){			
 					getPolicyValues();
 					var serie=	$("#txtSeries");
-					var plates=	$("#txtPlates");
-					var vehicleType=$("#txtVehicleType");
-					
+					var plates=	$("#txtPlates");					
+					var vehicleType =$('#selectVehicleCat option:selected');					
 					var subMark=$("#searchSubMark");
 					var model=$("#txtModel");
 					var color=$("#txtColor");
@@ -287,7 +279,7 @@
 					if(policyDate.val().trim().length>0&&policy.val().trim().length>0&&parseInt(aseg.val())>0
 						&&serie.val().trim().length>0&&plates.val().trim().length>0&&parseInt(markSelected.val())>0	
 						&&subMark.val().trim().length>0&&model.val().trim().length>0&&color.val().trim().length>0&&holder.val().trim().length>0	&&ownerCellPhone.val().trim().length>0
-						&&polContactNameGrl.val().trim().length>0&&polContactFirstNameGrl.val().trim().length>0
+						&&polContactNameGrl.val().trim().length>0
 						&&polContactCellPhoneGrl.val().trim().length>0
 					){ 	
 						if(picUri.trim().length>0){	
@@ -308,7 +300,7 @@
 							},
 							{operator: "equal",key:'Serie',value:serie.val().trim()				
 							},
-							{operator: "equal",key:'VehicleType',value:''			
+							{operator: "equal",key:'VehicleType',value:vehicleType.text().trim()			
 							},
 							{operator: "equal",key:'Mark',value:markSelected.val().trim()					
 							},
@@ -326,7 +318,7 @@
 							},
 							{operator: "equal",key:'PolicyContactFirstName',value:polContactNameGrl.val().trim()					
 							},
-							{operator: "equal",key:'PolicyContactLastName',value:polContactFirstNameGrl.val().trim()					
+							{operator: "equal",key:'PolicyContactLastName',value:''					
 							},
 							{operator: "equal",key:'PolicyContactSecondLastName',value:''					
 							},
@@ -375,7 +367,7 @@
 			getPolicyValues();
 			var serie=	$("#txtSeries");
 			var plates=	$("#txtPlates");
-			var vehicleType=$("#txtVehicleType");
+			var vehicleType =$('#selectVehicleCat option:selected');
 			
 			var subMark=$("#searchSubMark");
 			var model=$("#txtModel");
@@ -389,24 +381,26 @@
 				var docs="";
 				if(policyupdate){
 					docs={PolicyNo: policy.val().trim(), PolicyDate: policyDate.val().trim(), Insurance: aseg.val().trim(),
-							Plates: plates.val().trim(),Serie: serie.val().trim(),VehicleType:'',Mark: markSelected.val().trim(),
+							Plates: plates.val().trim(),Serie: serie.val().trim(),VehicleType:vehicleType.text().trim(),Mark: markSelected.val().trim(),
 							SubMark: subMark.val().trim(),Model: model.val().trim(),Color: color.val().trim(),carPicture: pic.trim(),
 							Holder: holder.val().trim(), OwnerCellPhone: ownerCellPhone.val().trim(),
 							PolicyContactFirstName:polContactNameGrl.val().trim(),
-							PolicyContactLastName:polContactFirstNameGrl.val().trim(), PolicyContactSecondLastName:'',
-							PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(),InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim()
-				        	};
+							PolicyContactLastName:'', PolicyContactSecondLastName:'',
+							PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(),InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim(), PolicyContactEmail:polContactEmail.val().trim()
+				        	,IDVehicleType:vehicleType.val().trim()
+					};
 				}else{
 					policySaved=false;
 					policyId=0;
 					docs={PolicyNo: policy.val().trim(), PolicyDate: policyDate.val().trim(), Insurance: aseg.val().trim(),
-						Plates: plates.val().trim(),Serie: serie.val().trim(),VehicleType: '',Mark: markSelected.val().trim(),
+						Plates: plates.val().trim(),Serie: serie.val().trim(),VehicleType: vehicleType.text().trim(),Mark: markSelected.val().trim(),
 						SubMark: subMark.val().trim(),Model: model.val().trim(),Color: color.val().trim(),carPicture: pic.trim(),
 						Holder: holder.val().trim(), OwnerCellPhone: ownerCellPhone.val().trim(),
 						PolicyContactFirstName:polContactNameGrl.val().trim(),
-						PolicyContactLastName:polContactFirstNameGrl.val().trim(), PolicyContactSecondLastName:'',
-						PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(), InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim()
-			        	};
+						PolicyContactLastName:'', PolicyContactSecondLastName:'',
+						PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(), InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim(),PolicyContactEmail:polContactEmail.val().trim()
+			        	,IDVehicleType:vehicleType.val().trim()
+					};
 
 				}
 				
@@ -455,14 +449,15 @@
 		}
 function initPolicyToList(name,insurance,policyDate,id,pic){
 	
-			$('#listPolicy').append('<li style="margin-bottom:2px;" class=" ui-li-has-thumb" ><a id="aPoliciesList" data-rel="popup" data-position-to="window" data-transition="pop" href="" onclick="initSelectedPolicy(this); initPolicyDetails();" class="ui-btn ui-btn-icon-right ui-icon-carat-r" > ' +
+			$('#listPolicy').append('<li  class=" ui-li-has-thumb" ><a   style="padding-top:0px;" 0px id="aPoliciesList" data-rel="popup" data-position-to="window" data-transition="pop" href="" onclick="initSelectedPolicy(this); initPolicyDetails();" class="ui-btn ui-btn-icon-right ui-icon-carat-r" > ' +
 			        '<img height="100%" src="'+pic.trim()+'"> '+
 				    '<h2>'+name.trim()+'</h2>'+
 				    '<p>'+insurance.trim()+'</p>'+
 				    '<p>'+Messages.spnExpiration+policyDate.trim()+'</p>'+
 				    ' <input type="hidden" value="'+id+'" />'+
 				   ' </a>'+
-				   ' </li>');				
+				   ' </li>');
+			$('#listPolicy').listview('refresh').trigger('create');
 		}
 		
 	function ondeletedUpdatePolicy(){
@@ -598,14 +593,16 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						$("#txtHolder").val(data[0].json.Holder);
 						$("#txtOwnerCellPhone").val(data[0].json.OwnerCellPhone);
 						$("#txtPolContactName").val(data[0].json.PolicyContactFirstName);
-						$("#txtPolContactFirstName").val(data[0].json.PolicyContactLastName);
-					    	 
+						
+						$("#txtPolContactEmail").val(data[0].json.PolicyContactEmail);
 						$("#txtPolContactCellPhone").val(data[0].json.PolicyContactCellPhone);
 						 policy=	 $("#txtPolicyNo");
 						 policy.val(data[0].json.PolicyNo);
 						 policyDate=	 $("#txtPolicyDate");
 						 policyDate.val(data[0].json.PolicyDate);									 						 					  
-						  
+						 $( "select" ).selectmenu();									
+						 $('#selectVehicleCat').prop('selectedIndex', parseInt(dataToUpdate[0].json.IDVehicleType));		
+							$( "select" ).selectmenu( "refresh", true );
 						  aseg=  $("#selectInsurance option:selected");	
 						  markSelected= $("#selectMark option:selected");	
 						  initPicture(data[0].json.carPicture);
@@ -641,11 +638,12 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 		$("#txtOwnerCellPhone").val("");
 		$("#txtPolContactName").val("");
 		$("#txtPolContactFirstName").val("");
-	    	 
+		$("#txtPolContactEmail").val("");
 		$("#txtPolContactCellPhone").val("");
 		$( "select" ).selectmenu();
 		$('#selectInsurance').prop('selectedIndex',0);
 		$('#selectMark').prop('selectedIndex',0);
+		$('#selectVehicleCat').prop('selectedIndex',0);
 		$( "select" ).selectmenu( "refresh", true );
 		cleanPicture();
 		aseg=  $("#selectInsurance option:selected");
@@ -734,7 +732,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 										||serie.val().trim().length>1||plates.val().trim().length>1||vehicleType.val().trim().length>0||(parseInt(markSelected.val())>1)
 										||subMark.val().trim().length>1||model.val().trim().length>1||color.val().trim().length>1||holder.val().trim().length>1
 										||pic.trim().length>1||ownerCellPhone.val().trim().length>1
-										||polContactNameGrl.val().trim().length>0||polContactFirstNameGrl.val().trim().length>0
+										||polContactNameGrl.val().trim().length>0
 										||polContactCellPhoneGrl.val().trim().length>0
 								)){
 									
@@ -743,7 +741,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 								&&serie.val().trim().length>0&&plates.val().trim().length>0&&vehicleType.val().trim().length>0&&(parseInt(markSelected.val())>1)	
 								&&subMark.val().trim().length>0&&model.val().trim().length>0&&color.val().trim().length>0&&holder.val().trim().length>0&&pic.trim().length>0
 								&&ownerCellPhone.val().trim().length>0
-								&&polContactNameGrl.val().trim().length>0&&polContactFirstNameGrl.val().trim().length>0
+								&&polContactNameGrl.val().trim().length>0
 								&&polContactCellPhoneGrl.val().trim().length>0){
 								
 									$('#liSUdata').show();
@@ -755,7 +753,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 										||serie.val().trim().length>0||plates.val().trim().length>0||vehicleType.val().trim().length>0||(parseInt(markSelected.val())>1)	
 										||subMark.val().trim().length>0||model.val().trim().length>0||color.val().trim().length>0||holder.val().trim().length>0||pic.trim().length>0
 										||ownerCellPhone.val().trim().length>0
-										||polContactNameGrl.val().trim().length>0||polContactFirstNameGrl.val().trim().length>0
+										||polContactNameGrl.val().trim().length>0
 										||polContactCellPhoneGrl.val().trim().length>0		
 								){					
 											$('#liKeepEd').show();

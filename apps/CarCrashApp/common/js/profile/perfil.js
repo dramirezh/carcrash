@@ -62,12 +62,9 @@ $(
 			$("#lblCitySelected").text(""+$(cityData).text());			
 		}		
 				
-		$(document).on('pagebeforeshow','#profile',function(e,data){
-			
-			initializeAddress();
-				
-		initPerfilDataInfo(); 
-		
+		$(document).on('pagebeforeshow','#profile',function(e,data){						
+			initializeAddress();				
+		initPerfilDataInfo(); 		
 		});			
 		
 		function savePerfil(){
@@ -173,11 +170,12 @@ $(
 			jsonStore.collectionName="perfil";
 			jsonStore.document=
 				 {firstName: $("#txtProfileName").val().trim(), lastName: $("#txtFirstName").val().trim(), secondLastName: '', cellPhone: $("#txtCellPhone").val().trim(),
-		        	city: $('input[sel="pCity"]').val().trim(), enterprise: '',
+		        	city: $('input[sel="pCity"]').val().trim(), birthdate: $('#txtBirthdate').val().trim(),
 		        	streetNumber:$('input[sel="pStreetNumber"]').val().trim(),street:$('input[sel="pStreet"]').val().trim(),State:$('input[sel="pState"]').val().trim(),
-		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim()
+		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim(), email:$('#txtUserEmail').val().trim(),
+		        	licenseNumber:$('#txtLicenseNo').val().trim()
 				 };
-			jsonStore.document["email"]=globalMail;
+			//jsonStore.document["email"]=globalMail;
 			jsonStore.document["identifier"]=1;
 			//jsonStore.id=getProfileId();
 			jsonStore.id=0;
@@ -245,6 +243,9 @@ $(
         			$('input[sel="pState"]').val(arrayResults[0].json.State);
                 	$('input[sel="pPostalCode"]').val(arrayResults[0].json.postalCode);
                 	$('input[sel="pCountry"]').val(arrayResults[0].json.Country);
+                	$('#txtLicenseNo').val(arrayResults[0].json.licenseNumber);
+                	$('#txtUserEmail').val(arrayResults[0].json.email);
+                	$('#txtBirthdate').val(arrayResults[0].json.birthdate); 
         		}
         	};
         	jsonStore.fnFail=function (fail) {			
@@ -350,3 +351,12 @@ $(
     		}
         	
         }
+ 
+ function flipShowDiv(flip,showdiv){
+var data=$('#'+flip).val();
+if(data=="on"){
+	$('#'+showdiv).show();	
+}else{
+	$('#'+showdiv).hide();	
+}
+ }
