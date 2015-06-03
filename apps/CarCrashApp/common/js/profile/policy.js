@@ -376,6 +376,15 @@
 			var ownerCellPhone=$("#txtOwnerCellPhone");		
 			var pic=getCarPictureUri();
 			var markSelected=$('#selectMark option:selected');
+			
+			var idvehicle="";
+			$.each($("#listpolicy input[type=checkbox]"), function(){
+			       if( $(this).is(':checked')){       
+			    	   idvehicle=$(this).attr("id"); 
+			    	   
+			       }		       
+			    });
+			
 			if(!policyExist||policyupdate){
 				
 				var docs="";
@@ -449,15 +458,16 @@
 		}
 function initPolicyToList(name,insurance,policyDate,id,pic){
 	
-			$('#listPolicy').append('<li  class=" ui-li-has-thumb" ><a   style="padding-top:0px;" 0px id="aPoliciesList" data-rel="popup" data-position-to="window" data-transition="pop" href="" onclick="initSelectedPolicy(this); initPolicyDetails();" class="ui-btn ui-btn-icon-right ui-icon-carat-r" > ' +
+			$('#listPolicy').append('<li   class=" ui-li-has-thumb" ><a   style="padding-top:0px;"  id="aPoliciesList" data-rel="popup" data-position-to="window" data-transition="pop" href="" onclick="initSelectedPolicy(this); initPolicyDetails();" class="ui-btn  " > ' +
 			        '<img height="100%" src="'+pic.trim()+'"> '+
 				    '<h2>'+name.trim()+'</h2>'+
 				    '<p>'+insurance.trim()+'</p>'+
 				    '<p>'+Messages.spnExpiration+policyDate.trim()+'</p>'+
 				    ' <input type="hidden" value="'+id+'" />'+
-				   ' </a>'+
-				   ' </li>');
-			$('#listPolicy').listview('refresh').trigger('create');
+				   "  </a> <input class='ux-checkbox cus'   type='checkbox' name='chk"+id+"' id='"+id+"' onclick=\"setUnChecked('listPolicy','"+id+"');\">"+
+				   ' </li>' );
+			$('.ui-checkbox').css("float","right");
+			$('#listPolicy').listview('refresh').trigger('create');				
 		}
 		
 	function ondeletedUpdatePolicy(){
@@ -977,4 +987,15 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			};
 			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
 		}
-			
+		function setUnChecked(FormName,id){	
+			//if($('input[id="'+id+'"]').is(':checked')){
+		    $.each($("#"+FormName+" input[type=checkbox]"), function(){
+		       if( $(this).is(':checked')){       
+		    	   $(this).prop("checked", false);	 
+		       }		       
+		    });
+		    $('input[id="'+id+'"]').prop("checked", true);
+		    
+		    
+			//}
+			}

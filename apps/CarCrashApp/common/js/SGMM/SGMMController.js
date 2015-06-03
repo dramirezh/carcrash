@@ -1,14 +1,15 @@
 		
-$(document).on('pagebeforeshow','#profile',function(e,data){   		    		
-	
-			initSGMMDataInfo(); 	 				  
+$(document).on('pagebeforeshow','#profile',function(e,data){   		    			
+			initSGMMDataInfo(); 
 		});			
+
+var Sgmm= new SGMM();
 		
-		function saveSGMMData(){					
-			setSGMMDataTransaction();										
-		}
-		
-		function setSGMMDataTransaction(){						  			
+		function setSGMMDataTransaction(){	
+			Sgmm.instituion=$("#txtInstitution").val().trim();																				  
+			Sgmm.certificate=$("#txtCertificate").val().trim();
+			Sgmm.fullname=$("#txtSGMMName").val().trim();						
+				
 			   WL.JSONStore.get("SGMM").clear() 
 			
 			.then(function (errorObject) {	
@@ -16,8 +17,8 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 				var jsonStore = new clsJsonStoreHelper();
 				jsonStore.collectionName="SGMM";
 				jsonStore.document=
-					 {IMSS: $("#txtNoIMSS").val().trim(), bloodType: bt.val().trim(), 
-						 alergics: $("#txtAlergics").val().trim(), clinicalConditions: $("#txtClinicalConditions").val().trim()
+					 {Institution: Sgmm.instituion, Certificate: Sgmm.certificate, 
+						 FullName: Sgmm.fullname
 			        	};
 				jsonStore.id=0;
 				jsonStore.fnSuccess=function (succes) {
@@ -29,7 +30,7 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 							};
 					jsonStore.id=0;
 					jsonStore.fnSuccess=function (arrayResults) {
-						 WL.Logger.debug(">> medical data local: " + JSON.stringify(arrayResults));
+						 
 						if(arrayResults.length>0){	
 							saveSGMMData(arrayResults[0].json);
 						}
@@ -65,7 +66,7 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 				if(arrayResults.length>0){	
 					$("#txtInstitution").val(arrayResults[0].json.Institution);																				  
 					$("#txtCertificate").val(arrayResults[0].json.Certificate);
-					$("#txtClinicalConditions").val(arrayResults[0].json.FullName);					
+					$("#txtSGMMName").val(arrayResults[0].json.FullName);					
 				}
 			};
 			jsonStore.fnFail=function (fail) {			
@@ -75,13 +76,13 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 			}
 		
 		function saveSGMMData(SGMMData)
-		{	WL.Logger.debug(">>  data send server: " + JSON.stringify(SGMMData));
+		{	
 			var restHelper = new clsRestHelper('medicalData','saveProcedure',SGMMData, saveSGMMDataSuccess, saveSGMMDataFailure);
 			restHelper.callRestAdapter();
 		}
 		function saveSGMMDataSuccess(result){
 			var oResult = result.invocationResult;
-			 WL.Logger.debug(">>  data: " + JSON.stringify(result));
+			
 			if(!oResult.isSuccessful){ 		
 				navigator.notification.alert(
 						'Ocurrio un error, por favor intente de nuevo.',
@@ -90,7 +91,7 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 			}
 		}
 		function saveSGMMDataFailure(error){
-			 WL.Logger.debug(">>  data fail: " + error);			
+			 			
 			
 		}
 		
