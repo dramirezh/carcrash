@@ -160,7 +160,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2 id='aUser'>User</h2>",
-			    	"right":"<a  tag='a' id='save' onclick='validateProfile(); saveUserMedicalData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    	"right":"<a  tag='a' id='save' onclick='validateProfile(); setSGMMDataTransaction(); saveUserMedicalData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
 	        		"id":"profileNav",
