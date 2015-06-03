@@ -20,7 +20,7 @@
 			<!-- Example for using MySQL connector, do not forget to put the MySQL connector library in the project's lib folder -->
 			<dataSourceDefinition>
 				<driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>
-				<url>jdbc:sqlserver://172.16.1.33:1433;databaseName=CarCrash;</url>
+				<url>jdbc:sqlserver://192.168.21.222:1433;databaseName=CarCrash;</url>
 			    <user>sa</user>
     			<password>Adminpwd20</password>  
 			</dataSourceDefinition>

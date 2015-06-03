@@ -93,6 +93,7 @@ function cleanContactInputs(){
 	
 	$("#txtUserContactName").val("");	 
 	$("#txtUserContactCellPhone").val("");
+	$("#txtUserContactEmail").val("");
 }
 function saveContact(){						
 			
@@ -158,17 +159,22 @@ var docs;
 function savingContact(){
 	var	userContactName=$("#txtUserContactName");	 
 	var	userContactCellPhone=$("#txtUserContactCellPhone");
+	var userContactEmail=$("#txtUserContactEmail").val();
+	
+	var vehicledata = getAllChkChecked('chkbVehicle');
+	
 	if(!contactExist||contactUpdate){
 		
 		 docs="";
 		if(contactUpdate){
 			docs={UserContactFirstName:userContactName.val().trim(),		
 					UserContactLastName:'',UserContactSecondLastName:'',
-					UserContactCellPhone:userContactCellPhone.val().trim()};
+					UserContactCellPhone:userContactCellPhone.val().trim(), UserContactEmail:userContactEmail, vehicle: vehicledata
+					};
 		}else{
 			docs={UserContactFirstName:userContactName.val().trim(),		
 				UserContactLastName:'',UserContactSecondLastName:'',
-				UserContactCellPhone:userContactCellPhone.val().trim()};
+				UserContactCellPhone:userContactCellPhone.val().trim(), UserContactEmail:userContactEmail, vehicle: vehicledata};
 		}
 		
 	var jsonStore = new clsJsonStoreHelper();
@@ -258,6 +264,7 @@ function existFail(result){
 }
 
 $(document).on('pagebeforeshow','#showContacts',function(e,data){   
+	
 	initContacts();
 	basicPersonFiltersNumber("txtUserContactCellPhone");       	 
 	 $('#txtUserContactName').keypress(function(key) {        		
@@ -305,13 +312,16 @@ function initContactDetails(){
 function detailsSuccess(result){
 	dataDetails=result;
 	location.href="#contactsContent";	
-	  $(document).on('pagebeforeshow','#contactsContent',function(e,data1){ 
-		 
+	  $(document).on('pagebeforeshow','#contactsContent',function(e,data1){ 		 
+		  
 		  if(dataDetails!=null&&dataDetails.length>0&&contactUpdate){ 
 			
 			$("#txtUserContactName").val(dataDetails[0].json.UserContactFirstName);		
 		    $("#txtUserContactCellPhone").val(dataDetails[0].json.UserContactCellPhone);	
+		    $("#txtUserContactEmail").val(dataDetails[0].json.UserContactEmail);	
 		    
+				
+			
 		  }
 	  });
 	
@@ -491,3 +501,52 @@ function saveAllContacts()
 	jsonStore.saveToServer("EmergencyContacts", "saveEmergencyContacts");
 }
 	
+function initPolicyVehicleChk(){  
+	var jsonStore = new clsJsonStoreHelper();
+	jsonStore.collectionName="PolicyVehicle";
+	jsonStore.document=
+			{
+			};
+	jsonStore.id=0;
+	jsonStore.fnSuccess=function initSuccess(arrayResults){
+		
+		if(arrayResults.length>0){
+			var index;
+			$('#chkbVehicle').empty();
+			for (index = 0; index < arrayResults.length; ++index) {				   								
+				$('#chkbVehicle').append('<div class="ui-checkbox"> <input style="width:25px !important; height:24px !important;"  type="checkbox" name="ichk'+arrayResults[index].json.identifier+'" id="'+arrayResults[index].json.identifier+'-chk" >'+
+        '<label class=" ui-btn-icon-left" style="display:initial;" for="chk-'+arrayResults[index].json.identifier+'">'+arrayResults[index].json.Serie+'</label> </div>');
+			}
+			if(dataDetails!=null&&dataDetails.length>0&&contactUpdate){ 								
+			    var cont;
+			   
+			    for(cont=0;cont<dataDetails[0].json.vehicle.length;cont++){
+			    	$('input[id="'+dataDetails[0].json.vehicle[cont].IDVehicleType+'"]').prop("checked", true);//.checkboxradio('refresh');		    	
+			    }											
+			  }
+			 	
+		} 
+	};
+	jsonStore.fnFail=function initFail(result){
+		
+	};
+	jsonStore.get();
+	}
+
+$(document).on('pagebeforeshow','#contactsContent',function(e,data1){ 
+	initPolicyVehicleChk();
+	 
+});
+
+function getAllChkChecked(FormName){
+	var data = [];
+    $.each($("#"+FormName+" input[type=checkbox]"), function(){
+       if( $(this).is(':checked')){       
+       var title = $(this).attr("id");  
+      var data2= {IDVehicleType: title};
+      data.push(data2);
+       }
+       
+    });
+    return  data;
+}

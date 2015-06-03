@@ -5,20 +5,16 @@ function MedicalData(){
 	this.clinicalConditions="";
 }		
 var bt="";
-$(document).on('pagebeforeshow','#medical',function(e,data){   		    		
+$(document).on('pagebeforeshow','#profile',function(e,data){   		    		
 	basicPersonFiltersNumber("txtNoIMSS");
 			initMedicalDataInfo(); 	 				  
 		});			
 		
-		function saveUserMedicalData(){	
+		function saveUserMedicalData(){
+			var data=$('#flipMedical').val();
 			bt=$('#selectBloodType option:selected');
-			if( bt.val().trim().length>0){
-			setMedicalDataTransaction();				
-			}else{
-				navigator.notification.alert(
-						Messages.opNoneBType,
-	        			function onSuccess() {
-	        			}, "Info");				
+			if(data=="on"){			
+			setMedicalDataTransaction();							
 			}
 		}
 		
@@ -52,11 +48,11 @@ $(document).on('pagebeforeshow','#medical',function(e,data){
 						
 					};
 					jsonStore.get();
-										
+					/*					
 					navigator.notification.alert(
 							Messages.msgDataSaved,
 		        			function onSuccess() {
-		        			}, "Info");
+		        			}, "Info");*/
 				};
 				jsonStore.fnFail=function (errorObject) {								
 					navigator.notification.alert(
@@ -81,12 +77,12 @@ $(document).on('pagebeforeshow','#medical',function(e,data){
 			jsonStore.id=0;
 			jsonStore.fnSuccess=function (arrayResults) {			
 				if(arrayResults.length>0){	
-					$("#txtNoIMSS").val(arrayResults[0].json.IMSS);										
+					$("#txtNoIMSS").val(arrayResults[0].json.IMSS);																				  
+					$("#txtAlergics").val(arrayResults[0].json.alergics);
+					$("#txtClinicalConditions").val(arrayResults[0].json.clinicalConditions);
 					$( "select" ).selectmenu();					 
 					  $('#selectBloodType option[value='+arrayResults[0].json.bloodType+']').prop('selected',true);
-					  $( "select" ).selectmenu( "refresh", true );					  
-					$("#txtAlergics").val(arrayResults[0].json.alergics);
-					$("#txtClinicalConditions").val(arrayResults[0].json.clinicalConditions);	
+					  $( "select" ).selectmenu( "refresh", true );
 				}
 			};
 			jsonStore.fnFail=function (fail) {			

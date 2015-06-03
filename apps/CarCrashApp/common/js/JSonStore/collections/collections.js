@@ -11,12 +11,12 @@ function getCollections(){
 		reports:{
 			searchFields:{
 				identifier:'integer', email:'string', idPolicy:'string', date:'string', status:'boolean', type:'string'
-			}
-		}/*,
+			}/*,
 		profile : {
 	        searchFields: {mobileId: 'string', name: 'string', firstname: 'string', lastname: 'string', cellPhone: 'string',
 	        	city: 'string', enterprise: 'string',birthDate: 'string',email: 'string',password: 'string'}
 	    }*/,
+		},
 	    PolicyVehicle : {
 	        searchFields: {identifier: 'integer',PolicyNo: 'string', PolicyDate: 'string', Insurance: 'string', Plates: 'string', Serie: 'string'
 	        	, VehicleType: 'string', Mark: 'string', SubMark: 'string', Model: 'string', Color: 'string'
@@ -32,6 +32,9 @@ function getCollections(){
 	     MechanicData : {
 	         searchFields: {identifier:'integer', MechanicName: 'string',  MechanicFirstName: 'string', MechanicLastName: 'string', MechanicCellPhone: 'string',
 	         	MechanicAddress: 'string'}
+	     },
+	     SGMM : {
+	         searchFields: {identifier:'integer'}
 	     }
 	};
 }

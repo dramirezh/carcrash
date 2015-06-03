@@ -155,12 +155,12 @@ function getPages()
 	////         }
 	////         ]
 	return [
-			{"id":"profile", "url":"pages/profile/profile.html", 
+			{"id":"profile", "url":"pages/profile/user.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2 id='aProfile'>Perfil</h2>",
-			    	"right":"<a  tag='a' id='save' onclick='validateProfile();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    	"center":"<h2 id='aUser'>User</h2>",
+			    	"right":"<a  tag='a' id='save' onclick='validateProfile(); saveUserMedicalData();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
 	        		"id":"profileNav",
@@ -194,8 +194,8 @@ function getPages()
 			{"id":"policiesContent", "url":"pages/policy/policiesContent.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
-			    	"left":"<a  tag='a' id='aBackPolicy' onClick='backPolicy();'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Polizas</a>",
-			    	"center":"<h2 id='h2PolicyTitle'>Poliza</h2>",
+			    	"left":"<a  tag='a' lng='vehicles' onClick='backPolicy();'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Vehicles</a>",
+			    	"center":"<h2 lng='vehicle'>Vehicle</h2>",
 			    	"right":"<a  tag='a' id='save' onClick='savePolicy();'  class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>" 
 			    }
 			},
@@ -203,7 +203,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2 id='policies'>Pólizas</h2>",
+			    	"center":"<h2 lng='vehicles'>Vehicles</h2>",
 			    	"right":"<a onClick='validNewPolicy();' tag='a' id='save' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    },			    
 	        	"leftPanel":{
