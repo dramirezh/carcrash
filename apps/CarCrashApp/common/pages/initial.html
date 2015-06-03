@@ -1,19 +1,23 @@
-<div data-role="page" id="{id}" class="ui-page-header-fixed ui-page-footer-fixed">
-	<div role="main" class="ui-content">
-		<div class="ui-body ui-body-a ui-corner-all">
+<div data-role="page" id="{id}" class="ui-page-header-fixed ">
+	<div role="main" style="margin-top: 5%;">
+		<!-- ><div class="ui-body ui-body-a ui-corner-all">
 			<div id="map-canvas" style="width:100%;height: 250px;"></div>
+		</div>-->
+		<div class="circle" onclick='reportar();'>
+		    <div class="circle-content">!
+		    </div>
 		</div>
-		<div class="ui-click">
+		<!-- <div class="ui-click">
 			<div id="sliderInit" class="slider-init">
 				<!-- <div style="text-align:center; width:100%;">
 					<img src="images/c.jpg" width="90%;" height="auto"/>
 					<label>Carro1</label>
-				</div> -->
+				</div> --
 			</div>
-		</div>
-		<div id="noPol" style="text-align: center; margin-top: -30pt;">
+		</div> -->
+		<!-- <div id="noPol" style="text-align: center; margin-top: -30pt;">
 			<p id='pNoPol' lng='noPolicies'>No tienes p&oacute;lizas registradas: <a href='#policiesContent'>Registrar</a></p>
-		</div>
+		</div> -->
 		<!-- <div class="ui-field-contain" style="margin-top:0 margin-bottom: 0;">
 			<select name="selectAuto" id="selectAuto">
 				<option id="opSelectCar" value="0" selected="selected">Select your car</option>
@@ -23,21 +27,36 @@
 				<option value="4">Civic</option>
 			</select>
 		</div> -->
-		<div style="border-top: 1px solid gray;">
-		<label style="margin-top: 10px;" for="sldGravedad">Gravedad:</label>
-		<input type="range" name="sldGravedad" id="sldGravedad" min="1" max="10" value="5"> 
-		<fieldset data-role="controlgroup" id="fsTipoRep" name="fsTipoRep">
-			<legend lng="reportof" >Reporte de:</legend>
-			<input type="radio" name="rdTipo" id="rdSinister" value="on" checked="checked">
-			<label for="rdSinister" lng="sinister">Siniestro</label>
-			<input type="radio" name="rdTipo" id="rdTheft" value="off">
-			<label for="rdTheft" lng="theft">Robo</label>
-		</fieldset>
+		<div>
+		<!-- <label style="margin-top: 10px;" for="sldGravedad">Gravedad:</label>
+		<input type="range" name="sldGravedad" id="sldGravedad" min="1" max="10" value="5"> --> 
+		<div style="text-align: center;">
+			<fieldset data-role="controlgroup" data-type="horizontal" id="fsTipoRep" name="fsTipoRep">
+				<!-- <legend lng="reportof" >Reporte de:</legend> -->
+				<input type="radio" name="rdTipo" id="rdTheft" value="off">
+				<label for="rdTheft" lng="theft">Robo</label>
+				<input type="radio" name="rdTipo" id="rdSinister" value="on" checked="checked">
+				<label for="rdSinister" lng="sinister">Siniestro</label>
+			</fieldset>
 		</div>
-		<br/>
-		<div class="circle" onclick='reportar();'>
-		    <div class="circle-content">!
-		    </div>
+		</div>
+		
+		<div style="background-color:grey; margin-left: 0; margin-right: 0; float: left; height: 50%; width: 100%;">
+			<div style="float: left; width: 20%;margin-top: 4%; margin-left: 1%;">
+				<img src="images/general/mappin.png" width="100%" style="max-height: 120px; max-width: 50px;" />
+			</div>
+			<div style="float: right; width: 78%; margin-top: 4%; margin-left: 1%; text-shadow: none; color: white;">
+				Lat <span id="lblLat">-31.627</span> Lng <span id="lblLng">-60.711</span>
+				<br/>Address: <span id="lblAddressSin">Lopez Mateos #400</span>
+				<div>
+					<div style="float: left; width: 40%;">
+						<a href="#map" class="ui-btn ui-corner-all ui-btn-inline ui-icon-location ui-btn-icon-right">Map</a>
+					</div>
+					<div style="float: left; width: 40%; margin-left: 1%;">
+						<a href="#" onclick='getLocation();' class="ui-btn ui-corner-all ui-btn-inline ui-icon-refresh ui-btn-icon-right">Refresh</a>
+					</div>
+				</div>
+			</div>			
 		</div>
 	</div>
 </div>

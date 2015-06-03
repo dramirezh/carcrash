@@ -45,3 +45,27 @@ function updateAccount(perfil){
 		              perfil.email ]
 	});
 }
+
+var existsStatement = WL.Server.createSQLStatement("SELECT 1 as [exists] FROM Accounts WHERE Email = ?");
+var suscribeStatement = WL.Server.createSQLStatement("INSERT INTO Accounts (Email, Password) VALUES (?,?)");
+function suscribeAccount(account){
+	var exists = WL.Server.invokeSQLStatement({
+		preparedStatement : existsStatement,
+		parameters : [account.email]
+	});
+	//return exists;
+	if(exists.resultSet.length > 0){
+		return {"result":"1"};
+	}
+	else{
+		var ret = WL.Server.invokeSQLStatement({
+			preparedStatement : suscribeStatement,
+			parameters : [account.email, account.password]
+		});
+		if(ret.isSuccessful && ret.updateStatementResult.updateCount > 0){
+			return {"result":"0","email":account.email};
+		}else{
+			return {"result":"2","return":ret};
+		}
+	}
+}

@@ -70,7 +70,7 @@ function wlCommonInit(){
 function initializeData()
 {
 	//$('a').attr('data-transition','slide');	//general app transition
-	$('#map-canvas').css('height', ($(document).height() / 3) + 'px');
+	//$('#map-canvas').css('height', ($(document).height() / 3) + 'px');
 	$('#mapConsultSinister').css('height', ($(document).height() / 3) + 'px');
 	
 	initLanguage();
@@ -114,7 +114,7 @@ function initializeData()
 	
 	$('.slider-init').slick('slickNext');
 	
-	location.href="#signup";
+	location.href="#initial";
 }
 function setSlider(){
 	$('.slider-init').slick({
@@ -248,7 +248,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2 lng='report'>Reportar</h2>",
-			    	"right":"<a href='#' onclick='getLocation();' class='ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    	"right":""
 			    },
 			    "leftPanel":{
 			    	"id":"panelInitial",
@@ -296,6 +296,34 @@ function getPages()
 			    }
 			},
 			{"id":"signup", "url":"pages/account/signup.html"
+			},
+			{"id":"options", "url":"pages/options/options.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
+			    	"center":"<h2 lng='details'>Options</h2>",
+			    	"right":""
+			    },
+			    "leftPanel":{
+			    	"id":"panelTheftList",
+			    	"url":"pages/general/left_panel.html"
+			    }
+			},
+			{"id":"about", "url":"pages/options/about.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>options</a>",
+			    	"center":"<h2 lng='details'>About</h2>",
+			    	"right":""
+			    }			
+			},
+			{"id":"map", "url":"pages/sinisters/map.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>report</a>",
+			    	"center":"<h2 lng='details'>Location</h2>",
+			    	"right":""
+			    }			
 			}
 	        ];
 	

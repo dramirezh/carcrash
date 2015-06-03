@@ -9,7 +9,7 @@ function setMap(pLat, pLng, pDiv)
 {
 	var myLatlng = new google.maps.LatLng(pLat, pLng);
     var mapOptions = {
-      zoom: 18,
+      zoom: 16,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -22,6 +22,38 @@ function setMap(pLat, pLng, pDiv)
         map: map
     });
 }
+
+function codeLatLng(pLat, pLng, pDiv) {
+	  var geocoder = new google.maps.Geocoder();
+	  var mapOptions = {
+		      zoom: 16,
+		      center: myLatlng,
+		      mapTypeId: google.maps.MapTypeId.ROADMAP
+		    };
+	  var map = new google.maps.Map(document.getElementById(pDiv), mapOptions);
+	  
+	  var lat = parseFloat(pLat);
+	  var lng = parseFloat(pLng);
+	  var latlng = new google.maps.LatLng(lat, lng);
+	  geocoder.geocode({'latLng': latlng}, function(results, status) {
+	    if (status == google.maps.GeocoderStatus.OK) {
+	      if (results[1]) {
+	        //map.setZoom(11);
+	        marker = new google.maps.Marker({
+	            position: latlng,
+	            map: map
+	        });
+	        //infowindow.setContent(results[1].formatted_address);
+	        infowindow.open(map, marker);
+	        $('#lblAddressSin').val(results[1].formatted_address);
+	      } else {
+	        alert('No results found');
+	      }
+	    } else {
+	      alert('Geocoder failed due to: ' + status);
+	    }
+	  });
+	}
 
 //A button click will call this function
 function getLocation() {	
