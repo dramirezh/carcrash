@@ -128,10 +128,10 @@ function showDetails(pType, pReportId, pAutoId){
 		switch(pType){
 		case "sinister":
 			$("#divConsExtras").show();
-			//$("#hidConsLegalAsis").val(report[0].json.extras.legalAssistance ? "Si" : "No");
-			//$("#hidConsMedAsis").val(report[0].json.extras.medicalAssistance ? "Si" : "No");
-			//$("#hidConsComentarios").val(report[0].json.extras.comments);
-			$("#hidConsGravedad").val(report[0].json.extras.severity);
+			$("#hidConsLegalAsis").val(report[0].json.extras.legalAssistance ? "Yes" : "No");
+			$("#hidConsMedAsis").val(report[0].json.extras.medicalAssistance ? "Yes" : "No");
+			$("#hidConsCrane").val(report[0].json.extras.craneService ? "Yes" : "No");
+			//$("#hidConsGravedad").val(report[0].json.extras.severity);
 			break;
 		case "theft":
 			$("#divConsExtras").hide();

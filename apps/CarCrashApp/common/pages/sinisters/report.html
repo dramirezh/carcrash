@@ -1,0 +1,48 @@
+<div data-role="page" id="{id}" class="ui-page-header-fixed ">
+	<div role="main" class="ui-content"  style="margin: 0 15px 0 15px;">
+		<div style="margin-top:0 margin-bottom: 0;">
+			<select name="selectAuto" id="selectAuto">
+				<option id="opSelectCar" value="0" selected="selected">Select your car</option>
+			</select>
+		</div>
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<label id="lblflipAmbulancia">Do you require medical assistance?</label>
+			</div>
+			<div class="ui-block-b" style="text-align: center;">
+				<select name="flipAmbulancia" id="flipAmbulancia" data-role="slider">
+					<option id="opOff" value="off">No</option>
+					<option id="opOn" value="on">Yes</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<label id="lblflipLegal">Do you require legal assistance?</label>
+			</div>
+			<div class="ui-block-b" style="text-align: center;">
+				<select name="flipLegal" id="flipLegal" data-role="slider">
+					<option id="opflipLegalOff" value="off">No</option>
+					<option id="opflipLegalOn" value="on">Yes</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<label id="lblflipCrane">Do you require a crane?</label>
+			</div>
+			<div class="ui-block-b" style="text-align: center;">
+				<select name="flipCrane" id="flipCrane" data-role="slider">
+					<option id="opflipCraneOff" value="off">No</option>
+					<option id="opflipCraneOn" value="on">Yes</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="circle" style="margin-top: 10px; width: 40%; padding-bottom: 40%;" onclick='sendIncidenteInfo();'>
+	    	<div class="circle-content">!</div>
+		</div>
+	</div>
+</div>

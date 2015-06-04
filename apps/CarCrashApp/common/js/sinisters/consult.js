@@ -10,10 +10,10 @@ function loadSinisterData(){
 	$("#tdConsExp").text($("#hidConsExp").val());
 	$("#tdConsAseguradora").text($("#hidConsAseguradora").val());
 	
-	$("#tdConsGravedad").text($("#hidConsGravedad").val());
-	//$("#tdConsLegalAsis").text($("#hidConsLegalAsis").val());
-	//$("#tdConsMedAsis").text($("#hidConsMedAsis").val());
-	//$("#tdConsCom").text($("#hidConsComentarios").val());
+	//$("#tdConsGravedad").text($("#hidConsGravedad").val());
+	$("#tdConsLegalAsis").text($("#hidConsLegalAsis").val());
+	$("#tdConsMedAsis").text($("#hidConsMedAsis").val());
+	$("#tdConsCraneAsis").text($("#hidConsCrane").val());
 	
 	setMap(Number($("#hidConsLat").val()), Number($("#hidConsLng").val()), "mapConsultSinister");	
 }

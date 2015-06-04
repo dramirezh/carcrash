@@ -22,7 +22,7 @@ function enviarExtras()
 	//oCurrentSinister.data.extras.medicalAssistance = ambulancia == 'on' ? true : false;
 	//oCurrentSinister.data.extras.legalAssistance = legal == 'on' ? true : false;
 	//oCurrentSinister.data.extras.comments = observaciones;
-	oCurrentSinister.data.extras.severity = $("#sldGravedad").val();
+	//oCurrentSinister.data.extras.severity = $("#sldGravedad").val();
 	
 	$('img[ident="pics"]').each(function(idx,item){
 		var imgSrc = $(item).attr("src");

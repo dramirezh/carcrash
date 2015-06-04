@@ -111,8 +111,7 @@ function initializeData()
 			  $('#divSignUp').css('height','200%');
 		  }
 		});
-	
-	$('.slider-init').slick('slickNext');
+	//$('.slider-init').slick('slickNext');
 	
 	location.href="#initial";
 }
@@ -322,6 +321,14 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>report</a>",
 			    	"center":"<h2 lng='details'>Location</h2>",
+			    	"right":""
+			    }			
+			},
+			{"id":"report", "url":"pages/sinisters/report.html", 
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>report</a>",
+			    	"center":"<h2 id='titleReport' lng='details'>R.Type</h2>",
 			    	"right":""
 			    }			
 			}

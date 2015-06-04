@@ -4,13 +4,14 @@ function loadVehiclesList(){
 	oJStore.options = {};
 	oJStore.document = {};
 	oJStore.fnSuccess = function(result){
-		/*$("#selectAuto option[value!=0]").remove();
+		$("#selectAuto option[value!=0]").remove();
 		$(result).each(function(idx, item){
 			$("#selectAuto").append('<option value="' + item._id + '">' + item.json.Serie  + '</option>');
 		});
 		$('#selectAuto').value = "0";
-		$( "#selectAuto" ).selectmenu( "refresh", true );*/
-		if(result.length > 0){
+		$( "#selectAuto" ).selectmenu( "refresh", true );
+		
+		/*if(result.length > 0){
 			$('#noPol').css('display','none');
 			$('#sliderInit').css('display','block');
 			
@@ -25,7 +26,7 @@ function loadVehiclesList(){
 		}else{
 			$('#noPol').css('display','block');
 			$('#sliderInit').css('display','none');
-		}
+		}*/
 	};
 	oJStore.fnFail = function(error){
 		navigator.notification.alert(
@@ -39,9 +40,12 @@ function reportar()
 {
 	if($('#fsTipoRep :radio:checked').val() == "on"){
 		sPageNav = "#sinDetails";
+		$('#titleReport').text('R.Sinister');
 	}else{
 		sPageNav = "#theftsList";
+		$('#titleReport').text('R.Theft');
 	}
+	location.href = "#report";
 	/*navigator.notification.confirm(
 	// Shows a customizable confirmation dialog box.
 
@@ -50,7 +54,7 @@ function reportar()
 	// Callback to invoke with index of button pressed (1, 2 or 3)
 	function onConfirm(result) {
 		if(result == 1){*/
-			sendIncidenteInfo();
+			//sendIncidenteInfo();
 		/*}
 	},
 	"Reportar?");*/
@@ -59,15 +63,18 @@ function sendIncidenteInfo()
 {	
 	if(currentLat != 0 && currentLng != 0)
 	{
-		if($('#sliderInit > div').length > 0)
+		if($('#selectAuto').val() != 0)
 		{
-			var auto = $('.slider-init').slick('getSlick').$slides[$('.slider-init').slick('slickCurrentSlide')];
+			var auto = $('#selectAuto').val();
 			
-			oCurrentSinister.data.idPolicy = parseInt($(auto).children('label').attr("number"));
+			oCurrentSinister.data.idPolicy = parseInt(auto);
 			oCurrentSinister.data.status = 0;
-			oCurrentSinister.data.extras.severity = parseInt($('#sldGravedad').val());
 			oCurrentSinister.data.location.lat = currentLat;
 			oCurrentSinister.data.location.lng = currentLng;
+			oCurrentSinister.data.extras.medicalAssistance = $('#flipAmbulancia').val() == 'off' ? false : true;
+			oCurrentSinister.data.extras.legalAssistance = $('#flipLegal').val() == 'off' ? false : true;
+			oCurrentSinister.data.extras.craneService = $('#flipCrane').val() == 'off' ? false : true;
+			
 			if(sPageNav == "#sinDetails"){
 				oCurrentSinister.data.type = "sinister";
 			}else{

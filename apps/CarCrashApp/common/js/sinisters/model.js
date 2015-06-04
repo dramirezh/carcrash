@@ -40,10 +40,11 @@ function clsLocation(){
 
 function clsReportExtras(){
 		this.pictures = [];
-		this.severity = 0;
-		/*this.medicalAssistance = false;
+		//this.severity = 0;
+		this.medicalAssistance = false;
 		this.legalAssistance = false;
-		this.comments = "";*/
+		this.craneService = false;
+		//this.comments = "";
 }
 
 $(document).on("pageshow", "#sinisterList", function(event){loadSinisterList();});

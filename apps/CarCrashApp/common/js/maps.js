@@ -25,6 +25,7 @@ function setMap(pLat, pLng, pDiv)
 
 function codeLatLng(pLat, pLng, pDiv) {
 	  var geocoder = new google.maps.Geocoder();
+	  var myLatlng = new google.maps.LatLng(pLat, pLng);
 	  var mapOptions = {
 		      zoom: 16,
 		      center: myLatlng,
@@ -44,8 +45,10 @@ function codeLatLng(pLat, pLng, pDiv) {
 	            map: map
 	        });
 	        //infowindow.setContent(results[1].formatted_address);
-	        infowindow.open(map, marker);
-	        $('#lblAddressSin').val(results[1].formatted_address);
+	        //infowindow.open(map, marker);
+	        $('#lblAddressSin').text(results[1].formatted_address);
+	        $('#lblLat').text(lat);
+	        $('#lblLng').text(lng);
 	      } else {
 	        alert('No results found');
 	      }
@@ -72,6 +75,8 @@ function onSuccess(position) {
     currentLat = lat;
     currentLng = lng;
     setMap(lat,lng,'map-canvas');
+    codeLatLng(lat, lng, 'map-canvas');
+    
 }
 // onError Callback receives a PositionError object
 //
