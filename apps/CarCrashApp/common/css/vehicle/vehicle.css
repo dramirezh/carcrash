@@ -1,0 +1,20 @@
+.ux-checkbox{
+	right: 9px;
+	width: 29px !important;
+	height: 29px !important;
+	position: initial;
+	top: 50%;
+	margin-top: -9px;
+  left: initial !important;
+}
+.ux-checkbox input, .ui-radio input {
+  left: inherit !important;
+   
+}
+
+.ux-checkbox, .ui-radio .cus {
+   margin: -4.2em 0px !important;
+  position: relative;
+  float: right;
+}
+

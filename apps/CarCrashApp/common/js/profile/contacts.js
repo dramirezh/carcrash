@@ -281,12 +281,12 @@ $(document).on('pagebeforeshow','#showContacts',function(e,data){
 
 function initContactToList(name,cellphone, id){
 	
-	$('#listContact').append('<li style="margin-bottom:2px;" ><a id="acontactsList"  href="tel:'+cellphone+'" onclick="initSelectedContact(this); initContactDetails();" class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
+	$('#listContact').append('<li ><a id="acontactsList"  href="tel:'+cellphone+'" onclick="initSelectedContact(this); initContactDetails();" class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
 		    '<h2>'+name.trim()+'</h2>'+		    
 		    ' <input type="hidden" value="'+id+'" />'+
 		   ' </a>'+
 		   ' </li>');	
-	
+	$('#listContact').listview('refresh').trigger('create');
 }
 var listitem;
 function initSelectedContact(v){
@@ -514,7 +514,7 @@ function initPolicyVehicleChk(){
 			var index;
 			$('#chkbVehicle').empty();
 			for (index = 0; index < arrayResults.length; ++index) {				   								
-				$('#chkbVehicle').append('<div class="ui-checkbox"> <input style="width:25px !important; height:24px !important;"  type="checkbox" name="ichk'+arrayResults[index].json.identifier+'" id="'+arrayResults[index].json.identifier+'-chk" >'+
+				$('#chkbVehicle').append('<div class="ui-checkbox"> <input style="width:29px !important; height:29px !important;"  type="checkbox" name="ichk'+arrayResults[index].json.identifier+'" id="'+arrayResults[index].json.identifier+'-chk" >'+
         '<label class=" ui-btn-icon-left" style="display:initial;" for="chk-'+arrayResults[index].json.identifier+'">'+arrayResults[index].json.Serie+'</label> </div>');
 			}
 			if(dataDetails!=null&&dataDetails.length>0&&contactUpdate){ 								
