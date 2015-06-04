@@ -8,7 +8,8 @@
 	var $last=null;
 	var dataToDelete=null;
 	var dataToUpdate=null;
-	
+	var defaultVehicleID="";
+	var prevId="";
 	function vehiclesPolicies()
 	{		
 		this.PolicyNo= "";	
@@ -396,7 +397,7 @@
 							PolicyContactFirstName:polContactNameGrl.val().trim(),
 							PolicyContactLastName:'', PolicyContactSecondLastName:'',
 							PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(),InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim(), PolicyContactEmail:polContactEmail.val().trim()
-				        	,IDVehicleType:vehicleType.val().trim()
+				        	,IDVehicleType:vehicleType.val().trim(), defaultVehicle:defaultVehicleID
 					};
 				}else{
 					policySaved=false;
@@ -408,7 +409,7 @@
 						PolicyContactFirstName:polContactNameGrl.val().trim(),
 						PolicyContactLastName:'', PolicyContactSecondLastName:'',
 						PolicyContactCellPhone:polContactCellPhoneGrl.val().trim(), InsuranceName:aseg.text().trim(), MarkName:markSelected.text().trim(),PolicyContactEmail:polContactEmail.val().trim()
-			        	,IDVehicleType:vehicleType.val().trim()
+			        	,IDVehicleType:vehicleType.val().trim(), defaultVehicle:"false"
 					};
 
 				}
@@ -798,12 +799,17 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						
 						initPolicyToList(arrayResults[index].json.Serie,arrayResults[index].json.InsuranceName,
 								arrayResults[index].json.PolicyDate, arrayResults[index]._id, arrayResults[index].json.carPicture);
+						if(arrayResults[index].json.defaultVehicle=="true"){
+							$('input[id="'+arrayResults[index]._id+'"]').prop("checked", true);
+						}
 					}
 					$('a[id="aPoliciesList"]').on("taphold",function(){				
 						initSelectedPolicy(this);	 popUpListPolicy();
 						$( "#popupShosPolicyDetails" ).popup( "open" );
 						//initDeletePolicy();
-						});			
+						});	
+					
+					
 				} 
 			};
 			jsonStore.fnFail=function initFail(result){
@@ -987,15 +993,235 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			};
 			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
 		}
-		function setUnChecked(FormName,id){	
-			//if($('input[id="'+id+'"]').is(':checked')){
-		    $.each($("#"+FormName+" input[type=checkbox]"), function(){
-		       if( $(this).is(':checked')){       
-		    	   $(this).prop("checked", false);	 
-		       }		       
+		function setUnChecked(FormName,id2){	
+			
+			/*//if($('input[id="'+id+'"]').is(':checked')){
+			$('input[id="'+id+'"]').prop("checked", true);
+			$.each($("#"+FormName+" input[type=checkbox]"), function(){
+		       if($(this).attr("id")==id && $(this).is(':checked')){       
+		    	   $(this).prop("checked", false);	
+		    	   
+		       }	
+		       defaultVehicleID="false";
+	    	   cv($(this).attr("id"),"false");
 		    });
-		    $('input[id="'+id+'"]').prop("checked", true);
 		    
 		    
+		    defaultVehicleID="true";
+		    cv(id,"true");
 			//}
+		    */
+			
+			var tmpID="";
+			$.each($("#"+FormName+" input[type=checkbox]"), function(){
+				var thi=$(this);
+			       if( thi.is(':checked')){       
+			    	   thi.prop("checked", false);	
+			    	   if(id2!=thi.attr("id")){
+			    	   tmpID =thi.attr("id"); 
+			    	   }
+			       }	
+			      
+			    });
+				$('input[id='+id2+']').prop("checked", true);
+				
+				var jsonStore2 = new clsJsonStoreHelper();
+				jsonStore2.collectionName=policyCollectionName;
+				jsonStore2.document={};				
+				jsonStore2.id=id2;
+				
+				jsonStore2.fnSuccess=function(success){
+					
+					
+						success=success[0].json;
+						
+						
+							success["defaultVehicle"]="true";	
+						
+						
+						var jsonStore = new clsJsonStoreHelper();
+						jsonStore.collectionName=policyCollectionName;
+						jsonStore.document=success;				
+						jsonStore.id=parseInt(id2);
+						jsonStore.fnSuccess=function(success){				
+												
+						
+						};
+						jsonStore.fnFail=function(errorObject){
+							
+						};						
+						jsonStore.save();
+				
+					
+					
+					
+							
+				
+					
+				};
+				jsonStore2.fnFail=function(errorObject){
+					
+				};						
+				jsonStore2.get();
+				
+				
+				var jsonStore3 = new clsJsonStoreHelper();
+				jsonStore3.collectionName=policyCollectionName;
+				jsonStore3.document={};				
+				jsonStore3.id=tmpID;
+				
+				jsonStore3.fnSuccess=function(success){
+					
+					
+						success=success[0].json;
+						
+						
+							success["defaultVehicle"]="false";	
+						
+						
+						var jsonStore = new clsJsonStoreHelper();
+						jsonStore.collectionName=policyCollectionName;
+						jsonStore.document=success;				
+						jsonStore.id=parseInt(tmpID);
+						jsonStore.fnSuccess=function(success){				
+												
+						
+						};
+						jsonStore.fnFail=function(errorObject){
+							
+						};						
+						jsonStore.save();
+				
+					
+					
+					
+							
+				
+					
+				};
+				jsonStore3.fnFail=function(errorObject){
+					
+				};						
+				jsonStore3.get();
+				
+				
+				/*
+				setTimeout(function (){
+					var jsonStore = new clsJsonStoreHelper();
+					jsonStore.collectionName=policyCollectionName;
+					jsonStore.document={};				
+					jsonStore.id=0;
+					
+					jsonStore.fnSuccess=function(success){
+						var f;
+						for (f=0;f<success.length;f++){
+							success2=success[f].json;
+							
+							
+								success2["defaultVehicle"]="false";	
+							
+							
+							var jsonStore = new clsJsonStoreHelper();
+							jsonStore.collectionName=policyCollectionName;
+							jsonStore.document=success2;				
+							jsonStore.id=parseInt(success[f]._id);
+							jsonStore.fnSuccess=function(success){				
+													
+							
+							};
+							jsonStore.fnFail=function(errorObject){
+								
+							};						
+							jsonStore.save();
+						}
+						
+						
+						
+								
+					
+						
+					};
+					jsonStore.fnFail=function(errorObject){
+						
+					};						
+					jsonStore.get();
+				},100);
+				
+*/
+				/*var jsonStore = new clsJsonStoreHelper();
+				jsonStore.collectionName=policyCollectionName;
+				jsonStore.document={};				
+				jsonStore.id=0;
+				
+				jsonStore.fnSuccess=function(success){
+					var f;
+					for (f=0;f<success.length;f++){
+						success2=success[f].json;
+						if(success[f].json.defaultVehicle=="true"){
+							success2["defaultVehicle"]="false";	
+						}else if(success[f]._id==id){ 
+						success2["defaultVehicle"]="true";
+						}
+						var jsonStore = new clsJsonStoreHelper();
+						jsonStore.collectionName=policyCollectionName;
+						jsonStore.document=success2;				
+						jsonStore.id=parseInt(success[f]._id);
+						jsonStore.fnSuccess=function(success){				
+												
+						
+						};
+						jsonStore.fnFail=function(errorObject){
+							
+						};						
+						jsonStore.save();
+					}
+					
+					
+					
+							
+				
+					
+				};
+				jsonStore.fnFail=function(errorObject){
+					
+				};						
+				jsonStore.get();	
+			*/	
 			}
+		
+		
+		function cv(){
+			
+			
+			var jsonStore = new clsJsonStoreHelper();
+			jsonStore.collectionName=policyCollectionName;
+			jsonStore.document={};				
+			jsonStore.id=0;
+			jsonStore.fnSuccess=function(success){	
+				if($('input[id="'+id+'"]').is(':checked')){
+					
+				}
+				
+				success=success[0].json;
+				success["defaultVehicle"]=defaultVehicle;
+				var jsonStore = new clsJsonStoreHelper();
+				jsonStore.collectionName=policyCollectionName;
+				jsonStore.document=success;				
+				jsonStore.id=parseInt(id);
+				jsonStore.fnSuccess=function(success){				
+										
+				
+				};
+				jsonStore.fnFail=function(errorObject){
+					
+				};						
+				jsonStore.save();		
+			
+				
+			};
+			jsonStore.fnFail=function(errorObject){
+				
+			};						
+			jsonStore.get();			
+					
+		}

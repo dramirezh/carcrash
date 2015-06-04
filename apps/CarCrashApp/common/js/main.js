@@ -268,7 +268,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2 id='sinisters'>Siniestros</h2>",
-			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    	"right":""
 			    },
 			    "leftPanel":{
 			    	"id":"panelSinList",
@@ -280,7 +280,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
 			    	"center":"<h2 id='thefts'>Robos</h2>",
-			    	"right":"<a href='#initial' onclick='' class='ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left ui-btn-icon-notext'></a>"
+			    	"right":""
 			    },
 			    "leftPanel":{
 			    	"id":"panelTheftList",
