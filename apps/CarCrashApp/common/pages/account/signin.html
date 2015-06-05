@@ -1,18 +1,16 @@
 <div data-role="page" id="{id}" style="text-shadow: none; color: white;">
 	<div class="background-content" style="position: absolute; width: 100%; height: 100%; text-align: center; vertical-align: middle; display: table-cell;">
 		<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>
-		<div style="width: 50%; display: inline-block; margin-top: 0%;">
-			<h2>Sign Up</h2>
+		<div style="width: 50%; display: inline-block; margin-top: 10%;">
+			<h2>Sign In</h2>
 		</div>
 		<div style="width: 70%; display: inline-block;">
-			<input id="txtNameSign" type="text" placeholder="Name" />
-			<input id="txtLastNameSign" type="text" placeholder="Last Name" />
-			<input id="txtEmailSign" type="email" placeholder="E-mail" />
-			<input id="txtPasswordSign" type="password" placeholder="Password" />
-			<a href="#" class="ui-btn ui-corner-all" style="background-color: #3C8AF7; color: black; text-shadow: none;" >Sign Up</a>
+			<input id="txtEmailLogin" type="email" placeholder="E-mail" />
+			<input id="txtPasswordLogin" type="password" placeholder="Password" />
+			<a href="#" onclick="SignIn();" class="ui-btn ui-corner-all" style="background-color: #6DA64E; color: black; text-shadow: none;" >SignIn</a>
 		</div>
-
-		<div class="ui-grid-b" style="text-align: center; margin: 0 20% 0 20%;">
+		<p>-or-</p>
+		<div class="ui-grid-b" style="text-align: center; margin: 0 10% 0 10%;">
 			<div class="ui-block-a" style="display: inline-block;">
 				<img src="images/general/social/facebook.png" width="100%" style="max-width: 100px;"/>
 			</div>
@@ -26,7 +24,7 @@
 				<br/>
 			</div>
 		</div>
-		<label style="font-size: x-small;">By creating an account I accept the <a href="#" style="color: white;">terms and privacy</a></label>
+		<a href="#" style="color: white;">I forgot my password</a>
 		<div style="position: absolute; bottom: 0px; width: 100%; background-color: black;">
 			<a href="#features_a" style="color: white;"> Application features > </a>
 		</div>

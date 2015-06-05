@@ -76,7 +76,7 @@ function initializeData()
 	initLanguage();
 	setTimeout('getLocation();',500);
 	
-	setSlider();
+	//setSlider();
 	
 	$("#ulThefts").on("taphold",function(event){
 		var item = $(event.target).closest("li").attr("item");
@@ -112,8 +112,8 @@ function initializeData()
 		  }
 		});
 	//$('.slider-init').slick('slickNext');
-	
-	location.href="#initial";
+	checkUser();
+	//location.href="#login";
 }
 function setSlider(){
 	$('.slider-init').slick({
@@ -295,6 +295,34 @@ function getPages()
 			    }
 			},
 			{"id":"signup", "url":"pages/account/signup.html"
+			},
+			{"id":"login", "url":"pages/account/login.html"
+			},
+			{"id":"signin", "url":"pages/account/signin.html"
+			},
+			{"id":"features_a", "url":"pages/account/features_a.html",
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
+			    	"center":"<h2> </h2>",
+			    	"right":""
+			    }
+			},
+			{"id":"features_b", "url":"pages/account/features_b.html",
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
+			    	"center":"<h2> </h2>",
+			    	"right":""
+			    }
+			},
+			{"id":"features_c", "url":"pages/account/features_c.html",
+				"header":{
+			    	"url":"pages/general/header.html",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
+			    	"center":"<h2> </h2>",
+			    	"right":""
+			    }
 			},
 			{"id":"options", "url":"pages/options/options.html", 
 				"header":{
