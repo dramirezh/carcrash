@@ -236,3 +236,8 @@ function getServerData(){
 	oJS.getFromServer("vehiclesPolicies", "getVehiclesPolicies");
 	
 }
+
+function logOut(){
+	WL.JSONStore.destroy();
+	location.href = "#login";
+}
