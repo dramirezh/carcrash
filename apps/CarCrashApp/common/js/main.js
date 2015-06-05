@@ -289,8 +289,8 @@ function getPages()
 			{"id":"consultSinister", "url":"pages/sinisters/consultSinister.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>Listado</a>",
-			    	"center":"<h2 lng='details'>Detalles</h2>",
+			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>List</a>",
+			    	"center":"<h2 lng='details'>Details</h2>",
 			    	"right":""
 			    }
 			},
