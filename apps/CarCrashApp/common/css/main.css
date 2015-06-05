@@ -34,8 +34,8 @@ input:required:invalid, input:focus:invalid{
 }
 
 .circle{
-	background: transparent;
-	border: 2px solid #A11400;
+	background: #A11400;/*transparent*/
+	border: 16px solid lightgray; /*#A11400*/
     border-radius: 50%;
     padding-bottom: 40%;
     width:40%;
@@ -43,7 +43,7 @@ input:required:invalid, input:focus:invalid{
     margin: 0 auto;
 }
 .circle-content{
-	color: #A11400;
+	color: white;/*#A11400*/
 	float: left;
 	line-height: 1;
 	margin-top: -0.5em;
@@ -51,6 +51,7 @@ input:required:invalid, input:focus:invalid{
 	text-align: center;
 	width: 100%;
 	font-size: 12em;
+	 
 }
 .photoContainer{
 	width:100%;
