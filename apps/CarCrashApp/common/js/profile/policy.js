@@ -8,7 +8,7 @@
 	var $last=null;
 	var dataToDelete=null;
 	var dataToUpdate=null;
-	var defaultVehicleID="";
+	var defaultVehicleID="false";
 	var prevId="";
 	function vehiclesPolicies()
 	{		
@@ -612,7 +612,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						 policyDate=	 $("#txtPolicyDate");
 						 policyDate.val(data[0].json.PolicyDate);									 						 					  
 						 $( "select" ).selectmenu();									
-						 $('#selectVehicleCat').prop('selectedIndex', parseInt(dataToUpdate[0].json.IDVehicleType));		
+						 $('#selectVehicleCat').prop('selectedIndex', parseInt(data[0].json.IDVehicleType));		
 							$( "select" ).selectmenu( "refresh", true );
 						  aseg=  $("#selectInsurance option:selected");	
 						  markSelected= $("#selectMark option:selected");	
