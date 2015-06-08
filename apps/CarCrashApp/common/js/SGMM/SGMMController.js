@@ -6,7 +6,7 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 var Sgmm= new SGMM();
 		
 		function setSGMMDataTransaction(){	
-			Sgmm.instituion=$("#txtInstitution").val().trim();																				  
+			Sgmm.institution=$("#txtInstitution").val().trim();																				  
 			Sgmm.certificate=$("#txtCertificate").val().trim();
 			Sgmm.fullname=$("#txtSGMMName").val().trim();						
 				
@@ -17,7 +17,7 @@ var Sgmm= new SGMM();
 				var jsonStore = new clsJsonStoreHelper();
 				jsonStore.collectionName="SGMM";
 				jsonStore.document=
-					 {Institution: Sgmm.instituion, Certificate: Sgmm.certificate, 
+					 {Institution: Sgmm.institution, Certificate: Sgmm.certificate, 
 						 FullName: Sgmm.fullname
 			        	};
 				jsonStore.id=0;
@@ -28,7 +28,7 @@ var Sgmm= new SGMM();
 					jsonStore.document=
 							{
 							};
-					jsonStore.id=0;
+					jsonStore.id=succes;
 					jsonStore.fnSuccess=function (arrayResults) {
 						 
 						if(arrayResults.length>0){	
@@ -77,7 +77,7 @@ var Sgmm= new SGMM();
 		
 		function saveSGMMData(SGMMData)
 		{	
-			var restHelper = new clsRestHelper('medicalData','saveProcedure',SGMMData, saveSGMMDataSuccess, saveSGMMDataFailure);
+			var restHelper = new clsRestHelper('sgmm','SGMMSaveSP',SGMMData, saveSGMMDataSuccess, saveSGMMDataFailure);
 			restHelper.callRestAdapter();
 		}
 		function saveSGMMDataSuccess(result){

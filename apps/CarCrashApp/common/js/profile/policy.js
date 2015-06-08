@@ -993,24 +993,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			};
 			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
 		}
-		function setUnChecked(FormName,id2){	
-			
-			/*//if($('input[id="'+id+'"]').is(':checked')){
-			$('input[id="'+id+'"]').prop("checked", true);
-			$.each($("#"+FormName+" input[type=checkbox]"), function(){
-		       if($(this).attr("id")==id && $(this).is(':checked')){       
-		    	   $(this).prop("checked", false);	
-		    	   
-		       }	
-		       defaultVehicleID="false";
-	    	   cv($(this).attr("id"),"false");
-		    });
-		    
-		    
-		    defaultVehicleID="true";
-		    cv(id,"true");
-			//}
-		    */
+		function setUnChecked(FormName,id2){				
 			
 			var tmpID="";
 			$.each($("#"+FormName+" input[type=checkbox]"), function(){
@@ -1051,13 +1034,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 							
 						};						
 						jsonStore.save();
-				
-					
-					
-					
-							
-				
-					
+																						
 				};
 				jsonStore2.fnFail=function(errorObject){
 					
@@ -1090,138 +1067,13 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						jsonStore.fnFail=function(errorObject){
 							
 						};						
-						jsonStore.save();
-				
-					
-					
-					
-							
-				
+						jsonStore.save();								
 					
 				};
 				jsonStore3.fnFail=function(errorObject){
 					
 				};						
-				jsonStore3.get();
+				jsonStore3.get();								
 				
-				
-				/*
-				setTimeout(function (){
-					var jsonStore = new clsJsonStoreHelper();
-					jsonStore.collectionName=policyCollectionName;
-					jsonStore.document={};				
-					jsonStore.id=0;
-					
-					jsonStore.fnSuccess=function(success){
-						var f;
-						for (f=0;f<success.length;f++){
-							success2=success[f].json;
-							
-							
-								success2["defaultVehicle"]="false";	
-							
-							
-							var jsonStore = new clsJsonStoreHelper();
-							jsonStore.collectionName=policyCollectionName;
-							jsonStore.document=success2;				
-							jsonStore.id=parseInt(success[f]._id);
-							jsonStore.fnSuccess=function(success){				
-													
-							
-							};
-							jsonStore.fnFail=function(errorObject){
-								
-							};						
-							jsonStore.save();
-						}
-						
-						
-						
-								
-					
-						
-					};
-					jsonStore.fnFail=function(errorObject){
-						
-					};						
-					jsonStore.get();
-				},100);
-				
-*/
-				/*var jsonStore = new clsJsonStoreHelper();
-				jsonStore.collectionName=policyCollectionName;
-				jsonStore.document={};				
-				jsonStore.id=0;
-				
-				jsonStore.fnSuccess=function(success){
-					var f;
-					for (f=0;f<success.length;f++){
-						success2=success[f].json;
-						if(success[f].json.defaultVehicle=="true"){
-							success2["defaultVehicle"]="false";	
-						}else if(success[f]._id==id){ 
-						success2["defaultVehicle"]="true";
-						}
-						var jsonStore = new clsJsonStoreHelper();
-						jsonStore.collectionName=policyCollectionName;
-						jsonStore.document=success2;				
-						jsonStore.id=parseInt(success[f]._id);
-						jsonStore.fnSuccess=function(success){				
-												
-						
-						};
-						jsonStore.fnFail=function(errorObject){
-							
-						};						
-						jsonStore.save();
-					}
-					
-					
-					
-							
-				
-					
-				};
-				jsonStore.fnFail=function(errorObject){
-					
-				};						
-				jsonStore.get();	
-			*/	
 			}
 		
-		
-		function cv(){
-			
-			
-			var jsonStore = new clsJsonStoreHelper();
-			jsonStore.collectionName=policyCollectionName;
-			jsonStore.document={};				
-			jsonStore.id=0;
-			jsonStore.fnSuccess=function(success){	
-				if($('input[id="'+id+'"]').is(':checked')){
-					
-				}
-				
-				success=success[0].json;
-				success["defaultVehicle"]=defaultVehicle;
-				var jsonStore = new clsJsonStoreHelper();
-				jsonStore.collectionName=policyCollectionName;
-				jsonStore.document=success;				
-				jsonStore.id=parseInt(id);
-				jsonStore.fnSuccess=function(success){				
-										
-				
-				};
-				jsonStore.fnFail=function(errorObject){
-					
-				};						
-				jsonStore.save();		
-			
-				
-			};
-			jsonStore.fnFail=function(errorObject){
-				
-			};						
-			jsonStore.get();			
-					
-		}
