@@ -9,7 +9,7 @@ function setMap(pLat, pLng, pDiv)
 {
 	var myLatlng = new google.maps.LatLng(pLat, pLng);
     var mapOptions = {
-      zoom: 16,
+      zoom: 14,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -27,7 +27,7 @@ function codeLatLng(pLat, pLng, pDiv) {
 	  var geocoder = new google.maps.Geocoder();
 	  var myLatlng = new google.maps.LatLng(pLat, pLng);
 	  var mapOptions = {
-		      zoom: 16,
+		      zoom: 14,
 		      center: myLatlng,
 		      mapTypeId: google.maps.MapTypeId.ROADMAP
 		    };
@@ -74,9 +74,8 @@ function onSuccess(position) {
     lng = position.coords.longitude;
     currentLat = lat;
     currentLng = lng;
-    setMap(lat,lng,'map-canvas');
     codeLatLng(lat, lng, 'map-canvas');
-    
+    setMap(lat,lng,'map-canvas');
 }
 // onError Callback receives a PositionError object
 //

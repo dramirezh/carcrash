@@ -70,7 +70,7 @@ function wlCommonInit(){
 function initializeData()
 {
 	//$('a').attr('data-transition','slide');	//general app transition
-	//$('#map-canvas').css('height', ($(document).height() / 3) + 'px');
+	$('#map-canvas').css('height', ($(document).height()) + 'px');
 	$('#mapConsultSinister').css('height', ($(document).height() / 3) + 'px');
 	
 	initLanguage();

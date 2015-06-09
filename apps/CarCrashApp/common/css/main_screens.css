@@ -1,0 +1,25 @@
+@media screen and (max-width: 700px) {
+   .circle-content { 
+    font-size:8em;
+   }
+   .imgPic{
+	width: 32%;
+}
+@media screen and (max-width: 500px) {
+   .circle-content { 
+    font-size:6em;
+   }
+   .circle{
+		width:80%;
+		padding-bottom:80%;
+	}
+	.imgPic{
+	width: 49%;
+}
+}
+@media screen and (min-width: 900px){
+	.circle{
+		width:80%;
+		padding-bottom:80%;
+	}
+}
