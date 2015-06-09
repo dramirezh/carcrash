@@ -47,7 +47,7 @@ function updateAccount(perfil){
 }
 
 var existsStatement = WL.Server.createSQLStatement("SELECT 1 as [exists] FROM Accounts WHERE Email = ?");
-var suscribeStatement = WL.Server.createSQLStatement("INSERT INTO Accounts (Email, Password) VALUES (?,?)");
+var suscribeStatement = WL.Server.createSQLStatement("INSERT INTO Accounts (Email, Password, FirstName, LastName) VALUES (?,?,?,?)");
 function suscribeAccount(account){
 	var exists = WL.Server.invokeSQLStatement({
 		preparedStatement : existsStatement,
@@ -60,7 +60,7 @@ function suscribeAccount(account){
 	else{
 		var ret = WL.Server.invokeSQLStatement({
 			preparedStatement : suscribeStatement,
-			parameters : [account.email, account.password]
+			parameters : [account.email, account.password, account.firstName, account.lastName]
 		});
 		if(ret.isSuccessful && ret.updateStatementResult.updateCount > 0){
 			return {"result":"0","email":account.email};
