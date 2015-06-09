@@ -14,6 +14,44 @@ function account()
 	//functions
 	this.save = saveAccount;
 	this.access = accessAccount;
+	
+	this.suscribe = function(){
+		//verificar mail existente
+		var obj = new clsRestHelper("account", "suscribeAccount", 
+				this,
+				this.suscribeSuccess,
+				this.suscribeFailure);
+		obj.callRestAdapter();
+	};
+	
+	this.suscribeSuccess = function(result){
+		//si no existe
+		if(result.invocationResult.result == 0){
+			//Guardar email en todos los registros guardados y subirlo
+			globalMail = result.invocationResult.email;
+			accessAccount(globalMail, $("#txtPasswordSign").val());
+			//redireccionar a initial
+			location.href="#initial";
+		}else{//si existe
+			//indicar que ya esta en uso
+			navigator.notification.alert(
+			"Email is already in use",
+			function onSuccess() {
+				$("#txtPasswordSign").val("");
+				$('#txtEmailSign').val("").focus();
+			},
+			"Try Again");
+		}
+	};
+	
+	this.suscribeFailure = function(result){
+		navigator.notification.alert(
+				"Bad connection",
+				function onSuccess() {
+					
+				},
+				"Try Again");
+	};
 }
 
 function saveAccount(pAccount)
@@ -145,7 +183,7 @@ function signUp()
 			oAccount.email = $("#txtEmailSign").val();
 			oAccount.password = $("#txtPasswordSign").val();
 			
-			oAccount.save(oAccount);		
+			oAccount.suscribe();		
 		}else{
 			navigator.notification.alert('All fields are required',
 					function onSuccess() {

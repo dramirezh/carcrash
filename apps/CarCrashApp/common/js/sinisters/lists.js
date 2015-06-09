@@ -1,10 +1,10 @@
 function loadSinisterList(){
 	var oJStore = new clsJsonStoreHelper();
 	oJStore.collectionName = "reports";
-	oJStore.fnSuccess = function(){
+	oJStore.fnSuccess = function(ret){
 		showLocalReports();
 	};
-	oJStore.fnFail = function(){
+	oJStore.fnFail = function(error){
 		showLocalReports();
 	};
 	oJStore.getFromServer("sinisters", "getSinisters");

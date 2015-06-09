@@ -111,7 +111,43 @@ function initializeData()
 			  $('#divSignUp').css('height','200%');
 		  }
 		});
-	//$('.slider-init').slick('slickNext');
+	
+	$('#login').on("swipeleft", function(event){
+		$.mobile.changePage( "#features_a", { transition: "slide", changeHash: false });
+	});
+	
+	$('#features_a').on("swipeleft", function(event){
+		$.mobile.changePage( "#features_b", { transition: "slide", changeHash: false });
+	});
+	$('#features_a').on("swiperight", function(event){
+		$.mobile.changePage( "#login", { transition: "slide", changeHash: false, reverse:true });
+	});
+	
+	$('#features_b').on("swipeleft", function(event){
+		$.mobile.changePage( "#features_c", { transition: "slide", changeHash: false });
+	});
+	$('#features_b').on("swiperight", function(event){
+		$.mobile.changePage( "#features_a", { transition: "slide", changeHash: false, reverse:true });
+	});
+	
+	$('#features_c').on("swiperight", function(event){
+		$.mobile.changePage( "#features_b", { transition: "slide", changeHash: false, reverse:true });
+	});
+	
+	$('#sinisterList').on('swipeleft', function(event){
+		$.mobile.changePage('#theftsList', { transition: "slide", changeHash:false });
+	});
+	$('#theftsList').on('swiperight', function(event){
+		$.mobile.changePage('#sinisterList', { transition: "slide", changeHash:false, reverse:true });
+	});
+	
+	$('#showContacts').on('swipeleft', function(event){
+		$.mobile.changePage('#showInsurance', { transition: "slide", changeHash:false });
+	});
+	$('#showInsurance').on('swiperight', function(event){
+		$.mobile.changePage('#showContacts', { transition: "slide", changeHash:false, reverse:true });
+	});
+	
 	checkUser();
 	//location.href="#login";
 }
@@ -300,29 +336,11 @@ function getPages()
 			},
 			{"id":"signin", "url":"pages/account/signin.html"
 			},
-			{"id":"features_a", "url":"pages/account/features_a.html",
-				"header":{
-			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
-			    	"center":"<h2> </h2>",
-			    	"right":""
-			    }
+			{"id":"features_a", "url":"pages/account/features_a.html"
 			},
-			{"id":"features_b", "url":"pages/account/features_b.html",
-				"header":{
-			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
-			    	"center":"<h2> </h2>",
-			    	"right":""
-			    }
+			{"id":"features_b", "url":"pages/account/features_b.html"
 			},
-			{"id":"features_c", "url":"pages/account/features_c.html",
-				"header":{
-			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-notext ui-icon-arrow-l'>back</a>",
-			    	"center":"<h2> </h2>",
-			    	"right":""
-			    }
+			{"id":"features_c", "url":"pages/account/features_c.html"
 			},
 			{"id":"options", "url":"pages/options/options.html", 
 				"header":{
