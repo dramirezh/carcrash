@@ -281,7 +281,7 @@ $(document).on('pagebeforeshow','#showContacts',function(e,data){
 
 function initContactToList(name,cellphone, id){
 	
-	$('#listContact').append('<li ><a id="acontactsList"  href="tel:'+cellphone+'" onclick="initSelectedContact(this); initContactDetails();" class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
+	$('#listContact').append('<li ><a id="acontactsList"  href="tel:'+cellphone+'" onclick="initSelectedContact(this); " class="ui-btn ui-btn-icon-right ui-icon-phone" > ' +	        
 		    '<h2>'+name.trim()+'</h2>'+		    
 		    ' <input type="hidden" value="'+id+'" />'+
 		   ' </a>'+
