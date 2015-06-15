@@ -4,7 +4,7 @@ var selectStatement = WL.Server.createSQLStatement("select v.Identifier as ident
 " v.ownerName as Holder, v.Cellphone as OwnerCellPhone, ipo.PolicyNumber as PolicyNo, LEFT(CONVERT(varchar, ipo.ExpirationDate, 120) ,10)  as PolicyDate,"+
 " ipo.IDInsuranceCompany as Insurance,  iag.FirstName as PolicyContactFirstName,"+
 " iag.LastName as PolicyContactLastName, iag.SecondLastName as PolicyContactSecondLastName,"+
-" iag.CellPhone as PolicyContactCellPhone, ico.Name as InsuranceName, vb.Name as MarkName, v.defaultVehicle, iag.IAgentEmail     from vehicle v"+
+" iag.CellPhone as PolicyContactCellPhone, ico.Name as InsuranceName, vb.Name as MarkName, v.defaultVehicle, iag.IAgentEmail, v.IDVehicleType     from vehicle v"+
 " inner join InsurancePolicies ipo on v.email=ipo.email  and v.Identifier=ipo.Identifier "+
 " inner join InsuranceAgents  iag on iag.Email=ipo.Email  and iag.Identifier=v.Identifier "+
 " inner join InsuranceCompanies ico on ico.IDInsuranceCompanies=ipo.IDInsuranceCompany"+
@@ -15,10 +15,10 @@ var existStatement = WL.Server.createSQLStatement("select * from Vehicle where I
 
 var addStatement = WL.Server.createSQLStatement(" insert into InsuranceAgents(Identifier,Email,FirstName,LastName,SecondLastName,CellPhone,IAgentEmail ) values(?,?,?,?,?,?,?)" +
 		" insert into InsurancePolicies(Email,PolicyNumber,ExpirationDate,IDInsuranceCompany,Identifier) values(?,?,?,?,?)" +
-		" insert into Vehicle (Plates,Serie,VehicleType,IDVehicleBrand,Model,Year,Color,PictureURL,OwnerName,Cellphone, Email, Identifier, defaultVehicle) values ( ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?)"
+		" insert into Vehicle (Plates,Serie,VehicleType,IDVehicleBrand,Model,Year,Color,PictureURL,OwnerName,Cellphone, Email, Identifier, defaultVehicle, IDVehicleType) values ( ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)"
 		);
 var updateStatement = WL.Server.createSQLStatement(" update InsuranceAgents set FirstName=?,LastName=?,SecondLastName=?,CellPhone=?,IAgentEmail=? where Identifier=?  and Email=? "+
-		" update Vehicle set  Plates=?,Serie=?, VehicleType=?, IDVehicleBrand=?, Model=?, Year=?,Color=?,PictureURL=?,OwnerName=?,Cellphone=?,defaultVehicle=? where identifier=? and email=?" +
+		" update Vehicle set  Plates=?,Serie=?, VehicleType=?, IDVehicleBrand=?, Model=?, Year=?,Color=?,PictureURL=?,OwnerName=?,Cellphone=?,defaultVehicle=?, IDVehicleType=? where identifier=? and email=?" +
 		" update InsurancePolicies set PolicyNumber=?,ExpirationDate=?,IDInsuranceCompany=? where identifier=? and email=?");
 var deleteStatement = WL.Server.createSQLStatement("delete InsuranceAgents where identifier=? and email=? " +
 		" delete InsurancePolicies where identifier=? and email=? delete Vehicle where identifier=? and email=? ");
@@ -63,9 +63,10 @@ function getVehiclesPolicies(oData) {
 					InsuranceName:result.resultSet[i].InsuranceName,
 					MarkName:result.resultSet[i].MarkName,
 					defaultVehicle:result.resultSet[i].defaultVehicle,
-					PolicyContactEmail:result.resultSet[i].IAgentEmail
+					PolicyContactEmail:result.resultSet[i].IAgentEmail,
+					IDVehicleType:result.resultSet[i].IDVehicleType
 					
-				};
+				}; 
 		
 		
 		oReturn.push(data);
@@ -126,9 +127,9 @@ function save(pVehiclesPolicies){
 		                pVehiclesPolicies.PolicyContactEmail, pVehiclesPolicies.email, pVehiclesPolicies.PolicyNo, pVehiclesPolicies.PolicyDate,pVehiclesPolicies.Insurance,pVehiclesPolicies.identifier,
 			              pVehiclesPolicies.Plates,pVehiclesPolicies.Serie,pVehiclesPolicies.VehicleType,pVehiclesPolicies.Mark,pVehiclesPolicies.SubMark,pVehiclesPolicies.Model,pVehiclesPolicies.Color,
 			              pVehiclesPolicies.carPicture,
-		              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.email, pVehiclesPolicies.identifier, pVehiclesPolicies.defaultVehicle ]
+		              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.email, pVehiclesPolicies.identifier, pVehiclesPolicies.defaultVehicle, pVehiclesPolicies.IDVehicleType ]
 	});
-}
+} 
 function update(pVehiclesPolicies){
 	WL.Logger.info(pVehiclesPolicies);
 	return WL.Server.invokeSQLStatement({
@@ -136,7 +137,7 @@ function update(pVehiclesPolicies){
 		parameters : [ pVehiclesPolicies.PolicyContactFirstName, pVehiclesPolicies.PolicyContactLastName,  pVehiclesPolicies.PolicyContactSecondLastName, pVehiclesPolicies.PolicyContactCellPhone, pVehiclesPolicies.PolicyContactEmail,
 		               pVehiclesPolicies.identifier, pVehiclesPolicies.email,
 		               pVehiclesPolicies.Plates,pVehiclesPolicies.Serie,pVehiclesPolicies.VehicleType,pVehiclesPolicies.Mark,pVehiclesPolicies.SubMark,pVehiclesPolicies.Model,pVehiclesPolicies.Color,pVehiclesPolicies.carPicture,
-			              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.defaultVehicle, pVehiclesPolicies.identifier,  pVehiclesPolicies.email,  
+			              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.defaultVehicle, pVehiclesPolicies.IDVehicleType, pVehiclesPolicies.identifier,  pVehiclesPolicies.email,  
 			              pVehiclesPolicies.PolicyNo, pVehiclesPolicies.PolicyDate,pVehiclesPolicies.Insurance,pVehiclesPolicies.identifier, pVehiclesPolicies.email ]
 	});
 }
