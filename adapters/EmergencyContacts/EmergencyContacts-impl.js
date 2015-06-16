@@ -2,9 +2,9 @@ var selectStatement = WL.Server.createSQLStatement("select * from EmergencyConta
 
 var existStatement = WL.Server.createSQLStatement("select * from EmergencyContacts where Identifier=? and Email=?");
 
-var addStatement = WL.Server.createSQLStatement(" insert into EmergencyContacts(Identifier,Email,FirstName,LastName,SecondLastName,CellPhone) values(?,?,?,?,?,?)" 
+var addStatement = WL.Server.createSQLStatement(" insert into EmergencyContacts(Identifier,Email,FirstName,LastName,SecondLastName,CellPhone,ContactEmail) values(?,?,?,?,?,?,?)" 
 	);
-var updateStatement = WL.Server.createSQLStatement(" update EmergencyContacts set FirstName=?,LastName=?,SecondLastName=?,CellPhone=? where Identifier=?  and Email=? ");
+var updateStatement = WL.Server.createSQLStatement(" update EmergencyContacts set FirstName=?,LastName=?,SecondLastName=?,CellPhone=?, ContactEmail=? where Identifier=?  and Email=? ");
 var deleteStatement = WL.Server.createSQLStatement("delete EmergencyContacts where identifier=? and email=? ");
 
 
@@ -30,8 +30,8 @@ function getEmergencyContacts(oData) {
 				UserContactFirstName:result.resultSet[i].FirstName,
 				UserContactLastName:result.resultSet[i].LastName, 
 				UserContactSecondLastName:result.resultSet[i].SecondLastName,
-				UserContactCellPhone:result.resultSet[i].CellPhone					
-					
+				UserContactCellPhone:result.resultSet[i].CellPhone,				
+				UserContactEmail:result.resultSet[i].ContactEmail	
 				};
 		
 	
@@ -91,7 +91,7 @@ function save(pEmergencyContacts){
 		preparedStatement : addStatement,
 		parameters : [  pEmergencyContacts.identifier, pEmergencyContacts.email,
 		               ,pEmergencyContacts.UserContactFirstName, pEmergencyContacts.UserContactLastName, 
-		               pEmergencyContacts.UserContactSecondLastName, pEmergencyContacts.UserContactCellPhone
+		               pEmergencyContacts.UserContactSecondLastName, pEmergencyContacts.UserContactCellPhone, pEmergencyContacts.UserContactEmail
 		                ]
 	});
 }
@@ -100,7 +100,7 @@ function update(pEmergencyContacts){
 	return WL.Server.invokeSQLStatement({
 		preparedStatement : updateStatement,
 		parameters : [pEmergencyContacts.UserContactFirstName, pEmergencyContacts.UserContactLastName,  pEmergencyContacts.UserContactSecondLastName, 
-		              pEmergencyContacts.UserContactCellPhone
+		              pEmergencyContacts.UserContactCellPhone, pEmergencyContacts.UserContactEmail
 		              ,pEmergencyContacts.identifier, pEmergencyContacts.email ]
 	});
 }
