@@ -7,8 +7,19 @@ var addStatement = WL.Server.createSQLStatement(" insert into EmergencyContacts(
 var updateStatement = WL.Server.createSQLStatement(" update EmergencyContacts set FirstName=?,LastName=?,SecondLastName=?,CellPhone=?, ContactEmail=? where Identifier=?  and Email=? ");
 var deleteStatement = WL.Server.createSQLStatement("delete EmergencyContacts where identifier=? and email=? ");
 
+var addVehicles=WL.Server.createSQLStatement(" insert into contactVehicles(ContactIdentifier,VehicleIdentifier) values(?,?)");
 
+var deleteVehicles=WL.Server.createSQLStatement("DELETE c "+
+" FROM contactVehicles c "+
+" INNER JOIN EmergencyContacts e "+
+  " ON e.Identifier=c.contactidentifier "+
+" Where e.Email=? and c.contactidentifier=?");
 
+var selectVehicles=WL.Server.createSQLStatement("select c.vehicleidentifier"+
+" FROM contactVehicles c"+
+" INNER JOIN EmergencyContacts e"+
+" ON e.Identifier=c.contactidentifier"+
+" Where e.Email=? and c.contactidentifier=?");
 	/************************************************************************
 	 * Implementation code for procedure - 'procedure2'
 	 *
@@ -22,16 +33,34 @@ function getEmergencyContacts(oData) {
 		parameters : [oData.email]
 	});
 	var oReturn = [];
+	var data; 
 	if(result.resultSet!=undefined){
 	for(var i = 0; i < result.resultSet.length; i++){
-		var data = {
+				
+		var vehicles = [];
+		 
+		var select= WL.Server.invokeSQLStatement({
+		preparedStatement : selectVehicles,
+		parameters : [  oData.email,result.resultSet[i].Identifier]
+		});
+		
+		if(select.resultSet!=undefined){   
+		for(var i2= 0; i2 < select.resultSet.length; i2++){	       
+	      var data2= {IDVehicleType: select.resultSet[i2].vehicleidentifier};
+	      vehicles.push(data2); 
+	       }
+		}
+	
+		
+		 data = {
 				identifier: result.resultSet[i].Identifier, 
 				email: result.resultSet[i].Email, 
 				UserContactFirstName:result.resultSet[i].FirstName,
 				UserContactLastName:result.resultSet[i].LastName, 
 				UserContactSecondLastName:result.resultSet[i].SecondLastName,
 				UserContactCellPhone:result.resultSet[i].CellPhone,				
-				UserContactEmail:result.resultSet[i].ContactEmail	
+				UserContactEmail:result.resultSet[i].ContactEmail,
+				vehicle:vehicles
 				};
 		
 	
@@ -66,47 +95,93 @@ function saveEmergencyContacts(param1) {
 				}
 		}else{
 			ret.push(remove(contact.json));
-		}
-		
+		}		
 		
 	}
-	return {data:ret};
-	/*
-	switch(param1.operation){
-	case "add":
-		save(param1.json);
-		break;
-	case "replace":
-		update(param1.json);
-		break;
-	case "remove":
-		remove(param1.json);
-		break;
-	}		
-		return {};*/
+	return {data:ret};	
 }
 
 function save(pEmergencyContacts){
-	return WL.Server.invokeSQLStatement({
+	var s;
+	
+	s= WL.Server.invokeSQLStatement({
 		preparedStatement : addStatement,
 		parameters : [  pEmergencyContacts.identifier, pEmergencyContacts.email,
 		               ,pEmergencyContacts.UserContactFirstName, pEmergencyContacts.UserContactLastName, 
 		               pEmergencyContacts.UserContactSecondLastName, pEmergencyContacts.UserContactCellPhone, pEmergencyContacts.UserContactEmail
 		                ]
 	});
+	addVehiclesFun(s,pEmergencyContacts); 
+	 
+	 return s;
 }
 function update(pEmergencyContacts){
-	
-	return WL.Server.invokeSQLStatement({
+	var s;
+	s= WL.Server.invokeSQLStatement({
 		preparedStatement : updateStatement,
 		parameters : [pEmergencyContacts.UserContactFirstName, pEmergencyContacts.UserContactLastName,  pEmergencyContacts.UserContactSecondLastName, 
 		              pEmergencyContacts.UserContactCellPhone, pEmergencyContacts.UserContactEmail
 		              ,pEmergencyContacts.identifier, pEmergencyContacts.email ]
 	});
+	
+	if(s!=undefined){
+		if(s.isSuccessful){
+			
+			var del;
+				del= WL.Server.invokeSQLStatement({
+				preparedStatement : deleteVehicles,
+				parameters : [  pEmergencyContacts.email,pEmergencyContacts.identifier 
+				                ]
+			});
+				if(del!=undefined){
+					if(del.isSuccessful){
+						var cont; 
+						for(cont=0;cont<pEmergencyContacts.vehicle.length;cont++){				  	
+						var	addV= WL.Server.invokeSQLStatement({
+								preparedStatement : addVehicles,
+								parameters : [  pEmergencyContacts.identifier, pEmergencyContacts.vehicle[cont].IDVehicleType 
+								                ]
+							});
+					    }
+					}
+				}
+		}		
+	}
+	
+	return s;
 }
 function remove(pEmergencyContacts){
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : deleteStatement,
-		parameters : [ pEmergencyContacts.identifier, pEmergencyContacts.email]
-	});
+	var del;
+	del= WL.Server.invokeSQLStatement({
+	preparedStatement : deleteVehicles,
+	parameters : [  pEmergencyContacts.email,pEmergencyContacts.identifier
+	                ]
+		});
+	var s;
+	if(del!=undefined){
+		if(del.isSuccessful){
+			s= WL.Server.invokeSQLStatement({
+				preparedStatement : deleteStatement,
+				parameters : [ pEmergencyContacts.identifier, pEmergencyContacts.email]
+			});
+		}
+		}	
+
+	 return s;
+}
+
+function addVehiclesFun(contact,pEmergencyContacts){
+	if(contact!=undefined){
+		if(contact.isSuccessful){
+			var cont;
+			for(cont=0;cont<pEmergencyContacts.vehicle.length;cont++){				  	
+			var	addV= WL.Server.invokeSQLStatement({
+					preparedStatement : addVehicles,
+					parameters : [  pEmergencyContacts.identifier, pEmergencyContacts.vehicle[cont].IDVehicleType 
+					                ]
+				});
+		    }
+		}		
+	}
+	
 }
