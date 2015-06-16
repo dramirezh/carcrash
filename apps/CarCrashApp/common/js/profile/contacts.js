@@ -329,10 +329,7 @@ function detailsSuccess(result){
 }
 
 function detailsFail(errorObject){	
-	navigator.notification.alert(
-			"Error: "+errorObject.msg,
-			function onSuccess() {
-			}, "Error");
+	
 }
 
 function initDelete(){
@@ -348,10 +345,7 @@ function initDelete(){
 	
 	};
 	jsonStore.fnFail=function(){ 	
-		navigator.notification.alert(
-				"No se ha podido eliminar",
-				function onSuccess() {
-				}, "Error");
+		
 
 	};							
 	jsonStore.get();
@@ -380,10 +374,7 @@ function deleteSuccess(result){
 }
 
 function deleteFail(errorObject){	
-	navigator.notification.alert(
-			"Error: "+errorObject.msg,
-			function onSuccess() {
-			}, "Error");
+	
 }
 
 function ondeletedUpdateList(list){
@@ -414,12 +405,7 @@ function saveEmergencyContactsSuccess(result){
 	{				
 		
 	}
-	else{		
-		navigator.notification.alert(
-				'Ocurrio un error, por favor intente de nuevo.',
-				function onSuccess() {
-				}, "Error");
-	}
+	
 }
 function saveEmergencyContactsFailure(error){
 	
@@ -435,17 +421,9 @@ function deleteEmergencyContactsSuccess(result){
 	if(oResult.isSuccessful)
 	{			
 		 dataToConDelete=null;		
-		navigator.notification.alert(
-				'Registro eliminado con exito.',
-				function onSuccess() {
-				}, "Info");
+		
 	}
-	else{	
-		navigator.notification.alert(
-				'Ocurrio un error, por favor intente de nuevo.',
-				function onSuccess() {
-				}, "Error");
-	}
+	
 }
 function deleteEmergencyContactsFailure(error){	
 	
@@ -463,12 +441,7 @@ function updateEmergencyContactsSuccess(result){
 		dataDetails=null;
 		
 	}
-	else{		
-		navigator.notification.alert(
-				'Ocurrio un error, por favor intente de nuevo.',
-				function onSuccess() {
-				}, "Error");
-	}
+	
 }
 function updateEmergencyContactsFailure(error){
 	
@@ -487,10 +460,10 @@ function saveAllContacts()
 		if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
 			//alert("enviado al servidor");
 		}else{		
-			navigator.notification.alert(
+			/*navigator.notification.alert(
 					'No se ha podido enviar datos al servidor, intente mas tarde',
 					function onSuccess() {
-					}, "Error");
+					}, "Error");*/
 		}
 		return true;
 	};
@@ -521,7 +494,7 @@ function initPolicyVehicleChk(){
 			    var cont;
 			   
 			    for(cont=0;cont<dataDetails[0].json.vehicle.length;cont++){
-			    	$('input[id="'+dataDetails[0].json.vehicle[cont].IDVehicleType+'"]').prop("checked", true);//.checkboxradio('refresh');		    	
+			    	$('input[id="'+dataDetails[0].json.vehicle[cont].IDVehicleType+'-chk"]').prop("checked", true);//.checkboxradio('refresh');		    	
 			    }											
 			  }
 			 	
@@ -543,7 +516,8 @@ function getAllChkChecked(FormName){
     $.each($("#"+FormName+" input[type=checkbox]"), function(){
        if( $(this).is(':checked')){       
        var title = $(this).attr("id");  
-      var data2= {IDVehicleType: title};
+       var id=title.substr(0,1);
+      var data2= {IDVehicleType: id};
       data.push(data2);
        }
        
