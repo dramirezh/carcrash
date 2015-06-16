@@ -80,8 +80,12 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 					$("#txtNoIMSS").val(arrayResults[0].json.IMSS);																				  
 					$("#txtAlergics").val(arrayResults[0].json.alergics);
 					$("#txtClinicalConditions").val(arrayResults[0].json.clinicalConditions);
-					$( "select" ).selectmenu();					 
+					$( "select" ).selectmenu();			
+					if(arrayResults[0].json.bloodType.trim().length>0){ 
 					  $('#selectBloodType option[value='+arrayResults[0].json.bloodType+']').prop('selected',true);
+					}else{
+						$('#selectBloodType').prop('selectedIndex', 0);
+					}
 					  $( "select" ).selectmenu( "refresh", true );
 				}
 			};

@@ -255,7 +255,7 @@ function getServerData(){
 		                        {collection:'reports', adapter:'sinisters', procedure:'getSinisters'},
 		                        {collection:'Contacts', adapter:'EmergencyContacts', procedure:'getEmergencyContacts'},
 		                        {collection:'MedicalData', adapter:'medicalData', procedure:'getMedicalData'}, 
-		                        {collection:'MechanicData', adapter:'mechanic', procedure:'getMechanic'}
+		                        {collection:'SGMM', adapter:'sgmm', procedure:'getSGMMData'}
 		                        ];
 		$(collectionsToGet).each(function(idx,col){
 			oJS.collectionName = col.collection;

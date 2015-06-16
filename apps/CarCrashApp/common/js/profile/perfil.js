@@ -163,7 +163,7 @@ $(
         }
         
         function setDataToTransaction(){				 
-        	WL.JSONStore.get("perfil").clear().then(function (errorObject) {	
+        		
         	
         	
 			var jsonStore = new clsJsonStoreHelper();
@@ -175,10 +175,9 @@ $(
 		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim(), email:$('#txtUserEmail').val().trim(),
 		        	licenseNumber:$('#txtLicenseNo').val().trim()
 				 };
-			//jsonStore.document["email"]=globalMail;
-			jsonStore.document["identifier"]=1;
-			//jsonStore.id=getProfileId();
-			jsonStore.id=0;
+			
+			jsonStore.id=getProfileId();
+			//jsonStore.id=0;
 			jsonStore.fnSuccess=function (succes) {
 				
 				
@@ -195,12 +194,12 @@ $(
 					 WL.Logger.debug(">>  data local: " + JSON.stringify(arrayResults));
 					if(arrayResults.length>0){	
 						
-						
-						updateAccount(arrayResults);
 						navigator.notification.alert(
 								''+Messages.msgDataSaved,
 								function onSuccess() {
 								}, "Info");
+						updateAccount(arrayResults[0].json);
+						
 					}
 				};
 				jsonStore.fnFail=function (fail) {			
@@ -215,9 +214,7 @@ $(
 				alert("Error: "+errorObject.msg);
 			};
 			jsonStore.save(true,true);			
-        	}).fail(function (errorObject) {		   			   					
-				
-			});	
+        		
 }
         var profileId;
         function initPerfilDataInfo(){	
