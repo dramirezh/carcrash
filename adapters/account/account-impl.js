@@ -1,14 +1,14 @@
 var addStatement = WL.Server.createSQLStatement("insert into Accounts (FirstName, BirthDate, Email, CellPhone, Password, FechaRegistro) values (?, ?, ?, ?, ?, GETDATE())");
 var selectStatement = WL.Server.createSQLStatement(
 		"select FirstName AS 'firstName', LastName As 'lastName', SecondLastName As 'secondLastName', " +
-		"BirthDate As 'birthDate', Country, State, City AS 'city', " +
+		"BirthDate As 'birthdate', Country, State, City AS 'city', " +
 		"Email AS 'email', CellPhone AS 'cellPhone', Password AS 'password', StreetNumber AS 'streetNumber', " +
-		"StreetName AS 'street', ZipCode AS 'postalCode', Company AS 'enterprise' " +
+		"StreetName AS 'street', ZipCode AS 'postalCode', LicenseNumber AS 'licenseNumber' " +
 		"FROM Accounts " +
 		"WHERE Email = ? AND Password = ?"
 		);
 
-var updateStatement = WL.Server.createSQLStatement(" update Accounts set FirstName=?,LastName=?,SecondLastName=?,Country=?,State=?,City=?,CellPhone=?,StreetNumber=?,StreetName=?,ZipCode=?,Company=? where Email=? ");
+var updateStatement = WL.Server.createSQLStatement(" update Accounts set FirstName=?,LastName=?,SecondLastName=?,Country=?,State=?,City=?,CellPhone=?,StreetNumber=?,StreetName=?,ZipCode=?,licenseNumber=?,birthdate=? where Email=? ");
 /************************************************************************
  * Implementation code for procedure - 'procedure1'
  *
@@ -41,7 +41,7 @@ function updateAccount(perfil){
 	return WL.Server.invokeSQLStatement({
 		preparedStatement : updateStatement,
 		parameters : [perfil.firstName, perfil.lastName, perfil.secondLastName, 
-		              perfil.Country,perfil.State, perfil.city, perfil.cellPhone,perfil.streetNumber,perfil.street,perfil.postalCode,perfil.enterprise, 
+		              perfil.Country,perfil.State, perfil.city, perfil.cellPhone,perfil.streetNumber,perfil.street,perfil.postalCode,perfil.licenseNumber,perfil.birthdate, 
 		              perfil.email ]
 	});
 }
