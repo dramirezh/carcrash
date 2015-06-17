@@ -1,7 +1,7 @@
 var addStatement = WL.Server.createSQLStatement("insert into Accounts (FirstName, BirthDate, Email, CellPhone, Password, FechaRegistro) values (?, ?, ?, ?, ?, GETDATE())");
 var selectStatement = WL.Server.createSQLStatement(
 		"select FirstName AS 'firstName', LastName As 'lastName', SecondLastName As 'secondLastName', " +
-		"BirthDate As 'birthdate', Country, State, City AS 'city', " +
+		" LEFT(CONVERT(varchar, BirthDate, 120) ,10) As 'birthdate' , Country, State, City AS 'city', " +
 		"Email AS 'email', CellPhone AS 'cellPhone', Password AS 'password', StreetNumber AS 'streetNumber', " +
 		"StreetName AS 'street', ZipCode AS 'postalCode', LicenseNumber AS 'licenseNumber' " +
 		"FROM Accounts " +
