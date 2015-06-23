@@ -170,7 +170,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 	.then(function(){
 		WL.JSONStore.get(collectionName).getAllDirty()
 		.then(function (arrayOfDirtyDocuments) {
-			if(globalMail != ""){
+			//if(globalMail != ""){
 				  dirtyDocs = arrayOfDirtyDocuments;
 				  
 				  if(id){
@@ -189,7 +189,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 				  };
 				  
 				  return WL.Client.invokeProcedure(invocationData);
-			}else{
+			/*}else{
 				//fnFail = function(){
 					navigator.notification.confirm(
 					// Shows a customizable confirmation dialog box.
@@ -209,7 +209,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 					['Cancelar','Suscribirse']);
 				//};
 				//throw {name:"Unsuscribed", message:"Please suscribe"};
-			}
+			}*/
 		})
 
 		.then(function (responseFromAdapter) {
