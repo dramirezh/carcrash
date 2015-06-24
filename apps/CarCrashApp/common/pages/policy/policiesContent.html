@@ -7,13 +7,14 @@
     		
     			
     				<div id="vehicleCont" >    				   			    				    					    					    					   					
-
+ <form id="vehicleForm">
 	    				<div id="carPhotos" style="padding: 10px 10px 0px 10px;" align="center">
 	    					<div id="carPhotoCube" style="width: 70px; height: 70px; border: thin; border-style: dashed; display: inline-block;"></div>
 	    				</div>
 	    				<a id="aTakeCarPict" href="#" onclick="takeCarPicture(); " class="ui-btn ui-corner-all">Fotografia</a>
 	    			
-	    			<input placeholder="Alias" id="txtSeries" maxlength="30" type="text" />
+	    			
+	    			<input placeholder="Alias" id="txtSeries" name="txtAlias" maxlength="30" type="text" />
 	    			 <div>		<select name="selectVehicleCat" id="selectVehicleCat">
 								<option id="opNoneVCat" value="0" selected="selected">Category</option>
 								<option value="1" >Compacto</option>
@@ -27,22 +28,22 @@
 							</select></div>    			         				
     				
     			     
-    				<input placeholder="SubMarca"  type="text"  name="search" maxlength="50" id="searchSubMark">    				
-    				<input placeholder="Color" id="txtColor" maxlength="25" type="text" />    			     
-    				<input placeholder="Año" id="txtModel" maxlength="4" type="text" />   				    				    				   				    				
-    				<input placeholder="Placas"  id="txtPlates" maxlength="30" type="text" />
+    				<input placeholder="SubMarca"  type="text"  name="searchSubMark" maxlength="50" id="searchSubMark">    				
+    				<input placeholder="Color" id="txtColor" name="txtColor" maxlength="25" type="text" />    			     
+    				<input placeholder="Año" id="txtModel" name="txtModel" maxlength="4" type="text" />   				    				    				   				    				
+    				<input placeholder="Placas"  id="txtPlates" name="txtPlates" maxlength="30" type="text" />
     				
     				
     				<hr></hr> 
     				
-    				<input placeholder="Conductor habitual"  id="txtHolder" maxlength="40" type="text" />     				    				
-    				<input placeholder="Telefono"  id="txtOwnerCellPhone" maxlength="12" type="text" /> 
+    				<input placeholder="Conductor habitual"  id="txtHolder" name="txtHolder" maxlength="40" type="text" />     				    				
+    				<input placeholder="Telefono"  id="txtOwnerCellPhone" name="txtOwnerCellPhone" maxlength="12" type="text" /> 
     				
     					<hr></hr>
     				<p align="center" lng="insuranceData">Insurance Data</p> 	
-    					<input placeholder="Numero de poliza"  id="txtPolicyNo" maxlength="30" type="text"/>  
+    					<input placeholder="Numero de poliza"  id="txtPolicyNo" name="txtPolicyNo" maxlength="30" type="text"/>  
     				   				    							
-    				<input  id="txtPolicyDate"  placeholder="Fecha de expiracion" type="date"/>     				    				        								    				
+    				<input  id="txtPolicyDate" name="txtPolicyDate"  placeholder="Fecha de expiracion" type="date"/>     				    				        								    				
     				     				 <div class="ui-field-contain" style="margin-top:0 margin-bottom: 0;">
     				
 					<div>		<select name="selectInsurance" id="selectInsurance">
@@ -54,13 +55,14 @@
     				    				
     				    				<hr></hr>
     				    				<p align="center" id="pContact3">Agente de seguro </p> 
-					     				 			      				    				  
+					     							      				    				  
     				<input placeholder="Nombre completo" id="txtPolContactName" name="txtPolContactName" maxlength="40" type="text" />     				    				     			
     				    				 
-    				<input placeholder="Telefono"  id="txtPolContactCellPhone" type="number" maxlength="10"/>
+    				<input placeholder="Telefono"  id="txtPolContactCellPhone" name="txtPolContactCellPhone" type="number" maxlength="10"/>
     						
-    				<input placeholder="Email" id="txtPolContactEmail" type="email" maxlength="250" />
+    				<input placeholder="Email" id="txtPolContactEmail" name="txtPolContactEmail" type="email" maxlength="250" />
     				
+    				</form>
     				</div>    				
     				
     				

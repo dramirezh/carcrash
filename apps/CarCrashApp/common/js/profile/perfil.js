@@ -322,6 +322,10 @@ $(
     					required: true,
     					minlength: 2
     				},
+    				txtUserEmail:{
+    					required: true,
+    					minlength: 5
+    				},
     			},
     			 messages: {    				 
     				 txtProfileName: { required: Messages.enter+' '+Messages.lblProfileName, minlength:Messages.minimun+' 2 '+Messages.characters},
@@ -333,7 +337,9 @@ $(
      				locality: { required: Messages.enter+' '+Messages.city,minlength:Messages.minimun+' 2 '+Messages.characters},
      				administrative_area_level_1: { required:  Messages.enter+' '+Messages.state,minlength:Messages.minimun+' 2 '+Messages.characters},
      				postal_code: { required: Messages.enter+' '+Messages.postalCode,minlength:Messages.minimun+' 2 '+Messages.characters},
-     				country: { required:Messages.enter+' '+Messages.country,minlength:Messages.minimun+' 2 '+Messages.characters}
+     				country: { required:Messages.enter+' '+Messages.country,minlength:Messages.minimun+' 2 '+Messages.characters},
+     				txtUserEmail: { required:Messages.enter+' email',minlength:Messages.minimun+' 5 '+Messages.characters},
+     				
                  },
                  errorPlacement: function (error, element) {
                      error.insertAfter(element);

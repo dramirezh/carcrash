@@ -1078,3 +1078,76 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				
 			}
 		
+		
+		
+		function validPolicy(){
+			var form = $("#vehicleForm");
+    		form.validate({
+    			errorElement:'div',
+    			rules:{    				    				
+    				txtPolContactEmail:{
+    					required: true
+    				},
+    				searchSubMark:{
+    					required: true
+    				},
+    				txtColor:{
+    					required: true
+    				},
+    				txtModel:{
+    					required: true
+    				},
+    				txtPlates:{
+    					required: true
+    				},
+    				txtHolder:{
+    					required: true
+    				},
+    				txtOwnerCellPhone:{
+    					required: true
+    				},
+    				txtPolicyNo:{
+    					required: true
+    				},
+    				txtPolicyDate:{
+    					required: true
+    				},
+    				txtPolContactName:{
+    					required: true
+    				},
+    				txtPolContactCellPhone:{
+    					required: true
+    				},
+    				txtAlias:{
+    					required: true
+    				},
+    				
+    			},
+    			 messages: {    				     				 
+    				 txtPolContactEmail: { required:Messages.enter+' email'}, 
+    				 searchSubMark: { required:Messages.enter+' '+Messages.subbrand}, 
+    				 txtColor: { required:Messages.enter+' '+Messages.color}, 
+    				 txtModel: { required:Messages.enter+' '+Messages.year}, 
+    				 txtPlates: { required:Messages.enter+' '+Messages.plates}, 
+    				 txtHolder: { required:Messages.enter+' '+Messages.usualDriver}, 
+    				 txtOwnerCellPhone: { required:Messages.enter+' '+Messages.lblCellPhone}, 
+    				 txtPolicyNo: { required:Messages.enter+' '+Messages.policyNum}, 
+    				 txtPolicyDate: { required:Messages.enter+' '+Messages.expirationDate}, 
+    				 txtPolContactName: { required:Messages.enter+' '+Messages.fullname}, 
+    				 txtPolContactCellPhone: { required:Messages.enter+' '+Messages.lblCellPhone}, 
+    				 txtAlias: { required:Messages.enter+' Alias'},
+    				 
+                 },
+                 errorPlacement: function (error, element) {
+                     error.insertAfter(element);
+                     error.addClass('error'); 
+                     error.css("color", "red");
+                     error.css("text-align", "center");
+                 }
+    		});
+    		if(form.valid())
+    		{    			
+    			savePolicy();
+    		}
+			
+		}

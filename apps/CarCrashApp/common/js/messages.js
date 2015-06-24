@@ -133,7 +133,8 @@ Messages = {
 		details:"Detalles",
 		//contacts
 		model:"Modelo",
-		dateExp:"Fecha Exp",		
+		dateExp:"Fecha Exp",
+		expirationDate:"Fecha de Expiración",
 };
 
 function setSpanish(){
@@ -316,6 +317,7 @@ function setDefaultSpanish(){
 	Messages.sendReport="Enviar reporte";
 	Messages.model="Modelo";
 	Messages.dateExp="Fecha Exp";
+	Messages.expirationDate="Fecha de Expiración";
 }
 
 function setSpanishContacts(){
@@ -470,6 +472,7 @@ function setDefaultEnglish(){
 	Messages.sendReport="Send report";
 	Messages.model="Model";
 	Messages.dateExp="Expiration";
+	Messages.expirationDate="Expiration date";
 }
 
 function setEnglishContacts(){

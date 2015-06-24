@@ -13,9 +13,9 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 		function saveUserMedicalData(){
 			var data=$('#flipMedical').val();
 			bt=$('#selectBloodType option:selected');
-			if(data=="on"){			
+			//if(data=="on")		
 			setMedicalDataTransaction();							
-			}
+			
 		}
 		
 		function setMedicalDataTransaction(){						  			

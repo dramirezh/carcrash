@@ -231,7 +231,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a  tag='a' lng='vehicles' onClick='backPolicy();'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Vehicles</a>",
 			    	"center":"<h2 lng='vehicle'>Vehicle</h2>",
-			    	"right":"<a  tag='a' id='save' onClick='savePolicy();'  class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>" 
+			    	"right":"<a  tag='a' id='save' onClick='validPolicy();'  class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>" 
 			    }
 			},
 			{"id":"showPolicies", "url":"pages/policy/showPolicies.html", 
