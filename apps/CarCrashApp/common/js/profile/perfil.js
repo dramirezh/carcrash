@@ -14,7 +14,7 @@ $(
 //initLeftPanelTranslations()
 
 );
-		
+		var dataEmail={ email:"",newEmail:"" };
 						
 		
 		var navigation=0;
@@ -71,7 +71,7 @@ $(
 			if(!checkAddress()){ 
 			setDataToTransaction();	
 			}else{
-				alert("Ingrese "+Messages.streetNumber+" en la busqueda del "+Messages.address);				
+				alert(Messages.enter+" "+Messages.streetNumber);				
 			}
 		}
 		function saveAnyPerfil(){						
@@ -126,7 +126,7 @@ $(
         function basicPersonFiltersNumber(cellInput){
         	$('#'+cellInput).keypress(function(key) {        		
   		        if(key.charCode < 48 || key.charCode > 57){ 
-  		        	$('#txtCellPhone').val("");
+  		        	
   		        	return false;
   		        	}else{  		        		  		        		
   		        	return true;
@@ -266,14 +266,9 @@ $(
         	var oResult = result.invocationResult;
         	if(oResult.isSuccessful)
         	{			
+        		//var restHelper = new clsRestHelper('accountEmail','SPUpdateAccount',perfil, updateEmail, updateEmailFail);
+            	//restHelper.callRestAdapter();
         		
-        		
-        	}
-        	else{
-        		navigator.notification.alert(
-        				'Ocurrio un error al guardar datos. Intentelo de nuevo.',
-        				function onSuccess() {
-        				}, "Error");
         	}
         }
         function updateperfilFailure(error){
@@ -362,4 +357,11 @@ if(data=="on"){
 }else{
 	$('#'+showdiv).hide();	
 }
+ }
+ 
+ function updateEmail(success){
+ 	
+ }
+ function updateEmailFail(error){
+ 	
  }
