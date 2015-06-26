@@ -131,6 +131,7 @@ Messages = {
 		chooseAction:"Seleccione una acción",
 		sendReport:"Enviar reporte",
 		details:"Detalles",
+		recordLimit:"Limite máximo de registros",
 		//contacts
 		model:"Modelo",
 		dateExp:"Fecha Exp",
@@ -318,6 +319,7 @@ function setDefaultSpanish(){
 	Messages.model="Modelo";
 	Messages.dateExp="Fecha Exp";
 	Messages.expirationDate="Fecha de Expiración";
+	Messages.recordLimit="Limite máximo de registros";
 }
 
 function setSpanishContacts(){
@@ -473,6 +475,7 @@ function setDefaultEnglish(){
 	Messages.model="Model";
 	Messages.dateExp="Expiration";
 	Messages.expirationDate="Expiration date";
+	Messages.recordLimit="Can not register more than 5 records";
 }
 
 function setEnglishContacts(){

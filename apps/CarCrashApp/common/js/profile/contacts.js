@@ -31,7 +31,7 @@ function validNewContact(){
 			contactId=0;
 		}else{	
 			navigator.notification.alert(
-					'limite maximo de registros',
+					Messages.recordLimit,
 					function onSuccess() {
 					}, "Info");	
 		}
@@ -133,7 +133,7 @@ function saveContact(){
 	
 	}else{		
 		navigator.notification.alert(
-				'limite maximo de registros',
+				Messages.recordLimit,
 				function onSuccess() {
 				}, "Info");	
 	}
@@ -535,7 +535,7 @@ function validateContact(){
 		},
 		 messages: {    				     				 
 			 txtUserContactName: { required:Messages.enter+' '+Messages.fullname}, 
-			 txtUserContactCellPhone: { required:Messages.enter+' '+Messages.lblCellPhone, minlength:'Enter a least 10 numbers'}, 
+			 txtUserContactCellPhone: { required:Messages.enter+' '+Messages.lblCellPhone, minlength:'Enter at least 10 numbers'}, 
 			 txtUserContactEmail: { required:Messages.enter+' Email'}, 			 
          },
          errorPlacement: function (error, element) {

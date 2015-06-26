@@ -7,6 +7,8 @@ function MedicalData(){
 var bt="";
 $(document).on('pagebeforeshow','#profile',function(e,data){   		    		
 	basicPersonFiltersNumber("txtNoIMSS");
+	basicPersonNameFilters("txtAlergics");
+	basicPersonNameFilters("txtClinicalConditions");
 			initMedicalDataInfo(); 	 				  
 		});			
 		

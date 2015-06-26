@@ -101,8 +101,16 @@ var updateProfile=null;
          
          $(document).on('pagebeforeshow','#profile',function(e,data){    			    
         	 
-        	 basicPersonFiltersNumber("txtCellPhone");        	 
-        	 basicPersonNameFilters("txtFirstName");        	 
+        	 basicPersonFiltersNumber("txtCellPhone");
+        	 basicPersonFiltersNumber("street_number");
+        	 basicPersonNameFilters("txtFirstName");
+        	 basicPersonNameFilters("locality");
+        	 basicPersonNameFilters("route");
+        	 basicPersonNameFilters("country");
+        	 basicPersonNameFilters("administrative_area_level_1");
+        	 basicPersonFiltersNumber("postal_code");
+        	 validDriverLicense("txtLicenseNo");
+        	 
         	
         	 $('#txtProfileName').keypress(function(key) {        		
         		 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 32)
@@ -364,7 +372,22 @@ if(data=="on"){
 	 $('#'+inputName).keypress(function(key) {        		
 		 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 46)&& (key.charCode != 64)&& (key.charCode != 45)&& (key.charCode != 95)
 				 && (key.charCode != 225)&& (key.charCode != 233)&& (key.charCode != 237)&& (key.charCode != 243)&& (key.charCode != 250)&& (key.charCode != 241)
-	   				&& (key.charCode != 193)&& (key.charCode != 201)&& (key.charCode != 205)&& (key.charCode != 211)&& (key.charCode != 218)&&  (key.charCode != 209)		 
+	   				&& (key.charCode != 193)&& (key.charCode != 201)&& (key.charCode != 205)&& (key.charCode != 211)&& (key.charCode != 218)&&  (key.charCode != 209)	
+	   				&& (key.charCode < 48 || key.charCode > 57)
+		 ){
+    		 return false;
+    	 }else{             		
+    	        return true;
+    	    }
+		});
+ }
+ 
+ function validDriverLicense(inputName){
+	 $('#'+inputName).keypress(function(key) {        		
+		 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 45)&& (key.charCode != 95)
+				 && (key.charCode != 225)&& (key.charCode != 233)&& (key.charCode != 237)&& (key.charCode != 243)&& (key.charCode != 250)&& (key.charCode != 241)
+	   				&& (key.charCode != 193)&& (key.charCode != 201)&& (key.charCode != 205)&& (key.charCode != 211)&& (key.charCode != 218)&&  (key.charCode != 209)	
+	   				&& (key.charCode < 48 || key.charCode > 57)
 		 ){
     		 return false;
     	 }else{             		

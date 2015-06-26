@@ -2,26 +2,9 @@
 $(document).on('pagebeforeshow','#profile',function(e,data){   		    			
 			initSGMMDataInfo(); 
 			
-			$('#txtInstitution').keypress(function(key) {
-	   			
-				 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 32) 
-			   				&& (key.charCode < 48 || key.charCode > 57)){
-			       		 return false;
-			       	 }else{             		
-			       	        return true;
-			       	    }
-		   		});
-			
-			$('#txtCertificate').keypress(function(key) {
-	   			
-				 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 32)
-			   				&& (key.charCode < 48 || key.charCode > 57)){
-			       		 return false;
-			       	 }else{             		
-			       	        return true;
-			       	    }
-		   		});
 			basicPersonNameFilters("txtSGMMName");
+			basicPersonNameFilters("txtCertificate");
+			basicPersonNameFilters("txtInstitution");
 		});	
 		
 
