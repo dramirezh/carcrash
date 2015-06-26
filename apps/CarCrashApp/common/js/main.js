@@ -251,7 +251,7 @@ function getPages()
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='#showContacts' tag='a' id='aContacts'  class='ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left'>Contactos</a>",
 			    	"center":"<h2 id='aContact'>Contacto</h2>",
-			    	"right":"<a tag='a' id='save' onclick='saveContact();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
+			    	"right":"<a tag='a' id='save' onclick='validateContact();' class='ui-btn ui-corner-all ui-icon-check ui-btn-icon-right ui-btn-icon-notext'></a>"
 			    }
 			}, 
 			{"id":"showContacts", "url":"pages/contacts/showContacts.html", 

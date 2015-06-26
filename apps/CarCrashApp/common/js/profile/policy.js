@@ -204,6 +204,7 @@
 		basicPersonFiltersNumber("txtModel");	
 		basicPersonFiltersNumber("txtPolContactCellPhone");        	 
    	 basicPersonNameFilters("txtPolContactFirstName");
+   	validEmail("txtPolContactEmail");
    	
    	 $('#txtPolContactName').keypress(function(key) {        		
    		 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 32)
@@ -445,9 +446,7 @@
 				
 				
 			}
-			else{
-				alert('Ocurrio un error, por favor intente de nuevo.');
-			}
+		
 		}
 		function saveVehicleFailure(error){
 			
@@ -565,16 +564,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				
 			};
 			jsonStore.get();
-			
-			//initPolicyVehicleToDelete();			
-			/*navigator.notification.confirm(
-					"Desea eliminar el registro seleccionado?",
-					function onConfirm(result) {
-						if(result == 1){		
-							policyDeleted();
-						}
-					},
-					"Eliminar");*/
+						
 		}
 		
 		var updatedPolicy=false;
@@ -1086,7 +1076,8 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
     			errorElement:'div',
     			rules:{    				    				
     				txtPolContactEmail:{
-    					required: true
+    					required: true,
+    					email:true
     				},
     				searchSubMark:{
     					required: true

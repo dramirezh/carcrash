@@ -2,10 +2,12 @@
     		
     		<div data-role="page" id="{id}"  class="ui-page-header-fixed ui-page-footer-fixed">    		   			    		
     			<div role="main" class="ui-content">    		
-    			<div id="contactCont"  style="margin-left: 15px; margin-right: 15px;">      			    				    							    									     				 			      				    				  
+    			<div id="contactCont"  style="margin-left: 15px; margin-right: 15px;">  
+    			 <form id="contactForm">    			    				    							    									     				 			      				    				  
     				<input placeholder="Nombre completo" id="txtUserContactName" name="txtUserContactName" maxlength="110" type="text" />     				   				    				    			     				 
-    				<input placeholder="Celular"  id="txtUserContactCellPhone" type="text" maxlength="12"/>
-    				<input placeholder="Email" type="email" id="txtUserContactEmail" type="text" maxlength="250"/>
+    				<input placeholder="Celular"  id="txtUserContactCellPhone" name="txtUserContactCellPhone" type="text" maxlength="12"/>
+    				<input placeholder="Email" type="email" id="txtUserContactEmail" name="txtUserContactEmail"  maxlength="250"/>
+    				</form> 
     				<br>	
     				<form>        
         <fieldset  data-role="controlgroup" id="chkbVehicle">

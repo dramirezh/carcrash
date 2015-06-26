@@ -108,12 +108,7 @@ function saveContact(){
 		if(result<5||contactUpdate){	
 	var	userContactName=$("#txtUserContactName"); 
 	var	userContactCellPhone=$("#txtUserContactCellPhone");
-	
-	
-	if(userContactName.val().trim().length>0
-			&&userContactCellPhone.val().trim().length>0
-	){ 	
-						
+		 							
 		if(!contactUpdate){ 
 		var jsonStore = new clsJsonStoreHelper();
 		jsonStore.collectionName="Contacts";
@@ -134,13 +129,7 @@ function saveContact(){
 		}else{
 			savingContact();	
 		}		
-		
-	    } else {		    							
-			navigator.notification.alert(
-					Messages.requiredData+'',
-					function onSuccess() {
-					}, "Info");	
-	    }	
+			    	
 	
 	}else{		
 		navigator.notification.alert(
@@ -266,7 +255,8 @@ function existFail(result){
 $(document).on('pagebeforeshow','#showContacts',function(e,data){   
 	
 	initContacts();
-	basicPersonFiltersNumber("txtUserContactCellPhone");       	 
+	basicPersonFiltersNumber("txtUserContactCellPhone");
+	validEmail("txtUserContactEmail");
 	 $('#txtUserContactName').keypress(function(key) {        		
    		 if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 32)
    				 && (key.charCode != 225)&& (key.charCode != 233)&& (key.charCode != 237)&& (key.charCode != 243)&& (key.charCode != 250)&& (key.charCode != 241)
@@ -523,4 +513,40 @@ function getAllChkChecked(FormName){
        
     });
     return  data;
+}
+
+
+function validateContact(){
+	var form = $("#contactForm");
+	form.validate({
+		errorElement:'div',
+		rules:{    				    				
+			txtUserContactName:{
+				required: true
+			},
+			txtUserContactCellPhone:{
+				required: true,
+				minlength:10
+			},
+			txtUserContactEmail:{
+				required: true,
+				email:true
+			},			
+		},
+		 messages: {    				     				 
+			 txtUserContactName: { required:Messages.enter+' '+Messages.fullname}, 
+			 txtUserContactCellPhone: { required:Messages.enter+' '+Messages.lblCellPhone, minlength:'Enter a least 10 numbers'}, 
+			 txtUserContactEmail: { required:Messages.enter+' Email'}, 			 
+         },
+         errorPlacement: function (error, element) {
+             error.insertAfter(element);
+             error.addClass('error'); 
+             error.css("color", "red");
+             error.css("text-align", "center");
+         }
+	});
+	if(form.valid())
+	{    			
+		saveContact();
+	}
 }
