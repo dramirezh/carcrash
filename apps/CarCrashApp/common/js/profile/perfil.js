@@ -402,7 +402,6 @@ if(data=="on"){
  
  function flipInputShowDiv(flip,showdiv){
 	 var datas=$('#'+flip);
-	 var data=$('#'+flip).val();
 	 if( datas.is(':checked')){
 	 	$('#'+showdiv).show();	
 	 }else{
