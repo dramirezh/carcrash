@@ -40,7 +40,15 @@
     				<input placeholder="Telefono"  id="txtOwnerCellPhone" name="txtOwnerCellPhone" maxlength="12" type="text" /> 
     				
     					<hr></hr>
-    				<p align="center" lng="insuranceData">Insurance Data</p> 	
+    					<div data-role="fieldcontain" >
+    <label style="display:inline;" for="select-based-flipswitch" lng="insuranceData">Insurance Data</label>
+    <select onchange="flipShowDiv('flipID','divID');" id="flipID" data-role="flipswitch">
+      <option value="off">off</option> 
+      <option selected="selected" value="on">on</option>
+    </select> 
+  </div>
+    				<!--<p align="center" lng="insuranceData">Insurance Data</p> -->	
+    				<div id="divID">
     					<input placeholder="Numero de poliza"  id="txtPolicyNo" name="txtPolicyNo" maxlength="30" type="text"/>  
     				   				    							
     				<input  id="txtPolicyDate" name="txtPolicyDate"  placeholder="Fecha de expiracion" type="date"/>     				    				        								    				
@@ -51,17 +59,24 @@
 								
 							</select></div>
 						</div>   				
-    				    			
+    				    		</div>	
     				    				
     				    				<hr></hr>
-    				    				<p align="center" id="pContact3">Agente de seguro </p> 
-					     							      				    				  
+    				    				 <div data-role="fieldcontain" >
+    <label style="display:inline;" for="select-based-flipswitch" id="pContact3"></label>
+    <select onchange="flipShowDiv('flipIA','divIA');" id="flipIA" data-role="flipswitch">
+      <option value="off">off</option> 
+      <option selected="selected" value="on">on</option>
+    </select> 
+  </div>
+    				    			<!-- 	<p align="center" id="pContact3">Agente de seguro </p>  -->
+					<div id="divIA">     							      				    				  
     				<input placeholder="Nombre completo" id="txtPolContactName" name="txtPolContactName" maxlength="40" type="text" />     				    				     			
     				    				 
     				<input placeholder="Telefono"  id="txtPolContactCellPhone" name="txtPolContactCellPhone" type="text" maxlength="10"/>
     						
     				<input placeholder="Email" id="txtPolContactEmail" name="txtPolContactEmail" type="email" maxlength="250" />
-    				
+    				</div>  
     				</form>
     				</div>    				
     				
