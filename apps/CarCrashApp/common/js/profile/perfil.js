@@ -100,7 +100,10 @@ var updateProfile=null;
        
          
          $(document).on('pagebeforeshow','#profile',function(e,data){    			    
-        	 
+        	 $('input[id="flipMedical"]').prop("checked", true);
+ 			$( "#flipMedical" ).flipswitch( "refresh" );
+ 			$('input[id="flipSGMM"]').prop("checked", true);
+ 			$( "#flipSGMM" ).flipswitch( "refresh" );
         	 basicPersonFiltersNumber("txtCellPhone");
         	 basicPersonFiltersNumber("street_number");
         	 basicPersonNameFilters("txtFirstName");
@@ -361,6 +364,7 @@ if(data=="on"){
 }
  }
  
+ 
  function updateEmail(success){
  	
  }
@@ -395,3 +399,13 @@ if(data=="on"){
     	    }
 		});
  }
+ 
+ function flipInputShowDiv(flip,showdiv){
+	 var datas=$('#'+flip);
+	 var data=$('#'+flip).val();
+	 if( datas.is(':checked')){
+	 	$('#'+showdiv).show();	
+	 }else{
+	 	$('#'+showdiv).hide();	
+	 }
+	  }

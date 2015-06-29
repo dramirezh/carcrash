@@ -40,13 +40,11 @@
     				<input placeholder="Telefono"  id="txtOwnerCellPhone" name="txtOwnerCellPhone" maxlength="12" type="text" /> 
     				
     					<hr></hr>
-    					<div data-role="fieldcontain" >
-    <label style="display:inline;" for="select-based-flipswitch" lng="insuranceData">Insurance Data</label>
-    <select onchange="flipShowDiv('flipID','divID');" id="flipID" data-role="flipswitch">
-      <option value="off">off</option> 
-      <option selected="selected" value="on">on</option>
-    </select> 
+    					<div data-role="fieldcontain">
+    <label style=" width: inherit; margin-right: 4px; float:left;"  for="checkbox-based-flipswitch" lng="insuranceData">Insurance Data</label>
+    <input  onchange="flipInputShowDiv('checkbox-flipswitch','divID');" type="checkbox" id="checkbox-flipswitch" data-role="flipswitch">
   </div>
+    					
     				<!--<p align="center" lng="insuranceData">Insurance Data</p> -->	
     				<div id="divID">
     					<input placeholder="Numero de poliza"  id="txtPolicyNo" name="txtPolicyNo" maxlength="30" type="text"/>  
@@ -62,12 +60,10 @@
     				    		</div>	
     				    				
     				    				<hr></hr>
-    				    				 <div data-role="fieldcontain" >
-    <label style="display:inline;" for="select-based-flipswitch" id="pContact3"></label>
-    <select onchange="flipShowDiv('flipIA','divIA');" id="flipIA" data-role="flipswitch">
-      <option value="off">off</option> 
-      <option selected="selected" value="on">on</option>
-    </select> 
+    				    				
+  <div data-role="fieldcontain">
+    <label style=" width: inherit; margin-right: 4px; float:left;" for="checkbox-based-flipswitch" id="pContact3">Insurance agent</label>
+    <input  onchange="flipInputShowDiv('checkbox-flipswitchIA','divIA');" type="checkbox" id="checkbox-flipswitchIA" data-role="flipswitch">
   </div>
     				    			<!-- 	<p align="center" id="pContact3">Agente de seguro </p>  -->
 					<div id="divIA">     							      				    				  

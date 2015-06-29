@@ -28,12 +28,10 @@
 </form>                    
     				<hr></hr>
     				<div >
-				<div data-role="fieldcontain">
-    <label style="display:inline;" for="select-based-flipswitch">Medical Info</label> 
-    <select onchange="flipShowDiv('flipMedical','divMedicalData');" id="flipMedical" name="flipMedical" data-role="flipswitch">
-      <option value="off">off</option> 
-      <option  selected="selected" value="on">on</option>
-    </select>
+				
+  <div data-role="fieldcontain">
+    <label style=" width: inherit; margin-right: 4px; float:left;" for="checkbox-based-flipswitch" >Medical Info</label>
+    <input    onchange="flipInputShowDiv('flipMedical','divMedicalData');" type="checkbox" id="flipMedical" name="flipMedical" data-role="flipswitch">
   </div>
 			</div>
     				<div id="divMedicalData">   
@@ -58,12 +56,10 @@
 							</select></div>
     				 </form>
     				 </div>	
-    				 <div data-role="fieldcontain">
-    <label style="display:inline;" for="select-based-flipswitch">Major Medical Insurance</label>
-    <select onchange="flipShowDiv('flipSGMM','divSGMM');" id="flipSGMM" data-role="flipswitch">
-      <option value="off">off</option>
-      <option selected="selected" value="on">on</option>
-    </select>
+    				
+  <div data-role="fieldcontain">
+    <label style="   width: inherit;  margin-right: 4px; float:left;" for="checkbox-based-flipswitch" >Major Medical Insurance</label>
+    <input   onchange="flipInputShowDiv('flipSGMM','divSGMM');" type="checkbox" id="flipSGMM" name="flipSGMM" data-role="flipswitch">
   </div>
   <div id="divSGMM"> 
   <input placeholder="Institution"  id="txtInstitution" maxlength="70" type="text" /> 

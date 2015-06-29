@@ -193,6 +193,10 @@
 			policyNavigation=0;
 		}		
 		$(document).on('pagebeforeshow','#policiesContent',function(e,data){	
+			$('input[id="checkbox-flipswitch"]').prop("checked", true);
+			$( "#checkbox-flipswitch" ).flipswitch( "refresh" );
+			$('input[id="checkbox-flipswitchIA"]').prop("checked", true);
+			$( "#checkbox-flipswitchIA" ).flipswitch( "refresh" );
 			
 			getBrandsFromServer();
 			getInsurancesFromServer();
