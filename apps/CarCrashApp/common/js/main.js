@@ -150,7 +150,6 @@ function initializeData()
 	
 	checkUser();
 	//location.href="#login";
-	tap();
 }
 function setSlider(){
 	$('.slider-init').slick({
@@ -383,19 +382,6 @@ function getPages()
 	
 }
 
-function tap(){	
-	
-	$("#txtBirthdate").focus(function (){
-		var date=$(this);
-		date.attr("type","date");
-	} 
-			);
-	$("#txtBirthdate").blur(function (){
-		var date=$(this);
-		date.attr("type","text");
-	} 
-			);
-}
 
 
 function initLanguage(){
