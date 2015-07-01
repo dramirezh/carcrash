@@ -620,6 +620,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						  $('#selectMark option').remove();
 						  brandsFailureDefault();
 						  InsurancesFailureDefault();
+						  defaultVehicleID=data[0].json.defaultVehicle;
 					  }
 				  });
 				  
@@ -1026,7 +1027,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						jsonStore.id=parseInt(id2);
 						jsonStore.fnSuccess=function(success){				
 												
-						
+							saveDefaultVehicleToServer(success);
 						};
 						jsonStore.fnFail=function(errorObject){
 							
@@ -1059,7 +1060,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 						jsonStore.document=success;				
 						jsonStore.id=parseInt(tmpID);
 						jsonStore.fnSuccess=function(success){				
-												
+							saveDefaultVehicleToServer(success);				
 						
 						};
 						jsonStore.fnFail=function(errorObject){
@@ -1176,3 +1177,24 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 		    	    }
 				});
 		 }
+		
+		function saveDefaultVehicleToServer(ids)
+		{	
+			var jsonStore = new clsJsonStoreHelper();
+			jsonStore.collectionName="PolicyVehicle";
+			jsonStore.document=
+					{
+					};
+			jsonStore.id=ids;
+			jsonStore.fnSuccess=function initSuccess(arrayResults){	
+				if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
+					//alert("enviado al servidor");
+				}
+				
+				 return true;
+			};
+			jsonStore.fnFail=function initFail(result){
+				
+			};
+			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
+		}
