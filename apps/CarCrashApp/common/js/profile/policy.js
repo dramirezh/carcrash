@@ -1041,6 +1041,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				jsonStore2.get();
 				
 				
+				if(tmpID.trim().length>0){ 
 				var jsonStore3 = new clsJsonStoreHelper();
 				jsonStore3.collectionName=policyCollectionName;
 				jsonStore3.document={};				
@@ -1073,7 +1074,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 					
 				};						
 				jsonStore3.get();								
-				
+				}
 			}
 		
 		
@@ -1186,11 +1187,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 					{
 					};
 			jsonStore.id=ids;
-			jsonStore.fnSuccess=function initSuccess(arrayResults){	
-				if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
-					//alert("enviado al servidor");
-				}
-				
+			jsonStore.fnSuccess=function initSuccess(arrayResults){					
 				 return true;
 			};
 			jsonStore.fnFail=function initFail(result){
