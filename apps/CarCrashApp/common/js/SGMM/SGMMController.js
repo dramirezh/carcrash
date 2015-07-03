@@ -3,8 +3,8 @@ $(document).on('pagebeforeshow','#profile',function(e,data){
 			initSGMMDataInfo(); 
 			
 			basicPersonNameFilters("txtSGMMName");
-			basicPersonNameFilters("txtCertificate");
-			basicPersonNameFilters("txtInstitution");
+			advancedNameFilters("txtCertificate");
+			advancedNameFilters("txtInstitution");
 		});	
 		
 
