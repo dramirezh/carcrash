@@ -426,6 +426,13 @@ function setProfileTranslations(){
 		$('input[id="country"]').attr("placeholder", Messages.country);	
 		$('input[id="locality"]').attr("placeholder", Messages.city);
 		$('input[id="autocomplete"]').attr("placeholder", Messages.placeAddress); 
+		$('[lng="medicalInfo"]').text( Messages.medicalInfo);
+		$('[lng="sgmm"]').text( Messages.MMI);
+		$('[lng="institution"]').attr("placeholder", Messages.institution);
+		$('[lng="certificate"]').attr("placeholder", Messages.certificate);
+		$('[id="txtSGMMName"]').attr("placeholder", Messages.fullname);
+		
+		
 }
 function setMedicalTranslations(){
 	 $('[id="aMedical"]').text( Messages.medical);	 
@@ -463,6 +470,10 @@ function setPoliciesTranslations(){
 	 //
 	 $('[id="delete"]').text( Messages.deleteItem);
 	 $('[id="option"]').text( Messages.option);
+	 $('[lng="vehicles"]').text(Messages.vehicles);
+	 $('[lng="expirationDate"]').text(Messages.expirationDate+":");
+	 $('[lng="insuranceData"]').text(Messages.insurance);
+	 $('[lng="category"]').text(Messages.category);
 }
 function setContactsTranslations(){
 	//show contacts content	
@@ -503,10 +514,7 @@ function setSinistersTranslations(){
 	 $('[lng="policy"]').text(Messages.policy);
 	 $('[lng="dateExp"]').text(Messages.dateExp+":");
 	 $('[lng="insurance"]').text(Messages.insurance);
-	 $('[lng="vehicles"]').text(Messages.vehicles);
-	 $('[lng="expirationDate"]').text(Messages.expirationDate+":");
-	 $('[lng="insuranceData"]').text(Messages.insurance);
-	 $('[lng="category"]').text(Messages.category);
+	 
 }
 
 function flipReport(){

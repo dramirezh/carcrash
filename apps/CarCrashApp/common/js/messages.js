@@ -132,12 +132,20 @@ Messages = {
 		sendReport:"Enviar reporte",
 		details:"Detalles",
 		recordLimit:"Limite máximo de registros",
-		//contacts
+		
 		model:"Modelo",
 		dateExp:"Fecha Exp",
 		expirationDate:"Fecha de Expiración",
 		vehicles:"Vehículos",
 		category:"Categoria",
+		//User
+		user:"Usuario",
+		licenseNumber:"Número Licencia",
+		medicalInfo:"Datos médicos",
+		//MMI/SGMM
+		MMI:"SGMM",
+		certificate:"Certificado",
+		institution:"Institución",
 };
 
 function setSpanish(){
@@ -182,7 +190,15 @@ function setSpanishProfile(){
 	Messages.surnames = "Apellidos";
 	Messages.lblCellPhone = "Celular";
 	Messages.profile = "Perfil";	
-	Messages.h1ConfirmCity = "Confirmar?";	
+	Messages.h1ConfirmCity = "Confirmar?";
+	//
+	Messages.user="Usuario";
+	Messages.licenseNumber="Número Licencia";
+	Messages.medicalInfo="Datos médicos";
+	//MMI/SGMM
+	Messages.MMI="SGMM";
+	Messages.certificate="Certificado";
+	Messages.institution="Institución";
 }
 function setSpanishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Eliminar?";
@@ -340,6 +356,13 @@ function setEnglishProfile(){
 	Messages.lblCellPhone = "Cell Phone";
 	Messages.profile = "Profile";	
 	Messages.h1ConfirmCity = "Confirm?";	
+	Messages.user="User";
+	Messages.licenseNumber="License Number";
+	Messages.medicalInfo="Medical Info";
+	//MMI/SGMM
+	Messages.MMI="Major Medical Insurance";
+	Messages.certificate="Certificate";
+	Messages.institution="Institution";
 }
 
 function setEnglishShowPolicies(){	
