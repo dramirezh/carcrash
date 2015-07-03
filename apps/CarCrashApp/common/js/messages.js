@@ -41,7 +41,7 @@ Messages = {
 		opNoneInsurance:"Seleccione Aseguradora",
 		insurance:"Aseguradora",
 		placeholderDateFormat:"dd/mm/aaaa",
-		vehicle:"Vehicle",
+		vehicle:"Vehículo",
 		policies:"Pólizas",
 		insuranceAgent:"Agente de Seguro",
 		//Add Vehicle translations
@@ -136,6 +136,8 @@ Messages = {
 		model:"Modelo",
 		dateExp:"Fecha Exp",
 		expirationDate:"Fecha de Expiración",
+		vehicles:"Vehículos",
+		category:"Categoria",
 };
 
 function setSpanish(){
@@ -223,7 +225,9 @@ function setSpanishAddPolicy(){
 	Messages.color = "Color";
 	Messages.picture = "Fotografía";
 	Messages.usualDriver = "Conductor habitual"; 
-	Messages.h1ConfirmMark = "Confirmar?";		
+	Messages.h1ConfirmMark = "Confirmar?";	
+	Messages.vehicles="Vehículos";
+	Messages.category="Categoria";
 }
 
 function setSpanishSinisters(){
@@ -381,6 +385,8 @@ function setEnglishAddPolicy(){
 	Messages.picture = "Picture";
 	Messages.usualDriver = "Usual driver";
 	Messages.h1ConfirmMark = "Confirm?";
+	Messages.vehicles = "Vehicles"; 
+	Messages.category="Category";
 }	
 
 function setEnglishSinisters(){

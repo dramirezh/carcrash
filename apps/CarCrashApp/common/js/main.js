@@ -386,8 +386,8 @@ function getPages()
 
 
 function initLanguage(){
-//	languageChanged("spanish");
-	languageChanged("english");
+	languageChanged("spanish");
+	//languageChanged("english");
 	/* var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
 	    WL.Logger.debug(">> Detected locale: " + locale);
@@ -503,6 +503,10 @@ function setSinistersTranslations(){
 	 $('[lng="policy"]').text(Messages.policy);
 	 $('[lng="dateExp"]').text(Messages.dateExp+":");
 	 $('[lng="insurance"]').text(Messages.insurance);
+	 $('[lng="vehicles"]').text(Messages.vehicles);
+	 $('[lng="expirationDate"]').text(Messages.expirationDate+":");
+	 $('[lng="insuranceData"]').text(Messages.insurance);
+	 $('[lng="category"]').text(Messages.category);
 }
 
 function flipReport(){
