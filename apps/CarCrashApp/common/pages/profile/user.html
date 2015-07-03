@@ -28,14 +28,16 @@
 
 <input placeholder="License Number"  id="txtLicenseNo" name="txtLicenseNo" type="text" maxlength="60"/>  
 </form>                    
-    				<hr></hr>
-    				<div >
-				
-  <div data-role="fieldcontain">
-    <label style=" width: inherit; margin-right: 4px; float:left;" for="checkbox-based-flipswitch" >Medical Info</label>
-    <input    onchange="flipInputShowDiv('flipMedical','divMedicalData');" type="checkbox" id="flipMedical" name="flipMedical" data-role="flipswitch">
-  </div>
+    				<hr></hr>    								  
+  <div class="ui-grid-a">
+			<div class="ui-block-a" style="margin-top: 10px;">
+				<label id="lMedical" lng="lMedical">Medical Info</label>
 			</div>
+			<div class="ui-block-b" >
+			   <input    onchange="flipInputShowDiv('flipMedical','divMedicalData');" type="checkbox" id="flipMedical" name="flipMedical" data-role="flipswitch">			
+			</div>
+		</div>
+			
     				<div id="divMedicalData">   
     				<input placeholder="Numero IMSS"  id="txtNoIMSS" maxlength="15"  type="text"/>      				   			    				    				 
     				   				 
@@ -58,11 +60,15 @@
 							</select></div>
     				 </form>
     				 </div>	
-    				
-  <div data-role="fieldcontain">
-    <label style="   width: inherit;  margin-right: 4px; float:left;" for="checkbox-based-flipswitch" >Major Medical Insurance</label>
-    <input   onchange="flipInputShowDiv('flipSGMM','divSGMM');" type="checkbox" id="flipSGMM" name="flipSGMM" data-role="flipswitch">
-  </div>
+    				  
+   <div class="ui-grid-a">
+			<div class="ui-block-a" style="margin-top: 10px;">
+				<label  id="sgmm" lng="sgmm">Major Medical Insurance</label>
+			</div>
+			<div class="ui-block-b" >
+			     <input   onchange="flipInputShowDiv('flipSGMM','divSGMM');" type="checkbox" id="flipSGMM" name="flipSGMM" data-role="flipswitch">			
+			</div>
+		</div>
   <div id="divSGMM"> 
   <input placeholder="Institution"  id="txtInstitution" maxlength="70" type="text" /> 
   <input placeholder="Certificate"  id="txtCertificate" maxlength="80" type="text" /> 

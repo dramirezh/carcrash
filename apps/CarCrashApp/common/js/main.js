@@ -150,6 +150,7 @@ function initializeData()
 	
 	checkUser();
 	//location.href="#login";
+	flipReport();
 }
 function setSlider(){
 	$('.slider-init').slick({
@@ -504,6 +505,17 @@ function setSinistersTranslations(){
 	 $('[lng="insurance"]').text(Messages.insurance);
 }
 
+function flipReport(){
+	flipSetText('flipAmbulancia','No','Yes');
+	flipSetText('flipLegal','No','Yes');
+	flipSetText('flipCrane','No','Yes');
+}
+function flipSetText(flipId,offText,onText){
+	$( "#" +flipId).flipswitch({
+		  offText: offText,
+		  onText: onText
+		});
+}
 
 
 

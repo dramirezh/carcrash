@@ -71,9 +71,9 @@ function sendIncidenteInfo()
 			oCurrentSinister.data.status = 0;
 			oCurrentSinister.data.location.lat = currentLat;
 			oCurrentSinister.data.location.lng = currentLng;
-			oCurrentSinister.data.extras.medicalAssistance = $('#flipAmbulancia').val() == 'off' ? false : true;
-			oCurrentSinister.data.extras.legalAssistance = $('#flipLegal').val() == 'off' ? false : true;
-			oCurrentSinister.data.extras.craneService = $('#flipCrane').val() == 'off' ? false : true;
+			oCurrentSinister.data.extras.medicalAssistance = !$('#flipAmbulancia').is(':checked') ? false : true;
+			oCurrentSinister.data.extras.legalAssistance =  !$('#flipLegal').is(':checked') ? false : true;
+			oCurrentSinister.data.extras.craneService =  !$('#flipCrane').is(':checked') ? false : true;
 			
 			if(sPageNav == "#sinDetails"){
 				oCurrentSinister.data.type = "sinister";
