@@ -347,7 +347,7 @@ function getPages()
 				"header":{
 			    	"url":"pages/general/header.html",
 			    	"left":"<a href='{leftPanel}' tag='a' class='ui-btn ui-corner-all ui-icon-bars ui-btn-icon-left ui-btn-icon-notext'></a>",
-			    	"center":"<h2 lng='details'>Options</h2>",
+			    	"center":"<h2 lng='options'>Options</h2>",
 			    	"right":""
 			    },
 			    "leftPanel":{
@@ -386,8 +386,8 @@ function getPages()
 
 
 function initLanguage(){
-	//languageChanged("spanish");
-	languageChanged("english");
+	languageChanged("spanish");
+	//languageChanged("english");
 	/* var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
 	    WL.Logger.debug(">> Detected locale: " + locale);
@@ -414,6 +414,7 @@ function languageChanged(lang) {
     setSinistersTranslations();
     setPanelsTranslations();
     setReportTranslations();
+    setOptionsTranslations();
 }
 
 function setProfileTranslations(){
@@ -531,6 +532,14 @@ function setPanelsTranslations(){
 function setReportTranslations(){
 	$('[lng="map"]').text(Messages.map);
 	$('[lng="refresh"]').text(Messages.refresh);
+}
+
+function setOptionsTranslations(){
+	$('[lng="user"]').text(Messages.user);
+	$('[lng="about"]').text(Messages.about);
+	$('[lng="notifications"]').text(Messages.notifications);
+	$('[lng="userguide"]').text(Messages.userguide);
+	$('[lng="logout"]').val(Messages.logout);
 }
 
 function flipReport(){

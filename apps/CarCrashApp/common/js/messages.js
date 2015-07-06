@@ -153,6 +153,11 @@ Messages = {
 		refresh:"Actualizar",
 		map:"Mapa",
 		reportAddress:"Dirección",
+		//options
+		notifications:"Notificaciones",
+		about:"Acerca de",
+		userguide:"Vista guiada",
+		logout:"Cerrar Sesión",
 };
 
 function setSpanish(){
@@ -170,6 +175,7 @@ function setSpanish(){
 	 setSpanishLogIn();
 	 setSpanishSinisterPopUp();
 	 setSpanishContacts();
+	 setSpanishOptions();
 } 
 
 function setEnglish(){		
@@ -186,7 +192,8 @@ function setEnglish(){
 	 setEnglishSingUp();
 	 setEnglishLogIn();
 	 setEnglishSinisterPopUp();
-	 setEnglishContacts();		
+	 setEnglishContacts();	
+	 setEnglishOptions();
 }
 
 //Spanish Section
@@ -360,6 +367,13 @@ function setSpanishContacts(){
 	Messages.contacts = "Contactos";
 }
 
+function setSpanishOptions(){
+	Messages.notifications="Notificaciones";
+	Messages.about="Acerca de";
+	Messages.userguide="Vista guiada";
+	Messages.logout="Cerrar Sesión";
+}
+
 //English Section
 
 function setEnglishProfile(){		
@@ -530,4 +544,10 @@ function setDefaultEnglish(){
 function setEnglishContacts(){
 	Messages.contact = "Contact";
 	Messages.contacts = "Contacts";
+}
+function setEnglishOptions(){
+	Messages.notifications="Notifications";
+	Messages.about="About";
+	Messages.userguide="User Guide";
+	Messages.logout="Log out";
 }
