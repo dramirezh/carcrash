@@ -99,8 +99,8 @@ var updateProfile=null;
          }
        
          
-         $(document).on('pagebeforeshow','#profile',function(e,data){    	        	         	         	        		
-        	 $('input[id="flipMedical"]').prop("checked", true);
+         $(document).on('pagebeforeshow','#profile',function(e,data){         	 
+       	 $('input[id="flipMedical"]').prop("checked", true);
  			$( "#flipMedical" ).flipswitch( "refresh" );
  			$('input[id="flipSGMM"]').prop("checked", true);
  			$( "#flipSGMM" ).flipswitch( "refresh" );

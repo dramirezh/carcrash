@@ -59,17 +59,18 @@ Messages = {
 		// Report Sinister Translations
 		h3ReportIncident:"Reportar incidente",
 		aActualizeLocation:"Actualizar ubicación",
-		opSelectCar:"Seleccione su auto",
-		aRepSinister:"Rep. Siniestro",
-		aRepTheft:"Rep. Robo",
+		selectCar:"Seleccione su auto",
+		repSinister:"R.Siniestro",
+		repTheft:"R.Robo",
 		alertLocation:"Su ubicación no puede ser leída.",
 		selectAuto:"Debe seleccionar el automóvil siniestrado.",
 		reportName:"Reporte",
 		//Report Sinister Det Translations		
-		lblflipAmbulancia:"Requiere asistencia medica?",
+		requiredMedical:"Requiere asistencia medica?",
+		requiredCrane:"Requiere una grúa?",
 		opOff:"No",
 		opOn:"Si",
-		lblflipLegal:"Requiere asistencia legal?",
+		requiredLegal:"Requiere asistencia legal?",
 		lblObservaciones:"Comentarios:",
 		aSendInfo:"Enviar información",
 		//Initial Translations
@@ -265,9 +266,9 @@ function setSpanishAddPolicy(){
 function setSpanishSinisters(){
 	Messages.h3ReportIncident = "Reportar incidente";
 	Messages.aActualizeLocation = "Actualizar ubicación";
-	Messages.opSelectCar = "Seleccione su auto";
-	Messages.aRepSinister = "Rep. Siniestro";
-	Messages.aRepTheft="Rep. Robo";
+	Messages.selectCar = "Seleccione su auto";
+	Messages.repSinister = "R.Siniestro";
+	Messages.repTheft="R.Robo";
 	Messages.alertLocation="Su ubicación no puede ser leída.";
 	Messages.selectAuto="Debe seleccionar el automóvil siniestrado.";		
 	
@@ -290,8 +291,9 @@ function setSpanishSinisters(){
 
 function setSpanishReportSinisterDet(){
 	
-	Messages.lblflipAmbulancia = "Requiere asistencia medica?";		
-	Messages.lblflipLegal="Requiere asistencia legal?";		
+	Messages.requiredMedical = "Requiere asistencia medica?";		
+	Messages.requiredLegal="Requiere asistencia legal?";	
+	Messages.requiredCrane="Requiere una grúa?";
 	Messages.lblObservaciones="Comentarios:";		
 	Messages.aSendInfo="Enviar información";	
 	Messages.refresh="Actualizar";
@@ -445,9 +447,9 @@ function setEnglishAddPolicy(){
 function setEnglishSinisters(){
 	Messages.h3ReportIncident = "Report incident";
 	Messages.aActualizeLocation = "Actualize location";
-	Messages.opSelectCar = "Select your car";
-	Messages.aRepSinister = "Rep. Sinister";
-	Messages.aRepTheft="Rep. Theft";
+	Messages.selectCar = "Select your car";
+	Messages.repSinister = "R.Sinister";
+	Messages.repTheft="R.Theft";
 	Messages.alertLocation="Your location can not be readed.";
 	Messages.selectAuto="You must select the wrecked car.";	
 	
@@ -470,13 +472,14 @@ function setEnglishSinisters(){
 
 function setEnglishReportSinisterDet(){
 	
-	Messages.lblflipAmbulancia = "Medical assistance is required?";		
-	Messages.lblflipLegal="Legal assistance is required?";		
+	Messages.requiredMedical = "Do you require medical assistance?";		
+	Messages.requiredLegal="Do you require legal assistance?";		
 	Messages.lblObservaciones="Comments:";		
 	Messages.aSendInfo="Send Info";
 	Messages.refresh="Refresh";
 	Messages.map="Map";
 	Messages.reportAddress="Address";
+	Messages.requiredCrane="Do you require a crane?";
 }
 
 function setEnglishLeftPanel(){

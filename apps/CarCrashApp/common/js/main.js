@@ -374,7 +374,7 @@ function getPages()
 			{"id":"report", "url":"pages/sinisters/report.html", 
 				"header":{
 			    	"url":"pages/general/header.html",
-			    	"left":"<a href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>report</a>",
+			    	"left":"<a lng='report' href='#' data-rel='back' class='ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-arrow-l'>report</a>",
 			    	"center":"<h2 id='titleReport' lng='details'>R.Type</h2>",
 			    	"right":""
 			    }			
@@ -539,6 +539,13 @@ function setOptionsTranslations(){
 	$('[lng="about"]').text(Messages.about);
 	$('[lng="notifications"]').text(Messages.notifications);
 	$('[lng="userguide"]').text(Messages.userguide);
+	$('[lng="logout"]').val(Messages.logout);
+}
+function setOptionsTranslations(){
+	$('[id="opSelectCar"]').text(Messages.selectCar);
+	$('[id="lblflipAmbulancia"]').text(Messages.requiredMedical);
+	$('[id="lblflipLegal"]').text(Messages.requiredLegal);
+	$('[id="lblflipCrane"]').text(Messages.requiredCrane);
 	$('[lng="logout"]').val(Messages.logout);
 }
 
