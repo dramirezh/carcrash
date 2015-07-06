@@ -386,8 +386,8 @@ function getPages()
 
 
 function initLanguage(){
-	languageChanged("spanish");
-	//languageChanged("english");
+	//languageChanged("spanish");
+	languageChanged("english");
 	/* var locale = WL.App.getDeviceLocale();
 	    var lang = WL.App.getDeviceLanguage();
 	    WL.Logger.debug(">> Detected locale: " + locale);
