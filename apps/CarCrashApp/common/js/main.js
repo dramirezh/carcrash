@@ -412,6 +412,8 @@ function languageChanged(lang) {
     setPoliciesTranslations();
     setContactsTranslations();
     setSinistersTranslations();
+    setPanelsTranslations();
+    setReportTranslations();
 }
 
 function setProfileTranslations(){
@@ -431,9 +433,11 @@ function setProfileTranslations(){
 		$('[lng="institution"]').attr("placeholder", Messages.institution);
 		$('[lng="certificate"]').attr("placeholder", Messages.certificate);
 		$('[id="txtSGMMName"]').attr("placeholder", Messages.fullname);
-		
-		
+			 $('[id="aUser"]').text( Messages.user);	
+			 $('[lng="birthdate"]').text( Messages.birthdate+" :");
+			 $('[lng="licenseNumber"]').attr("placeholder", Messages.licenseNumber); 
 }
+
 function setMedicalTranslations(){
 	 $('[id="aMedical"]').text( Messages.medical);	 
 	 $('#txtNoIMSS').attr("placeholder", Messages.IMSSNum);
@@ -472,7 +476,7 @@ function setPoliciesTranslations(){
 	 $('[id="option"]').text( Messages.option);
 	 $('[lng="vehicles"]').text(Messages.vehicles);
 	 $('[lng="expirationDate"]').text(Messages.expirationDate+":");
-	 $('[lng="insuranceData"]').text(Messages.insurance);
+	 $('[lng="insuranceData"]').text(Messages.insuranceData);
 	 $('[lng="category"]').text(Messages.category);
 }
 function setContactsTranslations(){
@@ -515,6 +519,18 @@ function setSinistersTranslations(){
 	 $('[lng="dateExp"]').text(Messages.dateExp+":");
 	 $('[lng="insurance"]').text(Messages.insurance);
 	 
+}
+
+function setPanelsTranslations(){
+	$('[lng="report"]').text(Messages.reporting);
+	$('[lng="options"]').text(Messages.options);
+	$('[lng="records"]').text(Messages.records);
+	
+}
+
+function setReportTranslations(){
+	$('[lng="map"]').text(Messages.map);
+	$('[lng="refresh"]').text(Messages.refresh);
 }
 
 function flipReport(){

@@ -55,6 +55,7 @@ Messages = {
 		usualDriver:"Conductor habitual",
 		h1ConfirmMark:"Confirmar?",
 		msgDataSaved:"Datos guardados con éxito.",
+		insuranceData:"Datos Aseguradora",
 		// Report Sinister Translations
 		h3ReportIncident:"Reportar incidente",
 		aActualizeLocation:"Actualizar ubicación",
@@ -94,7 +95,6 @@ Messages = {
 		//Sign up Translations
 		h2SignUp:"Registrarse",
 		txtName:"Nombre",
-		txtNacimiento:"Fecha de nacimiento",
 		txtPais:"País",
 		txtCiudad:"Ciudad",
 		txtEmail:"E-Mail",
@@ -126,7 +126,7 @@ Messages = {
 		characters:"caracteres",
 		search:"Buscar",
 		deleteItem:"Eliminar",
-		option:"Opcíon",
+		option:"Opción",
 		date:"Fecha",
 		chooseAction:"Seleccione una acción",
 		sendReport:"Enviar reporte",
@@ -138,14 +138,21 @@ Messages = {
 		expirationDate:"Fecha de Expiración",
 		vehicles:"Vehículos",
 		category:"Categoria",
+		records:"Historial",
+		options:"Opciones",
 		//User
 		user:"Usuario",
 		licenseNumber:"Número Licencia",
 		medicalInfo:"Datos médicos",
+		birthdate:"Fecha de Nacimiento",
 		//MMI/SGMM
 		MMI:"SGMM",
 		certificate:"Certificado",
 		institution:"Institución",
+		//report
+		refresh:"Actualizar",
+		map:"Mapa",
+		reportAddress:"Dirección",
 };
 
 function setSpanish(){
@@ -199,6 +206,7 @@ function setSpanishProfile(){
 	Messages.MMI="SGMM";
 	Messages.certificate="Certificado";
 	Messages.institution="Institución";
+	Messages.birthdate="Fecha de Nacimiento";
 }
 function setSpanishShowPolicies(){	
 	Messages.h1ConfirmPolicy = "Eliminar?";
@@ -243,7 +251,8 @@ function setSpanishAddPolicy(){
 	Messages.usualDriver = "Conductor habitual"; 
 	Messages.h1ConfirmMark = "Confirmar?";	
 	Messages.vehicles="Vehículos";
-	Messages.category="Categoria";
+	Messages.category="Categoria";	
+	Messages.insuranceData="Datos Aseguradora";
 }
 
 function setSpanishSinisters(){
@@ -277,7 +286,10 @@ function setSpanishReportSinisterDet(){
 	Messages.lblflipAmbulancia = "Requiere asistencia medica?";		
 	Messages.lblflipLegal="Requiere asistencia legal?";		
 	Messages.lblObservaciones="Comentarios:";		
-	Messages.aSendInfo="Enviar información";		
+	Messages.aSendInfo="Enviar información";	
+	Messages.refresh="Actualizar";
+	Messages.map="Mapa";
+	Messages.reportAddress="Dirección";
 }	
 
 function setSpanishLeftPanel(){
@@ -287,7 +299,6 @@ function setSpanishLeftPanel(){
 function setSpanishSingUp(){
 	Messages.h2SignUp = "Registrarse";
 	Messages.txtName = "Nombre";
-	Messages.txtNacimiento = "Fecha de nacimiento"; 
 	Messages.txtPais = "País";
 	Messages.txtCiudad = "Ciudad";
 	Messages.txtEmail = "E-Mail";
@@ -340,6 +351,8 @@ function setDefaultSpanish(){
 	Messages.dateExp="Fecha Exp";
 	Messages.expirationDate="Fecha de Expiración";
 	Messages.recordLimit="Limite máximo de registros";
+	Messages.records="Historial";
+	Messages.options="Opciones";
 }
 
 function setSpanishContacts(){
@@ -359,6 +372,7 @@ function setEnglishProfile(){
 	Messages.user="User";
 	Messages.licenseNumber="License Number";
 	Messages.medicalInfo="Medical Info";
+	Messages.birthdate="Birthdate";
 	//MMI/SGMM
 	Messages.MMI="Major Medical Insurance";
 	Messages.certificate="Certificate";
@@ -410,6 +424,8 @@ function setEnglishAddPolicy(){
 	Messages.h1ConfirmMark = "Confirm?";
 	Messages.vehicles = "Vehicles"; 
 	Messages.category="Category";
+	Messages.insuranceData="Insurance data";
+	
 }	
 
 function setEnglishSinisters(){
@@ -443,7 +459,10 @@ function setEnglishReportSinisterDet(){
 	Messages.lblflipAmbulancia = "Medical assistance is required?";		
 	Messages.lblflipLegal="Legal assistance is required?";		
 	Messages.lblObservaciones="Comments:";		
-	Messages.aSendInfo="Send Info";		
+	Messages.aSendInfo="Send Info";
+	Messages.refresh="Refresh";
+	Messages.map="Map";
+	Messages.reportAddress="Address";
 }
 
 function setEnglishLeftPanel(){
@@ -453,7 +472,6 @@ function setEnglishLeftPanel(){
 function setEnglishSingUp(){
 	Messages.h2SignUp = "Sign Up";
 	Messages.txtName = "Name";
-	Messages.txtNacimiento = "Birth date"; 
 	Messages.txtPais = "Country";
 	Messages.txtCiudad = "City";
 	Messages.txtEmail = "E-Mail";
@@ -505,6 +523,8 @@ function setDefaultEnglish(){
 	Messages.dateExp="Expiration";
 	Messages.expirationDate="Expiration date";
 	Messages.recordLimit="Can not register more than 5 records";
+	Messages.records="Records";
+	Messages.options="Options";
 }
 
 function setEnglishContacts(){
