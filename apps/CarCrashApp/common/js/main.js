@@ -415,6 +415,8 @@ function languageChanged(lang) {
     setPanelsTranslations();
     setReportTranslations();
     setOptionsTranslations();
+    setReport2Translations();
+    setSinDetailsTranslations();
 }
 
 function setProfileTranslations(){
@@ -541,12 +543,19 @@ function setOptionsTranslations(){
 	$('[lng="userguide"]').text(Messages.userguide);
 	$('[lng="logout"]').val(Messages.logout);
 }
-function setOptionsTranslations(){
+function setReport2Translations(){
 	$('[id="opSelectCar"]').text(Messages.selectCar);
 	$('[id="lblflipAmbulancia"]').text(Messages.requiredMedical);
 	$('[id="lblflipLegal"]').text(Messages.requiredLegal);
 	$('[id="lblflipCrane"]').text(Messages.requiredCrane);
 	$('[lng="logout"]').val(Messages.logout);
+}
+function setSinDetailsTranslations(){
+	$('[lng="policyDet"]').text(Messages.policy+":");
+	$('[lng="insuranceDet"]').text(Messages.insurance+":");
+	//$('[lng="reqMedical"]').text(Messages.requiredMedical+" :");
+	//$('[lng="reqLegal"]').text(Messages.requiredLegal+" :");
+	//$('[lng="reqCrane"]').text(Messages.requiredCrane+" :");
 }
 
 function flipReport(){
