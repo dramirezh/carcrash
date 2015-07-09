@@ -26,7 +26,9 @@ function enviarExtras()
 	
 	$('img[ident="pics"]').each(function(idx,item){
 		var imgSrc = $(item).attr("src");
-		oCurrentSinister.data.extras.pictures.push({url:imgSrc});
+		convertToBase64(imgSrc, function(data){
+			oCurrentSinister.data.extras.pictures.push({url:data});
+		});
 	});
 	
 	oCurrentSinister.fnSuccess = function(){

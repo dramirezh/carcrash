@@ -260,7 +260,9 @@ function getServerData(){
 		$(collectionsToGet).each(function(idx,col){
 			oJS.collectionName = col.collection;
 			oJS.fnSuccess = function(){};
-			oJS.fnFail = function(){};
+			oJS.fnFail = function(error){
+				
+			};
 			oJS.getFromServer(col.adapter, col.procedure);
 		});
 	};
