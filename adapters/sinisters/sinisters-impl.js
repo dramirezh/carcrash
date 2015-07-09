@@ -6,7 +6,7 @@
 var selectStatement = WL.Server.createSQLStatement(
 	"SELECT R.Identifier AS identifier, R.Email AS email, R.IDInsurancePolicy AS idPolicy, LEFT(CONVERT(varchar, R.[Date], 120) ,10) AS date, " +
 	"R.[Time] as [time], R.[Type] AS [type], R.[Status] AS [status], R.Lat AS lat, R.Lng AS lng, " +
-	"RE.Severity as [severity]" +
+	"RE.MedicalAssistance as medicalAssistance, RE.LegalAssistance as legalAssistance, RE.CraneService as craneService " +
 	"FROM Reports R " +
 	"LEFT JOIN ReportsExtra RE ON RE.Identifier = R.Identifier AND RE.Email = R.Email " +
 	"WHERE R.Email = ?"
@@ -44,6 +44,7 @@ function getSinisters(oData) {
 		preparedStatement : selectStatement,
 		parameters : [oData.email]
 	});
+	
 	var oReturn = [];
 	for(var i = 0; i < result.resultSet.length; i++){
 		var data = {
@@ -62,6 +63,7 @@ function getSinisters(oData) {
 						pictures: [],
 						medicalAssistance: result.resultSet[i].medicalAssistance,
 						legalAssistance: result.resultSet[i].legalAssistance,
+						craneService: result.resultSet[i].craneService,
 						comments: result.resultSet[i].comments
 					}
 				};
