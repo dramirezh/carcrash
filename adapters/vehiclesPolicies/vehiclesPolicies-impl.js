@@ -1,70 +1,67 @@
 
-var selectStatement = WL.Server.createSQLStatement("select v.Identifier as identifier,v.Email as email,v.Plates, v.Serie, v.IDVehicleBrand as Mark, "+
-" V.Model AS SubMark, v.Year as Model, v.Color, v.VehicleType, v.PictureURL as carPicture,"+
-" v.ownerName as Holder, v.Cellphone as OwnerCellPhone, ipo.PolicyNumber as PolicyNo, LEFT(CONVERT(varchar, ipo.ExpirationDate, 120) ,10)  as PolicyDate,"+
-" ipo.IDInsuranceCompany as Insurance,  iag.FirstName as PolicyContactFirstName,"+
-" iag.LastName as PolicyContactLastName, iag.SecondLastName as PolicyContactSecondLastName,"+
-" iag.CellPhone as PolicyContactCellPhone, ico.Name as InsuranceName, vb.Name as MarkName, v.defaultVehicle, iag.IAgentEmail, v.IDVehicleType     from vehicle v"+
-" inner join InsurancePolicies ipo on v.email=ipo.email  and v.Identifier=ipo.Identifier "+
-" inner join InsuranceAgents  iag on iag.Email=ipo.Email  and iag.Identifier=v.Identifier "+
-" inner join InsuranceCompanies ico on ico.IDInsuranceCompanies=ipo.IDInsuranceCompany"+
-" inner join VehicleBrands vb on vb.IDVehicleBrands = v.IDVehicleBrand "+
-" where v.Email=?");
+/**
+ *  WL.Server.invokeHttp(parameters) accepts the following json object as an argument:
+ *  
+ *  {
+ *  	// Mandatory 
+ *  	method : 'get' , 'post', 'delete' , 'put' or 'head' 
+ *  	path: value,
+ *  	
+ *  	// Optional 
+ *  	returnedContentType: any known mime-type or one of "json", "css", "csv", "plain", "xml", "html"  
+ *  	returnedContentEncoding : 'encoding', 
+ *  	parameters: {name1: value1, ... }, 
+ *  	headers: {name1: value1, ... }, 
+ *  	cookies: {name1: value1, ... }, 
+ *  	body: { 
+ *  		contentType: 'text/xml; charset=utf-8' or similar value, 
+ *  		content: stringValue 
+ *  	}, 
+ *  	transformation: { 
+ *  		type: 'default', or 'xslFile', 
+ *  		xslFile: fileName 
+ *  	} 
+ *  } 
+ */
 
-var existStatement = WL.Server.createSQLStatement("select * from Vehicle where Identifier=? and Email=?");
 
-var addStatement = WL.Server.createSQLStatement(" insert into InsuranceAgents(Identifier,Email,FirstName,LastName,SecondLastName,CellPhone,IAgentEmail ) values(?,?,?,?,?,?,?)" +
-		" insert into InsurancePolicies(Email,PolicyNumber,ExpirationDate,IDInsuranceCompany,Identifier) values(?,?,?,?,?)" +
-		" insert into Vehicle (Plates,Serie,VehicleType,IDVehicleBrand,Model,Year,Color,PictureURL,OwnerName,Cellphone, Email, Identifier, defaultVehicle, IDVehicleType) values ( ?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?)"
-		);
-var updateStatement = WL.Server.createSQLStatement(" update InsuranceAgents set FirstName=?,LastName=?,SecondLastName=?,CellPhone=?,IAgentEmail=? where Identifier=?  and Email=? "+
-		" update Vehicle set  Plates=?,Serie=?, VehicleType=?, IDVehicleBrand=?, Model=?, Year=?,Color=?,PictureURL=?,OwnerName=?,Cellphone=?,defaultVehicle=?, IDVehicleType=? where identifier=? and email=?" +
-		" update InsurancePolicies set PolicyNumber=?,ExpirationDate=?,IDInsuranceCompany=? where identifier=? and email=?");
-var deleteStatement = WL.Server.createSQLStatement("delete InsuranceAgents where identifier=? and email=? " +
-		" delete InsurancePolicies where identifier=? and email=? delete Vehicle where identifier=? and email=? ");
-
-
-
-	/************************************************************************
-	 * Implementation code for procedure - 'procedure2'
-	 *
-	 * @param - account object from js/
-	 * @return - invocationResult
-	 */
-
-function getVehiclesPolicies(oData) {
-	var result = WL.Server.invokeSQLStatement({
-		preparedStatement : selectStatement,
-		parameters : [oData.email]
-	});
+function getVehiclesPolicies(oData) {	
+	
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'json',
+	    path :'/GoShieldServices/goshield.svc/Vehicles/Get?Email='+oData.email
+	};
+	var result = WL.Server.invokeHttp(input);
+	
 	var oReturn = [];
-	if(result.resultSet!=undefined){ 
-	for(var i = 0; i < result.resultSet.length; i++){
+	if(result.getVehiclesResult!=undefined){ 
+	for(var i = 0; i < result.getVehiclesResult.length; i++){
 		var data = {
-				identifier: result.resultSet[i].identifier, 
-				email: result.resultSet[i].email, 
-					PolicyNo: result.resultSet[i].PolicyNo, 
-					PolicyDate:result.resultSet[i].PolicyDate, 
-					Insurance: result.resultSet[i].Insurance,
-					Plates: result.resultSet[i].Plates,
-					Serie: result.resultSet[i].Serie,
-					VehicleType: result.resultSet[i].VehicleType,
-					Mark: result.resultSet[i].Mark,
-					SubMark:result.resultSet[i].SubMark,
-					Model: result.resultSet[i].Model,
-					Color: result.resultSet[i].Color,
-					carPicture: result.resultSet[i].carPicture,
-					Holder: result.resultSet[i].Holder,
-					OwnerCellPhone: result.resultSet[i].OwnerCellPhone,
-					PolicyContactFirstName:result.resultSet[i].PolicyContactFirstName,
-					PolicyContactLastName:result.resultSet[i].PolicyContactLastName, 
-					PolicyContactSecondLastName:result.resultSet[i].PolicyContactSecondLastName,
-					PolicyContactCellPhone:result.resultSet[i].PolicyContactCellPhone,
-					InsuranceName:result.resultSet[i].InsuranceName,
-					MarkName:result.resultSet[i].MarkName,
-					defaultVehicle:result.resultSet[i].defaultVehicle,
-					PolicyContactEmail:result.resultSet[i].IAgentEmail,
-					IDVehicleType:result.resultSet[i].IDVehicleType
+				identifier: result.getVehiclesResult[i].identifier, 
+				email: result.getVehiclesResult[i].email, 
+					PolicyNo: result.getVehiclesResult[i].PolicyNo, 
+					PolicyDate:result.getVehiclesResult[i].PolicyDate, 
+					Insurance: result.getVehiclesResult[i].Insurance,
+					Plates: result.getVehiclesResult[i].Plates,
+					Serie: result.getVehiclesResult[i].Serie,
+					VehicleType: result.getVehiclesResult[i].VehicleType,
+					Mark: result.getVehiclesResult[i].Mark,
+					SubMark:result.getVehiclesResult[i].SubMark,
+					Model: result.getVehiclesResult[i].Model,
+					Color: result.getVehiclesResult[i].Color,
+					carPicture: result.getVehiclesResult[i].carPicture,
+					Holder: result.getVehiclesResult[i].Holder,
+					OwnerCellPhone: result.getVehiclesResult[i].OwnerCellPhone,
+					PolicyContactFirstName:result.getVehiclesResult[i].PolicyContactFirstName,
+					PolicyContactLastName:result.getVehiclesResult[i].PolicyContactLastName, 
+					PolicyContactSecondLastName:result.getVehiclesResult[i].PolicyContactSecondLastName,
+					PolicyContactCellPhone:result.getVehiclesResult[i].PolicyContactCellPhone,
+					InsuranceName:result.getVehiclesResult[i].InsuranceName,
+					MarkName:result.getVehiclesResult[i].MarkName,
+					defaultVehicle:result.getVehiclesResult[i].defaultVehicle,
+					PolicyContactEmail:result.getVehiclesResult[i].PolicyContactEmail,
+					IDVehicleType:result.getVehiclesResult[i].IDVehicleType
 					
 				}; 
 		
@@ -76,74 +73,48 @@ function getVehiclesPolicies(oData) {
 	return {data: oReturn};
 }
 
+
 function saveVehiclePolicies(param1) {		
-	
+
 	var policiesdocs = param1;
 	var ret = [];
 	for(var a = 0; a<policiesdocs.length; a++){
 		var policies = policiesdocs[a];
 		
-		if(policies._operation!="remove"){
-			
-			 result = WL.Server.invokeSQLStatement({
-					preparedStatement : existStatement,
-					parameters : [policies.json.identifier,policies.json.email]
-				});
-				
-				if(result.resultSet!=undefined){
-				if(result.resultSet.length>0){
-					
-					ret.push(update(policies.json));
-				}else{
-					ret.push(save(policies.json));
-				}
-				}
+		if(policies._operation!="remove"){								
+					ret.push(save(policies.json));								
 		}else{
 			ret.push(remove(policies.json));
-		}
-		
+		}		
 		
 	}
-	return {data:ret};		
-		
-	/*switch(param1.operation){
-	case "add":
-		save(param1.json);
-		break;
-	case "replace":
-		update(param1.json);
-		break;
-	case "remove":
-		remove(param1.json);
-		break;
-	}		
-		return {};*/
+	return {data:ret};			
 }
 
 function save(pVehiclesPolicies){
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : addStatement,
-		parameters : [  pVehiclesPolicies.identifier, pVehiclesPolicies.email, pVehiclesPolicies.PolicyContactFirstName, pVehiclesPolicies.PolicyContactLastName,  pVehiclesPolicies.PolicyContactSecondLastName, pVehiclesPolicies.PolicyContactCellPhone,
-		                pVehiclesPolicies.PolicyContactEmail, pVehiclesPolicies.email, pVehiclesPolicies.PolicyNo, pVehiclesPolicies.PolicyDate,pVehiclesPolicies.Insurance,pVehiclesPolicies.identifier,
-			              pVehiclesPolicies.Plates,pVehiclesPolicies.Serie,pVehiclesPolicies.VehicleType,pVehiclesPolicies.Mark,pVehiclesPolicies.SubMark,pVehiclesPolicies.Model,pVehiclesPolicies.Color,
-			              pVehiclesPolicies.carPicture,
-		              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.email, pVehiclesPolicies.identifier, pVehiclesPolicies.defaultVehicle, pVehiclesPolicies.IDVehicleType ]
-	});
+	var dataIn	= input(pVehiclesPolicies,'post','json','/GoShieldServices/goshield.svc/Vehicles/Save','application/json; charset=UTF-8',JSON.stringify(pVehiclesPolicies));				
+	var saveResult= WL.Server.invokeHttp(dataIn);		
+	return saveResult;
 } 
 function update(pVehiclesPolicies){
-	WL.Logger.info(pVehiclesPolicies);
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : updateStatement,
-		parameters : [ pVehiclesPolicies.PolicyContactFirstName, pVehiclesPolicies.PolicyContactLastName,  pVehiclesPolicies.PolicyContactSecondLastName, pVehiclesPolicies.PolicyContactCellPhone, pVehiclesPolicies.PolicyContactEmail,
-		               pVehiclesPolicies.identifier, pVehiclesPolicies.email,
-		               pVehiclesPolicies.Plates,pVehiclesPolicies.Serie,pVehiclesPolicies.VehicleType,pVehiclesPolicies.Mark,pVehiclesPolicies.SubMark,pVehiclesPolicies.Model,pVehiclesPolicies.Color,pVehiclesPolicies.carPicture,
-			              pVehiclesPolicies.Holder, pVehiclesPolicies.OwnerCellPhone, pVehiclesPolicies.defaultVehicle, pVehiclesPolicies.IDVehicleType, pVehiclesPolicies.identifier,  pVehiclesPolicies.email,  
-			              pVehiclesPolicies.PolicyNo, pVehiclesPolicies.PolicyDate,pVehiclesPolicies.Insurance,pVehiclesPolicies.identifier, pVehiclesPolicies.email ]
-	});
-}
-function remove(pVehiclesPolicies){
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : deleteStatement,
-		parameters : [pVehiclesPolicies.identifier, pVehiclesPolicies.email, pVehiclesPolicies.identifier, pVehiclesPolicies.email, pVehiclesPolicies.identifier, pVehiclesPolicies.email]
-	});
+	
+	var data	= input(pVehiclesPolicies,'post','json','/GoShieldServices/goshield.svc/Vehicles/Update','application/json; charset=UTF-8',JSON.stringify(pVehiclesPolicies));			
+	var saveResult= WL.Server.invokeHttp(data);		
+	return saveResult;	
 } 
+function remove(pVehiclesPolicies){	
+	var data = input(pVehiclesPolicies,'post','json','/GoShieldServices/goshield.svc/Vehicles/Remove','application/json; charset=UTF-8',JSON.stringify(pVehiclesPolicies));		   	
+		return WL.Server.invokeHttp(data);		
+} 
+function input(pVehiclesPolicies, pMethod, pReturnedContentType,pPath, pContentType, pContent){
+	
+	return data = {
+		    method : pMethod,
+		    returnedContentType :pReturnedContentType,
+		    path :pPath,
+		    body: { 
+		    	   		contentType: pContentType , 
+		    	   		content: pContent
+		    	   	} 
+		};
+}
