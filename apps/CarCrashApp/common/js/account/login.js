@@ -28,7 +28,7 @@ function account()
 		//si no existe
 		if(result.invocationResult.result == 0){
 			//Guardar email en todos los registros guardados y subirlo
-			globalMail = result.invocationResult.email;
+			globalMail =  result.invocationResult.email;
 			accessAccount(globalMail, $("#txtPasswordSign").val());
 			//redireccionar a initial
 			location.href="#initial";
@@ -78,7 +78,7 @@ function saveAccountSuccess(result){
 }
 function saveAccountFailure(error){
 	navigator.notification.alert(
-	'Error al registrarse, asegurese de contar con conexion a internet.',
+	'Error al registrarse, asegurese de contar con conexion a internet.', 
 	function(){}, "Error");
 }
 
@@ -89,12 +89,12 @@ function accessAccount(pEmail, pPassword)
 }
 
 function accessSuccess(result){
-	var oResult = result.invocationResult.resultSet[0];
-	if(oResult){
+	var oResult = result.invocationResult.isSuccessful; //resultSet[0];
+	if(oResult){ 
 		//Guardar datos en jsonstore
 		var oJS = new clsJsonStoreHelper();
 		oJS.collectionName = "perfil";
-		oJS.document = oResult;
+		oJS.document = result.invocationResult.accessAccountResult; //oResult
 		oJS.id = 0;
 		oJS.fnSuccess = function(numAdd){
 			if(numAdd > 0){

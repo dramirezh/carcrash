@@ -10,6 +10,8 @@
 	var dataToUpdate=null;
 	var defaultVehicleID="false";
 	var prevId="";
+	var picUri="";
+	
 	function vehiclesPolicies()
 	{		
 		this.PolicyNo= "";	
@@ -372,7 +374,7 @@
 					
 		}
 		
-		function savingPolicy(){
+		function validImage(pic){
 			getPolicyValues();
 			var serie=	$("#txtSeries");
 			var plates=	$("#txtPlates");
@@ -383,17 +385,9 @@
 			var color=$("#txtColor");
 			var holder=$("#txtHolder");	 
 			var ownerCellPhone=$("#txtOwnerCellPhone");		
-			var pic=getCarPictureUri();
-			var markSelected=$('#selectMark option:selected');
-			
-			var idvehicle="";
-			$.each($("#listpolicy input[type=checkbox]"), function(){
-			       if( $(this).is(':checked')){       
-			    	   idvehicle=$(this).attr("id"); 
-			    	   
-			       }		       
-			    });
-			
+					
+			var markSelected=$('#selectMark option:selected');				
+			 
 			if(!policyExist||policyupdate){
 				
 				var docs="";
@@ -439,6 +433,17 @@
 			jsonStore.fnFail=function(errorObject){alert("Error: "+errorObject.msg);};						
 			jsonStore.save();							
 			}
+			
+		}
+		function savingPolicy(){
+			var picdata=$('img[id="picsrc"]').attr("src");
+			if(picdata.indexOf(".svc/get?folder")>0){				
+				validImage(picdata);
+			}else{
+				convertToBase64(picdata, function(data){
+					validImage(data);					
+				});
+			}																								
 		}
 		
 		function saveVehicle(pVehicle)
@@ -518,12 +523,12 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			break;				
 			}
 		}
-		var picUri="";
+		
 		function getCarPictureUri(){
 			return picUri;			
 		}
 		function takeCarPicture()
-		{
+		{			
 			navigator.camera.getPicture(
 			        function(data) {
 			        	picUri=data;
@@ -709,7 +714,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			$('#carPhotoCont').remove();
 			$('#carPhotoCube').hide();
         	var div = "<div id=\"carPhotoCont\" style=\"width: 65px; height: 65px; border: thin; border-style: dashed; display: inline-block; padding: 5px 5px 5px 5px;\">";
-        	var img = "<img src=\"" + data + "\" width=\"100%\" height=\"100%\" /></div>";
+        	var img = "<img id='picsrc' src=\"" + data + "\" width=\"100%\" height=\"100%\" /></div>";
             $('#carPhotos').append(div + img);			
 		}
 		function cleanPicture(){
@@ -907,15 +912,15 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			var restHelper = new clsRestHelper('insurance','getInsurances',null, InsurancesSuccess, InsurancesFailure);
 			restHelper.callRestAdapter();
 		}
-		function InsurancesSuccess(result){
+		function InsurancesSuccess(result){ 
 			var oResult = result.invocationResult;
 			if(oResult.isSuccessful)
 			{	
 				$('#selectInsurance option').remove();	
 				$( "select" ).selectmenu();			
 				$('#selectInsurance').append('<option id="opNoneInsurance" value="0" selected="selected">'+Messages.insurance+'</option>');
-				for(var c=0;c<oResult.resultSet.length;c++){
-				$('#selectInsurance').append('<option value="'+oResult.resultSet[c].IDInsuranceCompanies+'">'+oResult.resultSet[c].Name+'</option>');
+				for(var c=0;c<oResult.getInsurancesResult.length;c++){
+				$('#selectInsurance').append('<option value="'+oResult.getInsurancesResult[c].IDInsuranceCompanies+'">'+oResult.getInsurancesResult[c].Name+'</option>');
 				$( "select" ).selectmenu( "refresh", true );
 				}
 				 
@@ -948,8 +953,8 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				 $('#selectMark option').remove();
 				$( "select" ).selectmenu();			
 				$('#selectMark').append('<option  id="opNoneMark" value="0" selected="selected">'+Messages.brand+'</option>');
-				for(var c=0;c<oResult.resultSet.length;c++){
-				$('#selectMark').append('<option value="'+oResult.resultSet[c].IDVehicleBrands+'">'+oResult.resultSet[c].Name+'</option>');
+				for(var c=0;c<oResult.getVehicleBrandsResult.length;c++){
+				$('#selectMark').append('<option value="'+oResult.getVehicleBrandsResult[c].IDVehicleBrands+'">'+oResult.getVehicleBrandsResult[c].Name+'</option>');
 				$( "select" ).selectmenu( "refresh", true );
 				}
 				

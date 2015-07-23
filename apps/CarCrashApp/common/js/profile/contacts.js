@@ -384,7 +384,7 @@ function countFail(result){
 
 }
 
-function saveEmergencyContacts(pContact)
+function saveEmergencyContactsJS(pContact)
 {	
 	var restHelper = new clsRestHelper('EmergencyContacts','saveEmergencyContacts',pContact, saveEmergencyContactsSuccess, saveEmergencyContactsFailure);
 	restHelper.callRestAdapter();
@@ -448,7 +448,7 @@ function saveAllContacts()
 	jsonStore.id=0;
 	jsonStore.fnSuccess=function initSuccess(arrayResults){	
 		if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
-			//alert("enviado al servidor");
+			
 		}else{		
 			/*navigator.notification.alert(
 					'No se ha podido enviar datos al servidor, intente mas tarde',
@@ -520,7 +520,7 @@ function validateContact(){
 	var form = $("#contactForm");
 	form.validate({
 		errorElement:'div',
-		rules:{    				    				
+		rules:{    				    		 		
 			txtUserContactName:{
 				required: true
 			},

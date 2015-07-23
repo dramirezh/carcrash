@@ -188,20 +188,15 @@ var updateProfile=null;
 			jsonStore.collectionName="perfil";
 			jsonStore.document=
 				 {firstName: $("#txtProfileName").val().trim(), lastName: $("#txtFirstName").val().trim(), secondLastName: '', cellPhone: $("#txtCellPhone").val().trim(),
-		        	city: $('input[sel="pCity"]').val().trim(), birthdate: $('#txtBirthdate').val().trim(),
-		        	streetNumber:$('input[sel="pStreetNumber"]').val().trim(),street:$('input[sel="pStreet"]').val().trim(),State:$('input[sel="pState"]').val().trim(),
-		        	postalCode:$('input[sel="pPostalCode"]').val().trim(),Country:$('input[sel="pCountry"]').val().trim(), email:$('#txtUserEmail').val().trim(),
-		        	licenseNumber:$('#txtLicenseNo').val().trim()
+		        	city: $('input[sel="pCity"]').val().trim(), birthDate: $('#txtBirthdate').val().trim(),
+		        	StreetNumber:$('input[sel="pStreetNumber"]').val().trim(),StreetName:$('input[sel="pStreet"]').val().trim(),state:$('input[sel="pState"]').val().trim(),
+		        	ZipCode:$('input[sel="pPostalCode"]').val().trim(),country:$('input[sel="pCountry"]').val().trim(), email:$('#txtUserEmail').val().trim(),
+		        	LicenseNumber:$('#txtLicenseNo').val().trim()
 				 };
 			
 			jsonStore.id=getProfileId();
-			//jsonStore.id=0;
 			jsonStore.fnSuccess=function (succes) {
 				
-				
-				//jsonStore.document["email"]=globalMail;
-				//succes[0].json.email=globalMail;
-				//updateAccount(jsonStore.document);
 				var jsonStore = new clsJsonStoreHelper();
 				jsonStore.collectionName="perfil";
 				jsonStore.document=
@@ -216,7 +211,7 @@ var updateProfile=null;
 								''+Messages.msgDataSaved,
 								function onSuccess() {
 								}, "Info");
-						updateAccount(arrayResults[0].json);
+						updateAccountJS(arrayResults[0].json);
 						
 					}
 				};
@@ -245,7 +240,7 @@ var updateProfile=null;
         	jsonStore.fnSuccess=function (arrayResults) {			
         		if(arrayResults.length>0){
         			updateProfile=arrayResults;
-        			profileId=arrayResults[0]._id;
+        			profileId=arrayResults[0]._id;        			        			        			
         			  WL.Logger.debug("Retrieve success" +  JSON.stringify(arrayResults));
         			$("#txtProfileName").val(arrayResults[0].json.firstName);
         			$("#txtFirstName").val(arrayResults[0].json.lastName);	
@@ -253,14 +248,14 @@ var updateProfile=null;
         			$("#txtCellPhone").val(arrayResults[0].json.cellPhone);	
         			$('input[sel="pCity"]').val(arrayResults[0].json.city);
         			
-        			$('input[sel="pStreetNumber"]').val(arrayResults[0].json.streetNumber);
-        			$('input[sel="pStreet"]').val(arrayResults[0].json.street);
-        			$('input[sel="pState"]').val(arrayResults[0].json.State);
-                	$('input[sel="pPostalCode"]').val(arrayResults[0].json.postalCode);
-                	$('input[sel="pCountry"]').val(arrayResults[0].json.Country);
-                	$('#txtLicenseNo').val(arrayResults[0].json.licenseNumber);
+        			$('input[sel="pStreetNumber"]').val(arrayResults[0].json.StreetNumber);
+        			$('input[sel="pStreet"]').val(arrayResults[0].json.StreetName);
+        			$('input[sel="pState"]').val(arrayResults[0].json.state);
+                	$('input[sel="pPostalCode"]').val(arrayResults[0].json.ZipCode);
+                	$('input[sel="pCountry"]').val(arrayResults[0].json.country);
+                	$('#txtLicenseNo').val(arrayResults[0].json.LicenseNumber);
                 	$('#txtUserEmail').val(arrayResults[0].json.email);
-                	$('#txtBirthdate').val(arrayResults[0].json.birthdate); 
+                	$('#txtBirthdate').val(arrayResults[0].json.birthDate); 
         		}
         	};
         	jsonStore.fnFail=function (fail) {			
@@ -275,19 +270,13 @@ var updateProfile=null;
         }
         
         
-        function updateAccount(perfil)
+        function updateAccountJS(perfil)
         {	
         	var restHelper = new clsRestHelper('account','updateAccount',perfil, updateperfilSuccess, updateperfilFailure);
         	restHelper.callRestAdapter();
         }
         function updateperfilSuccess(result){
-        	var oResult = result.invocationResult;
-        	if(oResult.isSuccessful)
-        	{			
-        		//var restHelper = new clsRestHelper('accountEmail','SPUpdateAccount',perfil, updateEmail, updateEmailFail);
-            	//restHelper.callRestAdapter();
-        		
-        	}
+        	
         }
         function updateperfilFailure(error){
         	
@@ -340,6 +329,9 @@ var updateProfile=null;
     					minlength: 5,
     					email:true
     				},
+    				txtBirthdate:{
+    					required: true
+    				}
     			},
     			 messages: {    				 
     				 txtProfileName: { required: Messages.enter+' '+Messages.lblProfileName, minlength:Messages.minimun+' 2 '+Messages.characters},
@@ -353,7 +345,7 @@ var updateProfile=null;
      				postal_code: { required: Messages.enter+' '+Messages.postalCode,minlength:Messages.minimun+' 2 '+Messages.characters},
      				country: { required:Messages.enter+' '+Messages.country,minlength:Messages.minimun+' 2 '+Messages.characters},
      				txtUserEmail: { required:Messages.enter+' email',minlength:Messages.minimun+' 5 '+Messages.characters},
-     				
+     				txtBirthdate:{required:Messages.enter+" "+Messages.birthdate}
                  },
                  errorPlacement: function (error, element) {
                      error.insertAfter(element);
