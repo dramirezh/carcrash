@@ -1,71 +1,64 @@
-var addStatement = WL.Server.createSQLStatement("insert into Accounts (FirstName, BirthDate, Email, CellPhone, Password, FechaRegistro) values (?, ?, ?, ?, ?, GETDATE())");
-var selectStatement = WL.Server.createSQLStatement(
-		"select FirstName AS 'firstName', LastName As 'lastName', SecondLastName As 'secondLastName', " +
-		" LEFT(CONVERT(varchar, BirthDate, 120) ,10) As 'birthdate' , Country, State, City AS 'city', " +
-		"Email AS 'email', CellPhone AS 'cellPhone', Password AS 'password', StreetNumber AS 'streetNumber', " +
-		"StreetName AS 'street', ZipCode AS 'postalCode', LicenseNumber AS 'licenseNumber' " +
-		"FROM Accounts " +
-		"WHERE Email = ? AND Password = ?"
-		);
-
-var updateStatement = WL.Server.createSQLStatement(" update Accounts set FirstName=?,LastName=?,SecondLastName=?,Country=?,State=?,City=?,CellPhone=?,StreetNumber=?,StreetName=?,ZipCode=?,licenseNumber=?,birthdate=? where Email=? ");
 /************************************************************************
- * Implementation code for procedure - 'procedure1'
+ * Implementation code for procedure - 'accessAccount'
  *
- * @param - email and passwor to validate
+ * @param - email and password to validate
  * @return - invocationResult
  */
 function accessAccount(pData) {
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : selectStatement,
-		parameters : [pData.email, pData.password]
-	});
+	var data	= input('post','json','/GoShieldServices/goshield.svc/Account/Access','application/json; charset=UTF-8',JSON.stringify(pData));		
+	return WL.Server.invokeHttp(data);	
 }
 
 /************************************************************************
- * Implementation code for procedure - 'procedure2'
+ * Implementation code for procedure - 'saveAccount'
  *
  * @param - account object from js/account.js
  * @return - invocationResult
  */
-function saveAccount(account) {
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : addStatement,
-		parameters : [account.firstName, account.birthDate, account.email, account.cellPhone, account.password]
-	});
+function saveAccount(account) {		
+	var data	= input('post','json','/GoShieldServices/goshield.svc/Account/Save','application/json; charset=UTF-8',JSON.stringify(account)); 	
+	return WL.Server.invokeHttp(data);	
 }
 
 
-function updateAccount(perfil){
+function updateAccount(perfil){					
+	var data	= input('post','plain','/GoShieldServices/goshield.svc/Account/Update','application/json;',perfil);	
+	return WL.Server.invokeHttp(data);			 	 
+} 
+
+function suscribeAccount(account){	
+	var inputExists = {
+		    method : 'get',
+		    returnedContentType : 'json',
+		    path :'/GoShieldServices/goshield.svc/Account/Exists?Email='+account.email
+		};
+		var exists = WL.Server.invokeHttp(inputExists);	
 	
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : updateStatement,
-		parameters : [perfil.firstName, perfil.lastName, perfil.secondLastName, 
-		              perfil.Country,perfil.State, perfil.city, perfil.cellPhone,perfil.streetNumber,perfil.street,perfil.postalCode,perfil.licenseNumber,perfil.birthdate, 
-		              perfil.email ]
-	});
-}
-
-var existsStatement = WL.Server.createSQLStatement("SELECT 1 as [exists] FROM Accounts WHERE Email = ?");
-var suscribeStatement = WL.Server.createSQLStatement("INSERT INTO Accounts (Email, Password, FirstName, LastName) VALUES (?,?,?,?)");
-function suscribeAccount(account){
-	var exists = WL.Server.invokeSQLStatement({
-		preparedStatement : existsStatement,
-		parameters : [account.email]
-	});
 	//return exists;
-	if(exists.resultSet.length > 0){
+	if(exists.existsAccountResult.details.length > 0){
 		return {"result":"1"};
 	}
-	else{
-		var ret = WL.Server.invokeSQLStatement({
-			preparedStatement : suscribeStatement,
-			parameters : [account.email, account.password, account.firstName, account.lastName]
-		});
-		if(ret.isSuccessful && ret.updateStatementResult.updateCount > 0){
+	else{				
+		var suscribedata	= input('post','json','/GoShieldServices/goshield.svc/Account/Suscribe','application/json; charset=UTF-8',JSON.stringify(account));		
+		var ret= WL.Server.invokeHttp(suscribedata);
+		
+		if(ret.successful){
 			return {"result":"0","email":account.email};
 		}else{
 			return {"result":"2","return":ret};
 		}
 	}
+}
+
+function input( pMethod, pReturnedContentType,pPath, pContentType, pContent){
+	
+	return data = {
+		    method : pMethod,
+		    returnedContentType :pReturnedContentType,
+		    path :pPath,
+		    body: { 
+		    	   		contentType: pContentType , 
+		    	   		content: pContent
+		    	   	} 
+		};
 }
