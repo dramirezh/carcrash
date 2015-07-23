@@ -46,7 +46,7 @@ function getEmergencyContacts(oData) {
 		oReturn.push(data);
 	}
 	}
-	return resultVehicle;//{data: oReturn};
+	return {data: oReturn};
 }
 
 function saveEmergencyContacts(param1) {
