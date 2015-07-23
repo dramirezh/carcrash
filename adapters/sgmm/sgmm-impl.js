@@ -1,44 +1,44 @@
-var selectStatement = WL.Server.createSQLStatement("select * from sgmm where Email=?");
-
-	/************************************************************************
-	 * Implementation code for procedure - 'getSGMMData'
-	 *
-	 * @param - sgmm json from js/sgmm/sgmm.js
-	 * @return - invocationResult
-	 */
-
 function getSGMMData(oData) {
-	var result = WL.Server.invokeSQLStatement({
-		preparedStatement : selectStatement,
-		parameters : [oData.email]
-	});
+	var input = {
+		    method : 'get',
+		    returnedContentType : 'json',
+		    path :'/GoShieldServices/goshield.svc/SGMM/Get?Email='+oData.email
+		};
+		var result = WL.Server.invokeHttp(input);	
+	
 	var oReturn = [];
-	if(result.resultSet!=undefined){
-	for(var i = 0; i < result.resultSet.length; i++){
+	if(result.getSGMMResult!=undefined){
 		var data = {
-				identifier: result.resultSet[i].Identifier, 
-				email: result.resultSet[i].Email, 
-				Institution:result.resultSet[i].Institution,
-				Certificate:result.resultSet[i].sgmmCertificate, 
-				FullName:result.resultSet[i].FullName
-				};
-		
+				identifier: result.getSGMMResult.Identifier, 
+				email: result.getSGMMResult.Email, 
+				Institution:result.getSGMMResult.Institution,
+				Certificate:result.getSGMMResult.sgmmCertificate, 
+				FullName:result.getSGMMResult.FullName
+				};		
 	
 		oReturn.push(data);
-	}
 	}
 	return {data: oReturn};
 }
 
-
 function SGMMSaveSP(sgmmData){ 
-	 return WL.Server.invokeSQLStoredProcedure({
-		procedure : "sp_saveSGMM",
-		parameters : [  sgmmData.email, sgmmData.identifier, sgmmData.Institution, 
-		                sgmmData.Certificate, sgmmData.FullName	              
-		                ]
-	});
-
+	var cleanObjects= {
+			Identifier: sgmmData.identifier, 
+			Email: sgmmData.email, 
+			Institution: sgmmData.Institution,
+			sgmmCertificate: sgmmData.Certificate, 
+			FullName:sgmmData.FullName
+			};			
+	
+	 var data = {
+			    method : 'post',
+			    returnedContentType :'json',
+			    path :'/GoShieldServices/goshield.svc/SGMM/Save',
+			    body: { 
+			    	   		contentType: 'application/json; charset=UTF-8' , 
+			    	   		content: JSON.stringify(cleanObjects)
+			    	   	} 
+			};	
+	 return WL.Server.invokeHttp(data);
 }
-
 
