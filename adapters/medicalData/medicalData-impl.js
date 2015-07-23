@@ -1,43 +1,46 @@
-var selectStatement = WL.Server.createSQLStatement("select * from MedicalData where Email=?");
-
-	/************************************************************************
-	 * Implementation code for procedure - 'procedure2'
-	 *
-	 * @param - medicalData json from js/medicalData.js
-	 * @return - invocationResult
-	 */
-
 function getMedicalData(oData) {
-	var result = WL.Server.invokeSQLStatement({
-		preparedStatement : selectStatement,
-		parameters : [oData.email]
-	});
+	var input = {
+		    method : 'get',
+		    returnedContentType : 'json',
+		    path :'/GoShieldServices/goshield.svc/Medical/Get?Email='+oData.email
+		};
+		var result = WL.Server.invokeHttp(input);	
+	
 	var oReturn = [];
-	if(result.resultSet!=undefined){
-	for(var i = 0; i < result.resultSet.length; i++){
+	if(result.getMedicalResult!=undefined){
 		var data = {
-				identifier: result.resultSet[i].Identifier, 
-				email: result.resultSet[i].Email, 
-				IMSS:result.resultSet[i].InsuranceNumber,
-				bloodType:result.resultSet[i].TypeBlood, 
-				alergics:result.resultSet[i].Alergies,
-				clinicalConditions:result.resultSet[i].Ailment
-				};
-		
+				identifier: result.getMedicalResult.Identifier, 
+				email: result.getMedicalResult.Email, 
+				IMSS:result.getMedicalResult.InsuranceNumber,
+				bloodType:result.getMedicalResult.TypeBlood, 
+				alergics:result.getMedicalResult.Alergies,
+				clinicalConditions:result.getMedicalResult.Ailment
+				};		
 	
 		oReturn.push(data);
-	}
 	}
 	return {data: oReturn};
 }
 
-
-function saveProcedure(pMedicalData){
-	 return WL.Server.invokeSQLStoredProcedure({
-		procedure : "sp_saveVehiclesPolicies",
-		parameters : [  pMedicalData.email, pMedicalData.IMSS, pMedicalData.bloodType, 
-			               pMedicalData.alergics, pMedicalData.clinicalConditions, pMedicalData.identifier		              
-		                ]
-	});
-
+function saveProcedure(pMedicalData){ 	
+	
+	var cleanObjects={
+			Identifier:pMedicalData.identifier, 
+			Email:pMedicalData.email, 
+			InsuranceNumber:pMedicalData.IMSS,
+			TypeBlood:pMedicalData.bloodType, 
+			Alergies:pMedicalData.alergics,
+			Ailment:pMedicalData.clinicalConditions	
+	};
+	 var data = {
+			    method : 'post',
+			    returnedContentType :'json',
+			    path :'/GoShieldServices/goshield.svc/Medical/Save', 
+			    body: { 
+			    	   		contentType: 'application/json; charset=UTF-8' , 
+			    	   		content: JSON.stringify(cleanObjects)
+			    	   	} 
+			};	
+	 return WL.Server.invokeHttp(data);
 }
+
