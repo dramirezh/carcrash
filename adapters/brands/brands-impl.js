@@ -1,14 +1,9 @@
-var selectStatement = WL.Server.createSQLStatement("select * from VehicleBrands");
-/************************************************************************
- * Implementation code for procedure - 'getInsurances'
- *
- *
- * @return - invocationResult
- */
- 
-function getVehicleBrands() {
-	return WL.Server.invokeSQLStatement({
-		preparedStatement : selectStatement,
-		parameters : []
-	});
+function  getVehicleBrands() {
+	var input = {
+		    method : 'get',
+		    returnedContentType : 'json',
+		    path :'/GoShieldServices/goshield.svc/VehicleBrands/Get'
+		};
+		return WL.Server.invokeHttp(input);	
 }
+
