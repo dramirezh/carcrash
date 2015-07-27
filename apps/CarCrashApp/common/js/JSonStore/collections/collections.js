@@ -20,8 +20,8 @@ function getCollections(){
 	    PolicyVehicle : {
 	        searchFields: {identifier: 'integer',PolicyNo: 'string', PolicyDate: 'string', Insurance: 'string', Plates: 'string', Serie: 'string'
 	        	, VehicleType: 'string', Mark: 'string', SubMark: 'string', Model: 'string', Color: 'string'
-	         		, carPicture: 'string', Holder: 'string', OwnerCellPhone: 'string', PolicyContactSecondLastName:'string',
-						PolicyContactFirstName:'string', PolicyContactLastName:'string',
+	         		, carPicture: 'string', Holder: 'string', OwnerCellPhone: 'string', 
+						PolicyContactFirstName:'string', PolicyContactLastName:'string', PolicyContactSecondLastName:'string',
 						PolicyContactCellPhone:'string'
 	         	}
 	     },

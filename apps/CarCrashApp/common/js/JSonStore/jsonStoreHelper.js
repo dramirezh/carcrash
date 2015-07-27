@@ -179,8 +179,30 @@ function _saveToServer(pAdapter, pProcedure, id){
 				  
 				  $(dirtyDocs).each(function(idx, item){
 					  item["email"] = globalMail;
+					  
+					  //Vehicle: convert image to base64
+					  if(collectionName=="PolicyVehicle"){						  
+							if(item.json.carPicture.indexOf(".svc/get?folder")<1||item.json.carPicture.indexOf("file:///")>0){	
+								
+								convertToBase64(item.json.carPicture, function(data){
+									
+									item.json.carPicture=data;
+									WL.Logger.debug(">> pic data: " + item.json.carPicture);
+									WL.Logger.debug(">> data send to adapter: " + JSON.stringify(dirtyDocs));
+									  var invocationData = {
+									    adapter : pAdapter, 
+									    procedure : pProcedure, 
+									    parameters : [dirtyDocs],
+									    compressResponse: true
+									  };
+									  
+									   WL.Client.invokeProcedure(invocationData);
+									
+								});
+							}
+					  }
 				  });
-		
+				  WL.Logger.debug(">> data send to adapter: " + JSON.stringify(dirtyDocs));
 				  var invocationData = {
 				    adapter : pAdapter, 
 				    procedure : pProcedure, 

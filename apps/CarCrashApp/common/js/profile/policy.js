@@ -428,7 +428,7 @@
 	        			}, "Info");
 			policySaved=true;
 			initPolicyVehicleDataInfo();					
-			location.href="#showPolicies";
+			//
 			};
 			jsonStore.fnFail=function(errorObject){alert("Error: "+errorObject.msg);};						
 			jsonStore.save();							
@@ -437,13 +437,15 @@
 		}
 		function savingPolicy(){
 			var picdata=$('img[id="picsrc"]').attr("src");
+			validImage(picdata);
+		/*
 			if(picdata.indexOf(".svc/get?folder")>0){				
 				validImage(picdata);
 			}else{
 				convertToBase64(picdata, function(data){
 					validImage(data);					
 				});
-			}																								
+			}*/																								
 		}
 		
 		function saveVehicle(pVehicle)
@@ -987,7 +989,7 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 			jsonStore.id=0;
 			jsonStore.fnSuccess=function initSuccess(arrayResults){	
 				if(arrayResults.invocationResult.isSuccessful&&arrayResults.invocationResult.data.length>0){
-					//alert("enviado al servidor");
+					//updateLocalImage();
 				}
 				
 				 return true;
@@ -996,7 +998,22 @@ function initPolicyToList(name,insurance,policyDate,id,pic){
 				
 			};
 			jsonStore.saveToServer("vehiclesPolicies", "saveVehiclePolicies");
+			location.href="#showPolicies";
 		}
+		
+		function updateLocalImage(){
+			var vehicleImageFromServer = new clsJsonStoreHelper();
+			vehicleImageFromServer.fnSuccess = function(success){
+				initPolicyVehicleDataInfo();
+			};
+			vehicleImageFromServer.fnFail = function(error){
+				
+			};	
+			vehicleImageFromServer.collectionName = "PolicyVehicle";
+			vehicleImageFromServer.getFromServer("vehiclesPolicies", "getVehiclesPolicies");
+			
+		}
+		
 		function setUnChecked(FormName,id2){				
 			
 			var tmpID="";

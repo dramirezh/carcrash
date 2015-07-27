@@ -89,12 +89,12 @@ function accessAccount(pEmail, pPassword)
 }
 
 function accessSuccess(result){
-	var oResult = result.invocationResult.isSuccessful; //resultSet[0];
-	if(oResult){ 
+	var oResult = result.invocationResult.isSuccessful; 
+	if(oResult && result.invocationResult.accessAccountResult.email!=null){ 
 		//Guardar datos en jsonstore
 		var oJS = new clsJsonStoreHelper();
 		oJS.collectionName = "perfil";
-		oJS.document = result.invocationResult.accessAccountResult; //oResult
+		oJS.document = result.invocationResult.accessAccountResult; 
 		oJS.id = 0;
 		oJS.fnSuccess = function(numAdd){
 			if(numAdd > 0){
