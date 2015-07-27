@@ -26,7 +26,7 @@
 
 
 function getVehiclesPolicies(oData) {	
-	
+		
 	var input = {
 	    method : 'get',
 	    returnedContentType : 'json',
@@ -91,7 +91,8 @@ function saveVehiclePolicies(param1) {
 	return {data:ret};			
 }
 
-function save(pVehiclesPolicies){
+function save(pVehiclesPolicies){	
+
 	var dataIn	= input(pVehiclesPolicies,'post','json','/GoShieldServices/goshield.svc/Vehicles/Save','application/json; charset=UTF-8',JSON.stringify(pVehiclesPolicies));				
 	var saveResult= WL.Server.invokeHttp(dataIn);		
 	return saveResult;
