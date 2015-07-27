@@ -74,13 +74,18 @@ input:required:invalid, input:focus:invalid{
 For iOS place:
 
 div[data-role='header'][data-position='fixed']{
-	padding-top:20px;
+	padding-top:15px;
 }
 div[data-role='header'][data-position='fixed'] a[tag='a']{
-    margin-top:20px;
+    margin-top:15px;
 }
-
+div[data-role='header'][data-position='fixed'] a{
+    margin-top:15px;
+}
 div[data-role='panel']{
-	margin-top:19px;
+	margin-top:14px;
+}
+.ui-content{
+	margin-top:15px !important;
 }
 */
