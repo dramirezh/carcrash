@@ -15,10 +15,10 @@
 	<connectivity>
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
 			<protocol>http</protocol>
-			<domain>192.168.21.222</domain>
+			<domain>172.16.1.33</domain>
 			<port>81</port>		
-			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
-			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<connectionTimeoutInMilliseconds>300000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>300000</socketTimeoutInMilliseconds>
 			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
 			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store  
 			<sslCertificateAlias></sslCertificateAlias> 
