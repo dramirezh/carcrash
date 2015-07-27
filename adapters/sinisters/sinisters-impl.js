@@ -9,26 +9,22 @@ function getSinisters(oData) {
 		
 	var oReturn = [];
 	for(var i = 0; i < result.getSinisterResult.length; i++){
-		var data = {
-					identifier: result.getSinisterResult[i].identifier,
-					email : result.getSinisterResult[i].email,
-					idPolicy: result.getSinisterResult[i].idPolicy,
-					date: result.getSinisterResult[i].date,
-					time: result.getSinisterResult[i].time,
-					type: result.getSinisterResult[i].type,
-					status: result.getSinisterResult[i].status,
-					location: {
-						lat: result.getSinisterResult[i].lat,
-						lng: result.getSinisterResult[i].lng
-					},
-					extras: {
-						pictures: result.getSinisterResult[i].data.extras.pictures,
-						medicalAssistance: result.getSinisterResult[i].medicalAssistance,
-						legalAssistance: result.getSinisterResult[i].legalAssistance,
-						craneService: result.getSinisterResult[i].craneService,
-						comments: result.getSinisterResult[i].comments
-					}
+		var data = {	
+				identifier: result.getSinisterResult[i].identifier,
+				email : result.getSinisterResult[i].email,
+					idPolicy: result.getSinisterResult[i].data.idPolicy,
+					date: result.getSinisterResult[i].data.date,
+					time: result.getSinisterResult[i].data.time,
+					type: result.getSinisterResult[i].data.type,
+					status: result.getSinisterResult[i].data.status,
+					location: 
+						 result.getSinisterResult[i].data.location
+					,
+					extras: 
+						result.getSinisterResult[i].data.extras
+					
 				};
+		
 		oReturn.push(data);
 	}
 	return {data: oReturn};
