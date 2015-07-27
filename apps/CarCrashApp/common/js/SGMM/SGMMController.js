@@ -35,9 +35,9 @@ var Sgmm= new SGMM();
 					jsonStore.document=
 							{
 							};
-					jsonStore.id=succes;
+					jsonStore.id=0;// 0
 					jsonStore.fnSuccess=function (arrayResults) {
-						 
+						WL.Logger.debug(">>  data local sgmm: " + JSON.stringify(arrayResults));
 						if(arrayResults.length>0){	
 							saveSGMMData(arrayResults[0].json);
 						}
@@ -84,6 +84,7 @@ var Sgmm= new SGMM();
 		
 		function saveSGMMData(SGMMData)
 		{	
+			WL.Logger.debug(">>  data local sgmm: " + JSON.stringify(SGMMData));
 			var restHelper = new clsRestHelper('sgmm','SGMMSaveSP',SGMMData, saveSGMMDataSuccess, saveSGMMDataFailure);
 			restHelper.callRestAdapter();
 		}
