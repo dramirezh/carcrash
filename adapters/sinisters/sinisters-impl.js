@@ -61,17 +61,19 @@ function save(sinister){
 					status: sinister.status,
 					location: sinister.location,
 					extras: sinister.extras
-				};
+				};				
 		
-	
 	var inputData= {data: data,
 			identifier: sinister.identifier,
 			email : sinister.email,			
 	};
 	
-	var data=input('post','json','/GoShieldServices/goshield.svc/Sinisters/Save','application/json; charset=UTF-8',JSON.stringify(inputData));		
-	 WL.Server.invokeHttp(data);
-	 return WL.Server.invokeHttp(data);
+	var inputResult=input('post','json','/GoShieldServices/goshield.svc/Sinisters/Save','application/json; charset=UTF-8',JSON.stringify(inputData));
+	var oData=WL.Server.invokeHttp(inputResult);
+	oData.identifier=sinister.identifier;
+	oData.email = sinister.email;
+	oData.pictures = sinister.extras.pictures;
+return oData;		
 }
 
 function update(sinister){
@@ -91,6 +93,17 @@ function remove(sinister){
 	};
 	var data=input('post','json','/GoShieldServices/goshield.svc/Sinisters/Remove','application/json; charset=UTF-8',JSON.stringify(inputData));		
 	return WL.Server.invokeHttp(data);				 
+}
+
+function saveImages(base64, email, identifier){			
+	
+var inputData= {data: base64,
+		identifier: identifier,
+		email : email,			
+};
+
+var data=input('post','json','/GoShieldServices/goshield.svc/Sinisters/SaveImage','application/json; charset=UTF-8',JSON.stringify(inputData));		
+ return WL.Server.invokeHttp(data);
 }
 
 function input( pMethod, pReturnedContentType,pPath, pContentType, pContent){
