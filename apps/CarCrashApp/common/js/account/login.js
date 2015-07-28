@@ -90,7 +90,7 @@ function accessAccount(pEmail, pPassword)
 
 function accessSuccess(result){
 	var oResult = result.invocationResult.isSuccessful; 
-	if(oResult && result.invocationResult.accessAccountResult.email!=null){ 
+	if(oResult && result.invocationResult.accessAccountResult !=null && result.invocationResult.accessAccountResult !=undefined &&result.invocationResult.accessAccountResult.email!=null){ 
 		//Guardar datos en jsonstore
 		var oJS = new clsJsonStoreHelper();
 		oJS.collectionName = "perfil";

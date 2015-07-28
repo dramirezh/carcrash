@@ -84,7 +84,7 @@ function sendIncidenteInfo()
 					var oJS = new clsJsonStoreHelper();
 					oJS.collectionName = 'reports';
 					oJS.fnSuccess = function(response){
-						//save server success
+						//save server success																		
 						oJS.fnSuccess = function(response){
 							//get server success
 							loadTheftList();
