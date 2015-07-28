@@ -15,7 +15,7 @@
 	<connectivity>
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
 			<protocol>http</protocol>
-			<domain>172.16.1.33</domain>
+			<domain>demosolutia.com</domain>
 			<port>81</port>		
 			<connectionTimeoutInMilliseconds>300000</connectionTimeoutInMilliseconds>
 			<socketTimeoutInMilliseconds>300000</socketTimeoutInMilliseconds>
