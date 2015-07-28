@@ -50,7 +50,7 @@ function enviarExtras()
 									convertToBase64(picurl.replace('"',"").replace('"',""), function(data){
 										
 										var picdata=data;
-										WL.Logger.debug(">> pic data: " + picdata);
+										//WL.Logger.debug(">> pic data: " + picdata);
 										  var invocationData = {
 										    adapter : 'sinisters', 
 										    procedure : 'saveImages', 

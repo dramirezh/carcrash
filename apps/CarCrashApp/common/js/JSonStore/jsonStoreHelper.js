@@ -187,7 +187,7 @@ function _saveToServer(pAdapter, pProcedure, id){
 								convertToBase64(item.json.carPicture, function(data){
 									
 									item.json.carPicture=data;
-									WL.Logger.debug(">> pic data: " + item.json.carPicture);
+									//WL.Logger.debug(">> pic data: " + item.json.carPicture);
 									WL.Logger.debug(">> data send to adapter: " + JSON.stringify(dirtyDocs));
 									  var invocationData = {
 									    adapter : pAdapter, 
