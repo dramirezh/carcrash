@@ -105,14 +105,21 @@ function update(pEmergencyContacts){
 	if(updateContactResult!=undefined){
 		if(updateContactResult.isSuccessful){
 			var f="IDVehicleType";
+			var inputData={email:pEmergencyContacts.Email,identifier:pEmergencyContacts.Identifier};			
+			var deleteVehicle = input('post','json','/GoShieldServices/goshield.svc/ContactVehicles/Remove','application/json; charset=UTF-8',JSON.stringify(inputData));		
+			var deleteVehicleResult=WL.Server.invokeHttp(deleteVehicle);
+			
+			if(deleteVehicleResult!=null){
 			for ( f in pEmergencyContacts.vehicle) {
 			res=pEmergencyContacts.vehicle[f];
 				
+			
+			
 			var inputData={Email:pEmergencyContacts.Email,ContactIdentifier:pEmergencyContacts.Identifier, VehicleIdentifier:res.IDVehicleType };	
 			var saveVehicle = input('post','json','/GoShieldServices/goshield.svc/ContactVehicles/Save','application/json; charset=UTF-8',JSON.stringify(inputData));		
 			 saveVehicleResult=WL.Server.invokeHttp(saveVehicle);
 			}
-					
+		}		
 			
 		}	
 				
